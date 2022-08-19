@@ -135,7 +135,7 @@ const UserProfile = ({ profile, setSettings, setProfile }) => {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={`https://mygoldenpay.com/register/?agent=${user.username}`}
+                    value={`mygoldenpay.com/register/?agent=${user.username}`}
                     readOnly
                   />
                 </div>
