@@ -1,0 +1,119 @@
+@import "../../../global.scss";
+
+.userMain {
+  width: 100%;
+  height: auto;
+  background-color: $backgroundCOlor;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  @include l{
+    padding: 10px;
+  }
+  @include tab{
+    padding: 10px;
+  }
+  @include mobile{
+    padding: 10px;
+  }
+
+  .updateAccount {
+    position: absolute;
+    color: white;
+    width: 70%;
+    height: 90%;
+    padding: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background-color: transparent;
+    top: 20px;
+    left: 370px;
+    z-index: 1;
+    @include tab{
+      width: 100%;
+      left: 80px;
+      padding: 20px;
+      top: 90px;
+      padding-bottom: 40px;
+    }
+    @include mobile{
+      width: 100%;
+      left: 0;
+      padding: 20px;
+      top: 90px;
+      padding-bottom: 50px;
+    }
+    p {
+      font-size: 24px;
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+      width: 70%;
+      span{
+        color: $buttonColor;
+        font-weight: 700;
+      }
+      @include mobile{
+        width: 100%;
+      }
+    }
+    .button{
+      cursor: pointer;
+      font-weight: 600;
+      width: 20%;
+      margin-left: 150px;
+      @include tab{
+        margin-left: 120px;
+      }
+      @include mobile{
+        margin-left: 100px;
+        width: 40%;
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    margin-top: 40px;
+    @include tab{
+      flex-direction: column;
+    }
+    @include mobile{
+      flex-direction: column;
+    }
+    .sidebar {
+      flex: 1;
+      @include tab{
+        flex: 0;
+      }
+      @include mobile{
+        flex: 0;
+      }
+    }
+    .dashboard {
+      flex: 4;
+      @include tab{
+        flex: 0;
+      }
+      @include mobile{
+        flex: 0;
+      }
+    }
+    .disabled {
+      flex: 4;
+      opacity: 0;
+      @include tab{
+        flex: 0;
+      }
+      @include mobile{
+        flex: 0;
+      }
+    }
+  }
+}
+
+.none{
+  flex: 4;
+  display: none;
+}

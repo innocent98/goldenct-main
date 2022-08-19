@@ -1,0 +1,80 @@
+@import "../../../global.scss";
+
+.userSettings {
+  color: white;
+  width: 100%;
+  margin-top: -50px;
+  @include tab {
+    margin-top: 0;
+  }
+  @include mobile {
+    margin-top: 0;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Archivo", sans-serif;
+    color: $buttonColor;
+    margin-left: 15%;
+  }
+  .top {
+    margin-top: 60px;
+  }
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    border: 1px solid $grey;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    @include tab {
+      width: 80%;
+    }
+    @include mobile {
+      width: 90%;
+    }
+    .left {
+      margin-top: 15px;
+      flex: 3;
+      h3 {
+        font-family: "Archivo", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 11px;
+        font-family: "Inter", sans-serif;
+        color: rgba(255, 255, 255, 0.521);
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        background-color: white;
+        color: $backgroundCOlor;
+        position: relative;
+        right: 0;
+        margin-left: 150px;
+        cursor: pointer;
+        @include mobile {
+          margin-left: 100px;
+        }
+      }
+    }
+  }
+
+  .bankD{
+    padding: 0;
+  }
+}
+
+.none {
+  display: none;
+}

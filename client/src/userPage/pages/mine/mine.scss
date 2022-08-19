@@ -1,0 +1,107 @@
+@import "../../../global.scss";
+
+.mine {
+  display: block;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    margin-bottom: 50px;
+    font-size: 18px;
+    &:disabled {
+      background-color: $grey;
+      cursor: not-allowed;
+    }
+  }
+
+  .countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      font-weight: 600;
+      font-size: 20px;
+      font-family: "Archivo", sans-serif;
+    }
+    .row {
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h3 {
+          font-family: "Archivo", sans-serif;
+          font-weight: 600;
+          font-size: 40px;
+          color: $grey;
+        }
+        p {
+          font-family: "Archivo", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+          color: $buttonColor;
+        }
+      }
+    }
+  }
+
+  .mineDetails {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    @include tab{
+      flex-direction: column;
+    }
+    @include mobile{
+      flex-direction: column;
+    }    
+    .left,
+    .right {
+      text-align: center;
+      h3 {
+        font-weight: 400;
+        font-size: 20px;
+        font-family: "Archivo", sans-serif;
+        @include mobile{
+          font-size: 18px;
+        }
+        span {
+          font-size: 30px;
+          color: $buttonColor;
+          @include tab{
+            font-size: 28px;
+          }
+          @include mobile{
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    .right{
+      display: flex;
+    }
+  }
+
+  .notValid {
+    font-weight: 600;
+    font-size: 35px;
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.none {
+  display: none;
+}

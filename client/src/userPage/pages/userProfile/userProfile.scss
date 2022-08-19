@@ -1,0 +1,188 @@
+@import "../../../global.scss";
+
+.userProfile {
+  width: 100%;
+  color: white;
+  margin-top: -40px;
+  @include tab {
+    padding: 20px;
+  }
+  @include mobile {
+    padding: 20px;
+  }
+  .wrapper {
+    display: block;
+    .back {
+      background-color: $buttonColor;
+      color: $backgroundCOlor;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 20px;
+      font-family: "Archivo", sans-serif;
+      color: $buttonColor;
+      margin-top: 20px;
+    }
+
+    .profilePic {
+      margin-top: 20px;
+      margin-bottom: -70px;
+      display: flex;
+      align-items: flex-end;
+      .img {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        img {
+          width: 75%;
+          height: 75%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .circular {
+      position: fixed;
+      left: 50%;
+      .cc {
+        color: $buttonColor !important;
+      }
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .refer{
+        z-index: 9;
+        display: flex;
+        flex-direction: column;
+      }
+      .col-md-3 {
+        width: 100%;
+        span {
+          position: absolute;
+          color: $buttonColor;
+          font-weight: 500;
+          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          cursor: pointer;
+          top: 260px;
+          left: 430px;
+          @include tab {
+            left: 180px;
+            top: 240px;
+          }
+          @include mobile {
+            left: 180px;
+            top: 240px;
+          }
+        }
+        .form-label {
+          font-size: 17px;
+          font-weight: 400;
+          font-family: "Archivo", sans-serif;
+        }
+        .form-control {
+          width: 40%;
+          background-color: transparent;
+          font-weight: 400;
+          font-size: 17px;
+          color: white;
+          font-family: "Inter", sans-serif;
+          border: 1px solid $grey;
+          @include tab {
+            width: 80%;
+          }
+          @include mobile {
+            width: 100%;
+          }
+          &::placeholder {
+            color: #6b6b6d;
+            font-weight: 400;
+            font-size: 17px;
+          }
+          &:focus {
+            border: 1px solid white;
+          }
+        }
+        .form-select {
+          width: 40%;
+          font-weight: 400;
+          font-size: 17px;
+          font-family: "Inter", sans-serif;
+          border: 1px solid $grey;
+          @include tab {
+            width: 80%;
+          }
+          @include mobile {
+            width: 100%;
+          }
+          &::placeholder {
+            color: #6b6b6d;
+            font-weight: 400;
+            font-size: 17px;
+          }
+          &:focus {
+            border: 1px solid white;
+          }
+        }
+        .submit-button {
+          width: 40%;
+          font-weight: 700;
+          font-size: 20px;
+          font-family: "Archivo", sans-serif;
+          color: $backgroundCOlor;
+          background-color: $buttonColor;
+          border: none;
+          border-radius: 4px;
+          &:disabled {
+            cursor: not-allowed;
+            background-color: $grey;
+          }
+          @include tab {
+            width: 80%;
+          }
+          @include mobile {
+            width: 100%;
+          }
+        }
+      }
+
+      .ObjUrl {
+        position: absolute;
+        top: 150px;
+        left: 300px;
+        z-index: 1;
+        .ObjImg {
+          height: 350px;
+          width: 350px;
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .button {
+          margin-right: 30px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .success {
+    width: 70%;
+    padding-top: 80px;
+    margin-left: 8%;
+    color: white;
+  }
+}
+
+.none {
+  display: none;
+}

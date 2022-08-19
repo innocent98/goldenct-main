@@ -1,0 +1,268 @@
+@import "../../global.scss";
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  width: 100%;
+  @include tab {
+    padding-top: 100px;
+  }
+  @include mobile {
+    padding-top: 100px;
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $generalColor;
+    h4 {
+      font-size: 40px;
+      font-weight: 700;
+      font-family: "Archivo", sans-serif;
+      color: $generalColor;
+      text-transform: capitalize;
+      margin-bottom: 20px;
+      @include tab {
+        text-align: center;
+        font-size: 30px;
+      }
+      @include mobile {
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+    p {
+      font-size: 17px;
+      font-weight: 400;
+      color: $secondary;
+      font-family: "Inter", sans-serif;
+      @include tab {
+        font-size: 16px;
+      }
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .cards {
+    display: flex;
+    padding-top: 40px;
+    width: 100%;
+    justify-content: space-between;
+    @include tab {
+      flex-direction: column;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .card {
+      background-color: $general;
+      color: $generalColor;
+      padding: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 8px;
+      @include tab {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+      @include mobile {
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+      span {
+        background-color: $general;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin-bottom: 15px;
+        @include l{
+          height: 50px;
+          width: 50px;
+          font-size: 25px;
+        }
+        @include mobile {
+          height: 50px;
+          width: 50px;
+          font-size: 25px;
+        }
+      }
+      h5 {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        color: $generalColor;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        @include l{
+          text-align: center;
+          font-size: 17px;
+        }
+        @include tab {
+          text-align: center;
+        }
+        @include mobile {
+          text-align: center;
+          font-size: 18px;
+        }
+      }
+      p {
+        font-size: 17px;
+        font-weight: 400;
+        color: $secondary;
+        font-family: "Inter", sans-serif;
+        @include l{
+          text-align: center;
+          font-size: 15px;
+        }
+        @include tab {
+          text-align: center;
+        }
+        @include mobile {
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    @include tab {
+      margin-top: 20px;
+    }
+    @include mobile {
+      margin-top: 20px;
+    }
+    a {
+      background-color: $buttonColor;
+      width: 150px;
+      height: 40px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $backgroundCOlor;
+      text-align: center;
+      @include mobile {
+        height: 30px;
+      }
+    }
+  }
+
+  .mining {
+    margin-top: 80px;
+    background-color: #d8e1f4;
+    display: flex;
+    align-items: center;
+    padding: 60px 50px;
+    border-radius: 8px;
+    @include tab {
+      flex-direction: column;
+      padding: 20px;
+    }
+    @include mobile {
+      flex-direction: column;
+      padding: 20px;
+    }
+    .left {
+      flex: 1;
+      h4 {
+        font-size: 32px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        color: $backgroundCOlor;
+        text-transform: uppercase;
+        @include l{
+          font-size: 30px;
+        }
+        @include tab {
+          font-size: 30px;
+          text-align: center;
+        }
+        @include mobile {
+          font-size: 25px;
+          text-align: center;
+        }
+      }
+      p {
+        width: 65%;
+        font-size: 17px;
+        font-weight: 400;
+        color: $backgroundCOlor;
+        font-family: "Inter", sans-serif;
+        @include l{
+          font-size: 15px;
+        }
+        @include tab {
+          width: 100%;
+          text-align: center;
+          font-size: 15px;
+        }
+        @include mobile {
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+        }
+      }
+    }
+    .right {
+      flex: 1;
+      .row {
+        width: 100%;
+        display: flex !important;
+        align-items: center;
+        @include tab {
+          flex-direction: column;
+        }
+        @include mobile {
+          flex-direction: column;
+        }
+        .input {
+          flex: 2;
+          input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid $backgroundCOlor;
+            border-radius: 0;
+          }
+        }
+        .button {
+          flex: 1;
+          .submit-button {
+            background-color: $backgroundCOlor;
+            width: 150px;
+            height: 40px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $generalColor;
+            text-align: center;
+            border: none;
+            @include tab {
+              margin-left: 10%;
+            }
+            @include mobile {
+              margin-left: 10%;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

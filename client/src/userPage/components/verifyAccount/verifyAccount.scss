@@ -1,0 +1,54 @@
+@import "../../../global.scss";
+
+.verifyAccount {
+  color: white;
+  width: 100%;
+
+  .circular {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    .cc {
+      color: $buttonColor !important;
+    }
+  }
+
+  .row {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      font-size: 17px;
+      font-family: "Inter", sans-serif;
+    }
+    .form-label {
+      font-size: 16px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+    }
+    .submit-button {
+      margin-top: 30px;
+      &:disabled {
+        cursor: not-allowed;
+        background-color: $grey;
+      }
+    }
+  }
+
+  .verified {
+    text-align: center;
+    margin-top: 150px;
+    font-weight: 400;
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+.none {
+  display: none;
+}

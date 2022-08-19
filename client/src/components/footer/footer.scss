@@ -1,0 +1,132 @@
+@import "../../global.scss";
+
+.footer {
+  padding-top: 150px;
+  width: 100%;
+
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: $generalColor;
+    padding-bottom: 100px;
+    @include tab{
+      flex-direction: column;
+      padding-bottom: 50px;
+    }
+    @include mobile {
+      flex-direction: column;
+      padding-bottom: 50px;
+    }
+
+    .first {
+      span {
+        margin-left: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Inter", sans-serif;
+      }
+    }
+    .second,
+    .third {
+      display: flex;
+      flex-direction: column;
+      @include tab{
+        margin-top: 30px;
+      }
+      @include mobile {
+        margin-top: 30px;
+      }
+      h4 {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        text-transform: uppercase;
+        @include tab{
+          font-size: 18px;
+        }
+        @include mobile {
+          font-size: 16px;
+        }
+      }
+      ul {
+        list-style: none;
+        margin-left: -35px;
+        li {
+          margin-top: 20px;
+          @include tab{
+            margin-top: 10px;
+          }
+          @include mobile {
+            margin-top: 10px;
+          }
+          a {
+            font-size: 17px;
+            font-weight: 400;
+            color: $secondary;
+            @include tab{
+              font-size: 15px;
+            }
+            @include mobile {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .fourth {
+      img {
+        margin-left: 25px;
+        cursor: pointer;
+        width: 20px;
+      }
+    }
+  }
+
+  .down {
+    padding-top: 20px;
+    display: flex;
+    @include tab{
+      flex-direction: column;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .left {
+      flex: 1;
+      font-size: 17px;
+      font-weight: 400;
+      color: $generalColor;
+      font-family: "Inter", sans-serif;
+    }
+    .right {
+      flex: 1;
+      @include tab{
+        margin-top: 20px;
+      }
+      @include mobile {
+        margin-top: 20px;
+      }
+      ul {
+        display: flex;
+        list-style: none;
+        float: right;
+        @include tab{
+          float: left;
+        }
+        @include mobile {
+          margin-left: -20%;
+        }
+        li {
+          margin-left: 50px;
+          a {
+            font-size: 17px;
+            font-weight: 400;
+            color: $generalColor;
+            font-family: "Inter", sans-serif;
+          }
+        }
+      }
+    }
+  }
+}

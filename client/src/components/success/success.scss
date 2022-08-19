@@ -1,0 +1,46 @@
+@import "../../global.scss";
+
+.success {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 82px;
+
+  .container {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .done {
+      font-size: 60px;
+      color: #3CAF47;
+      margin-bottom: 15px;
+    }
+    h4 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      font-family: "Archivo", sans-serif;
+      text-transform: capitalize;
+    }
+    p {
+      text-align: center;
+    }
+    .login {
+      width: 100%;
+      padding: 10px 5px;
+      border: none;
+      border-radius: 4px;
+      background-color: $buttonColor;
+      color: $backgroundCOlor;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Archivo", sans-serif;
+      text-transform: capitalize;
+      text-align: center;
+    }
+  }
+}

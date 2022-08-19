@@ -1,0 +1,116 @@
+@import "../../../global.scss";
+
+.security {
+  width: 100%;
+  // height: 100vh;
+  overflow: hidden;
+  color: white;
+  margin-top: -40px;
+  padding-bottom: 250px;
+  position: relative;
+  background-color: $backgroundCOlor;
+  @include tab {
+    margin-top: 0;
+  }
+  @include mobile {
+    margin-top: 0;
+  }
+  .back {
+    background-color: $buttonColor;
+    color: $backgroundCOlor;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15%;
+    @include mobile {
+      margin-left: 5%;
+    }
+  }
+
+  .top {
+    margin-top: 60px;
+  }
+
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    border: 1px solid $grey;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 5px;
+    position: relative;
+    @include mobile {
+      width: 90%;
+    }
+    .left {
+      margin-top: 15px;
+      flex: 3;
+      @include mobile {
+        padding-right: 10px;
+      }
+      h3 {
+        font-family: "Archivo", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 11px;
+        font-family: "Inter", sans-serif;
+        color: rgba(255, 255, 255, 0.521);
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      span {
+        background-color: white;
+        color: $backgroundCOlor;
+        position: relative;
+        right: 0;
+        // margin-left: 220px;
+        // width: 50%;
+        padding: 8px 15px;
+        background-color: $buttonColor;
+        font-weight: 700;
+        font-size: 12px;
+        font-family: "Inter", sans-serif;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .passwordReset {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 30%;
+    @include tab {
+      left: 10%;
+    }
+    @include mobile {
+      left: 10%;
+    }
+  }
+
+  .transactionPinChange {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 30%;
+    @include tab {
+      left: 10%;
+    }
+    @include mobile {
+      left: 10%;
+    }
+  }
+}
+
+.none {
+  display: none;
+}

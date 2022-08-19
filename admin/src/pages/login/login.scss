@@ -1,0 +1,96 @@
+@import "../../global.scss";
+
+.login {
+  background-color: $backgroundCOlor;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 30%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $generalColor;
+    padding-bottom: 77px;
+    padding-top: 20px;
+    @include l {
+      width: 50%;
+    }
+    @include tab {
+      width: 100%;
+    }
+    @include mobile {
+      width: 100%;
+    }
+
+    h4 {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: "Archivo", sans-serif;
+      text-transform: capitalize;
+      margin-bottom: 40px;
+      width: 100%;
+      @include tab {
+        font-size: 30px;
+      }
+      @include mobile {
+        font-size: 25px;
+      }
+    }
+    .row {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .col-md-4 {
+        width: 100%;
+        position: relative;
+        .form-control {
+          background-color: transparent;
+          color: $generalColor;
+          border: solid 1px gray;
+          font-size: 17px;
+          margin-bottom: 10px;
+        }
+        .submit-button {
+          width: 100%;
+          padding: 10px 5px;
+          border: none;
+          border-radius: 4px;
+          background-color: $buttonColor;
+          font-size: 20px;
+          font-weight: 700;
+          font-family: "Archivo", sans-serif;
+          text-transform: capitalize;
+          &:disabled {
+            cursor: not-allowed;
+            background-color: $grey;
+          }
+        }
+        label {
+          font-size: 17px;
+          font-weight: 400;
+          font-family: "Inter", sans-serif;
+          color: $generalColor;
+          text-align: left;
+          &.forgot {
+            cursor: pointer;
+            color: #ff4700;
+          }
+        }
+        .visibility {
+          position: absolute;
+          cursor: pointer;
+          right: 20px;
+          top: 25px;
+        }
+      }
+    }
+    &.forgot {
+      margin-bottom: 130px;
+    }
+  }
+}

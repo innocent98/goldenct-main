@@ -1,0 +1,104 @@
+@import "../../global.scss";
+
+.HomePackages {
+  color: white;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    .first {
+      width: 50%;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include l {
+        width: 80%;
+      }
+      @include tab {
+        width: 100%;
+      }
+      h1 {
+        font-weight: 700;
+        font-size: 55px;
+        font-family: "Archivo", sans-serif;
+        text-align: center;
+        width: 60%;
+        @include l {
+          font-size: 40px;
+        }
+        @include tab {
+          font-size: 30px;
+          width: 100%;
+        }
+      }
+      p {
+        font-weight: 400;
+        font-size: 17px;
+        font-family: "Inter", sans-serif;
+        color: $secondary;
+        margin-top: 20px;
+        width: 60%;
+        text-align: center;
+        @include tab {
+          width: 100%;
+        }
+      }
+    }
+
+    .second {
+      padding-top: 150px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @include tab {
+        padding-top: 100px;
+        align-items: center;
+        justify-content: center;
+      }
+      .package {
+        margin: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @include tab {
+          margin: 0;
+        }
+        h3 {
+          font-weight: 700;
+          font-size: 32px;
+          font-family: "Archivo", sans-serif;
+          @include tab {
+            font-size: 20px;
+          }
+        }
+        p {
+          font-weight: 400;
+          font-size: 32px;
+          font-family: "Inter", sans-serif;
+          color: $secondary;
+          margin-top: 20px;
+          @include tab {
+            font-size: 17px;
+          }
+        }
+        img{
+          @include tab {
+            height: 120px;
+          }
+        }
+      }
+    }
+  }
+}

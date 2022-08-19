@@ -1,0 +1,177 @@
+@import "../../../global.scss";
+
+.microTask {
+  display: block;
+  margin-top: -10px;
+  display: flex;
+  width: 100%;
+  color: white;
+  @include tab {
+    flex-direction: column;
+  }
+  @include mobile {
+    flex-direction: column;
+  }
+
+  .account {
+    width: 100%;
+    display: block;
+  }
+  .none {
+    display: none;
+  }
+
+  .agentLeft {
+    flex: 2;
+    @include tab {
+      flex: 0;
+    }
+    @include mobile {
+      flex: 0;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 32px;
+      font-family: "Archivo", sans-serif;
+      color: $buttonColor;
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+    }
+
+    .task {
+      border: 1px solid $grey;
+      border-bottom: none;
+      width: 100%;
+      @include l {
+        overflow-x: scroll;
+      }
+      @include tab {
+        overflow-x: scroll;
+      }
+      @include mobile {
+        overflow-x: scroll;
+      }
+      .table {
+        color: white;
+        .row {
+          padding-left: 10px;
+          // padding-top: 5px;
+          margin-bottom: 5px;
+          align-items: center;
+          text-align: center;
+          .head {
+            font-weight: 700 !important;
+            font-size: 10px;
+            font-family: "Archivo", sans-serif;
+          }
+          .col {
+            font-weight: 400;
+            font-size: 17px;
+            font-family: "Inter", sans-serif;
+            @include tab {
+              width: 700px;
+              font-size: 15px;
+            }
+            @include mobile {
+              width: 800px;
+              font-size: 14px;
+            }
+            button {
+              background-color: transparent;
+              border: 1px solid $buttonColor;
+              border-radius: 4px;
+              color: white;
+              padding: 3px 30px;
+              transition: all 1s ease;
+              &:hover {
+                background-color: $buttonColor;
+              }
+              &:disabled {
+                background-color: $grey;
+                cursor: not-allowed;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+      .pagination-sm {
+        color: white;
+        border-bottom: 1px solid $grey;
+      }
+    }
+  }
+
+  .agentRight {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-left: 40px;
+    @include l {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+    .container-fluid {
+      background-color: $grey;
+      border-radius: 6px;
+      padding: 10px;
+      width: 100%;
+      
+      @include tab {
+        margin-top: 20px;
+      }
+      @include mobile {
+        margin-top: 20px;
+      }
+      h3 {
+        font-weight: 700;
+        font-size: 18px;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+          text-decoration: none;
+          color: white;
+          transition: all 1s ease;
+          &:hover {
+            color: $buttonColor;
+          }
+        }
+      }
+      p {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+      }
+      img {
+        width: 150px;
+        margin-left: 80px;
+        @include mobile {
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  .notValid {
+    font-weight: 600;
+    font-size: 45px;
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.none {
+  display: none;
+}

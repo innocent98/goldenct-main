@@ -1,0 +1,34 @@
+$backgroundCOlor: #0D0D2B;
+$buttonColor: #FFC745;
+$generalColor: #FFFF;
+$general: #FFFFFF1A;
+$secondary: #E0E0E0;
+$grey:  #6B6B6D;
+
+
+$mobWidth: 480px;
+$tabWidth: 768px;
+$lWidth: 1024px;
+$xlWidth: 1200px;
+
+@mixin xl {
+  @media (max-width: #{$xlWidth}) {
+    @content;
+  }
+}
+@mixin l {
+  @media (max-width: #{$lWidth}) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: #{$tabWidth}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobWidth}) {
+    @content;
+  }
+}
+

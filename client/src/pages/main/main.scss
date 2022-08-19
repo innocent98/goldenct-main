@@ -1,0 +1,14 @@
+@import "../../global.scss";
+
+.main {
+  width: 100%;
+  background-color: $backgroundCOlor;
+  padding: 40px 40px;
+
+  @include tab{
+    padding: 20px;
+  }
+  @include mobile{
+    padding: 15px;
+  }
+}

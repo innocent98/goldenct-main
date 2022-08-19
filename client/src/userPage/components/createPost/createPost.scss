@@ -1,0 +1,115 @@
+@import "../../../global.scss";
+
+.createPost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    h1 {
+      font-weight: 700;
+      font-size: 32px;
+      font-family: "Inter", sans-serif;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @include tab {
+        flex-direction: column;
+      }
+      @include mobile {
+        flex-direction: column;
+      }
+      section {
+        width: 70%;
+        margin: 0 20px;
+        @include tab {
+          margin: 0;
+          width: 100%;
+        }
+        @include mobile {
+          margin: 0;
+          width: 100%;
+        }
+        .check-form-label {
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 17px;
+        }
+        .col-md-3 {
+          width: 100%;
+          .form-label {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+          }
+          .form-control {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid $grey;
+            &::placeholder {
+              color: $grey;
+            }
+            &:focus {
+              border: 1px solid white;
+            }
+          }
+        }
+        .check {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          .check-items {
+            margin-right: 20px;
+            width: 45%;
+            @include tab {
+              width: 100%;
+            }
+            @include mobile {
+              width: 100%;
+            }
+            input {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    .submit-button {
+      width: 95%;
+      margin-left: 15px;
+      height: 40px;
+      border: none;
+      border-radius: 4px;
+      background-color: $buttonColor;
+      color: $backgroundCOlor;
+      font-weight: 700;
+      font-size: 20px;
+      font-family: "Inter", sans-serif;
+      &:disabled {
+        background-color: $grey;
+        cursor: not-allowed;
+      }
+      @include tab {
+        width: 100%;
+        margin-left: 0;
+      }
+      @include mobile {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.none {
+  display: none;
+}

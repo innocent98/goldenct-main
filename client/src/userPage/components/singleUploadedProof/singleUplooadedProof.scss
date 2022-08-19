@@ -1,0 +1,55 @@
+@import "../../../global.scss";
+
+.singleUploadedProof {
+  background-color: $backgroundCOlor;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    height: 600px;
+  }
+  .button {
+    justify-content: space-evenly;
+    margin-top: 10px;
+    .action {
+      margin-right: 10px;
+      border: none;
+      background-color: #ffc745;
+      color: #0d0d2b;
+      border-radius: 4px;
+      padding: 5px 15px;
+      font-weight: 500;
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+      text-align: center;
+      &:disabled {
+        background-color: $grey;
+        cursor: not-allowed;
+      }
+      &.red {
+        background-color: red;
+        color: white;
+      }
+      &.green {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+
+  .doneBy {
+    color: $grey;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+  }
+  .timeLeft {
+    color: $grey;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+  }
+}

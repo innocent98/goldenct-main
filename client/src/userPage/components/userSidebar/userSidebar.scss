@@ -1,0 +1,51 @@
+@import "../../../global.scss";
+
+.userSidebar {
+  @include tab {
+    display: none;
+  }
+  @include mobile {
+    display: none;
+  }
+  ul {
+    margin-left: -30px;
+    li {
+      list-style: none;
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      span {
+        margin-right: 15px;
+      }
+    }
+    .inactive {
+      list-style: none;
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      span {
+        margin-right: 15px;
+      }
+      &.active {
+        font-weight: 700;
+        color: $backgroundCOlor;
+        background-color: $buttonColor;
+        width: 90%;
+        padding: 8px;
+        border-radius: 8px;
+      }
+    }
+  }
+  .logout {
+    margin-top: 110px;
+  }
+}

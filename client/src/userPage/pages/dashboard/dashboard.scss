@@ -1,0 +1,257 @@
+@import "../../../global.scss";
+
+.dashboard {
+  display: flex;
+  @include l {
+  }
+  @include tab {
+    flex-direction: column;
+  }
+  @include mobile {
+    flex-direction: column;
+  }
+  .left {
+    flex: 2;
+    padding: 5px 20px;
+    @include l {
+      flex: 3;
+    }
+    @include tab {
+      padding: 0;
+      flex: 0;
+      width: 100%;
+    }
+    @include mobile {
+      padding: 0;
+      flex: 0;
+      width: 100%;
+    }
+    .wallet {
+      .title {
+        font-weight: 400;
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        color: white;
+        span {
+          color: $buttonColor;
+          cursor: pointer;
+          margin-left: 5px;
+        }
+      }
+      h2 {
+        font-weight: 600;
+        font-size: 32px;
+        font-family: "Archivo", sans-serif;
+        color: $buttonColor;
+      }
+    }
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      .transactionLeft {
+        .history {
+          font-weight: 700;
+          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          color: white;
+        }
+
+        p {
+          text-align: center;
+          color: white;
+          font-weight: 400;
+          font-size: 18px;
+          font-family: "Inter", sans-serif;
+          margin-left: 30px;
+          margin-top: 50px;
+          width: 200%;
+          @include mobile {
+            margin-left: 0;
+          }
+        }
+        .transactionHistory {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          margin-top: 20px;
+          span{
+            z-index: 9;
+          }
+          .date {
+            font-weight: 400;
+            font-size: 14px;
+            font-family: "Inter", sans-serif;
+            color: white;
+            margin-bottom: 8px;
+          }
+          .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+              width: 30px;
+            }
+            .cont {
+              font-weight: 400;
+              font-size: 14px;
+              font-family: "Inter", sans-serif;
+              color: white;
+              margin-left: 10px;
+              .time {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .declined {
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .transactionRight {
+        padding-right: 80px;
+        .view {
+          font-weight: 400;
+          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          color: $buttonColor;
+        }
+        .amount {
+          font-weight: 700;
+          font-size: 14px;
+          font-family: "Inter", sans-serif;
+          color: white;
+          margin-top: 70px;
+        }
+      }
+    }
+  }
+
+  .right {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    @include tab {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+    }
+
+    .first {
+      background-color: $grey;
+      height: 24%;
+      width: 78%;
+      border-radius: 8px;
+    }
+    .cardContainer {
+      position: absolute;
+      width: 80%;
+      height: 23%;
+      background-color: $buttonColor;
+      border-radius: 8px;
+      display: flex;
+      .cardContainerLeft {
+        flex: 3;
+        padding: 10px;
+        padding-left: 15px;
+        color: $backgroundCOlor;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        img {
+          width: 30px;
+        }
+        h3 {
+          font-weight: 400;
+          font-size: 24px;
+          font-family: "Inter", sans-serif;
+          margin-top: 10px;
+        }
+        p {
+          font-weight: 600;
+          font-size: 11px;
+          font-family: "Inter", sans-serif;
+        }
+      }
+      .cardContainerRight {
+        flex: 1;
+        background-color: #161646;
+        border: 1px solid $buttonColor;
+        color: $buttonColor;
+        border-radius: 0 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        img {
+          width: 20px;
+        }
+        h3 {
+          font-weight: 700;
+          font-size: 16px;
+          font-family: "Archivo", sans-serif;
+        }
+      }
+    }
+
+    .second {
+      background-color: $grey;
+      padding: 15px;
+      width: 80%;
+      height: 72%;
+      border-radius: 8px;
+      .upgrade {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .upgradeLeft {
+          font-weight: 700;
+          font-size: 24px;
+          font-family: "Archivo", sans-serif;
+          color: white;
+          width: 90%;
+        }
+        .upgradeRight {
+          a {
+            color: white;
+          }
+        }
+      }
+      p {
+        font-weight: 400;
+        font-size: 17px;
+        font-family: "Inter", sans-serif;
+        color: white;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .notValid {
+    font-weight: 600;
+    font-size: 45px;
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    @include mobile {
+      font-size: 25px;
+    }
+  }
+}
+
+.none {
+  display: none;
+}

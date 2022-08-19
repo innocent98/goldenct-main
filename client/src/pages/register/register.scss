@@ -1,0 +1,141 @@
+@import "../../global.scss";
+
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $backgroundCOlor;
+  height: auto;
+  overflow: hidden !important;
+
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .container {
+      width: 30%;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: $generalColor;
+      padding-bottom: 90px;
+      @include l{
+        width: 50%;
+      }
+      @include tab{
+        width: 80%;
+      }
+      @include mobile{
+        width: 100%;
+      }
+
+      h4 {
+        font-size: 32px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+        width: 100%;
+      }
+      .sent {
+        color: $buttonColor;
+        font-size: 24px;
+        font-family: "Rubik", sans-serif;
+      }
+      p {
+        font-size: 17px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        color: $grey;
+        margin-bottom: 40px;
+        &.password {
+          margin-bottom: 10px;
+          color: $secondary;
+        }
+        span {
+          font-size: 17px;
+          font-weight: 400;
+          font-family: "Inter", sans-serif;
+          color: $buttonColor;
+          cursor: pointer;
+        }
+      }
+      h6 {
+        color: $secondary;
+      }
+
+      .col-md-4 {
+        width: 100%;
+        position: relative;
+        .form-control {
+          background-color: transparent;
+          margin-bottom: 0;
+          color: $generalColor;
+          &.passIn {
+            margin-bottom: 10px;
+          }
+        }
+        .submit-button {
+          width: 100%;
+          padding: 4px 5px;
+          border: none;
+          border-radius: 4px;
+          background-color: $buttonColor;
+          font-size: 20px;
+          font-weight: 700;
+          font-family: "Archivo", sans-serif;
+          text-transform: capitalize;
+          margin-top: 10px;
+          z-index: 9;
+          &:disabled {
+            background-color: $secondary;
+          }
+        }
+        .form-label {
+          font-size: 17px;
+          font-weight: 400;
+          font-family: "Inter", sans-serif;
+          color: $grey;
+          margin-bottom: 0;
+          &.pass {
+            margin-bottom: 0;
+          }
+          span {
+            font-size: 17px;
+            font-weight: 400;
+            font-family: "Inter", sans-serif;
+            color: $buttonColor;
+            cursor: pointer;
+          }
+          &.resend {
+            color: $buttonColor;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+            margin-top: -25px;
+            cursor: pointer;
+          }
+        }
+        .visibility {
+          position: absolute;
+          cursor: pointer;
+          right: 20px;
+          top: 10px;
+        }
+      }
+    }
+    .arrow_back {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    &.choose {
+      padding-bottom: 155px;
+    }
+  }
+
+  .confirmpassword {
+    width: 100%;
+  }
+}

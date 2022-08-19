@@ -1,0 +1,50 @@
+@import "../../../global.scss";
+
+.rejectedJob {
+  display: flex;
+  color: white;
+  width: 100%;
+
+  .wrapper {
+    width: 100%;
+    .left {
+      //   width: 100%;
+      p {
+        font-weight: 400;
+        font-size: 17px;
+        font-family: "Inter", sans-serif;
+      }
+      h1 {
+        font-weight: 600;
+        font-size: 30px;
+        font-family: "Inter", sans-serif;
+        color: $buttonColor;
+      }
+      .container-fluid {
+        @include mobile{
+          overflow-x: scroll;
+        }
+        .table {
+          color: white;
+          margin-top: 30px;
+          text-align: center;
+          .action {
+            border: none;
+            background-color: #ffc745;
+            color: #0d0d2b;
+            border-radius: 4px;
+            padding: 5px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            font-family: "Inter", sans-serif;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.none {
+  display: none;
+}

@@ -1,0 +1,85 @@
+@import "../../../global.scss";
+
+.updateAccount {
+  background-color: white !important;
+  color: $backgroundCOlor !important;
+  z-index: 9;
+  position: absolute;
+  border-radius: 4px;
+  width: 55% !important;
+  padding: 0;
+  //   margin-left: 30px;
+  @include l {
+    margin-left: -70px !important;
+  }
+  @include tab {
+    margin-left: 50px !important;
+  }
+  @include mobile {
+    width: 80% !important;
+    margin-left: 35px !important;
+    // margin-top: -150%;
+    // position: relative !important;
+  }
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $buttonColor;
+    font-weight: 700;
+    font-size: 25px;
+    font-family: "Archivo", sans-serif;
+    span {
+      cursor: pointer;
+    }
+    h2 {
+      font-size: 20px;
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    .col-md-3 {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .input {
+        width: 100%;
+        display: flex;
+        .form-control {
+          width: 100%;
+          background-color: transparent;
+          color: $backgroundCOlor;
+          border: 1px solid $grey;
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          &::placeholder {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .submit-button {
+        width: 100%;
+        background-color: $buttonColor;
+        border-radius: 4px;
+        border: none;
+        padding: 5px;
+        font-family: "Archivo", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+  }
+}

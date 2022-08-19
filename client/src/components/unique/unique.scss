@@ -1,0 +1,108 @@
+@import "../../global.scss";
+
+.unique {
+  color: white;
+  padding-left: 50px;
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  @include tab {
+    flex-direction: column;
+    padding: 10px;
+  }
+  @include mobile {
+    flex-direction: column;
+    padding: 10px;
+  }
+  p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    width: 80%;
+    @include tab {
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 14px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 30px;
+    font-family: "Inter", sans-serif;
+    @include tab {
+      font-size: 25px;
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 25px;
+      text-align: center;
+    }
+    span {
+      color: $buttonColor;
+    }
+  }
+
+  .firstRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 150px;
+    @include tab {
+      padding-top: 80px;
+    }
+    @include mobile {
+      padding-top: 80px;
+    }
+    p {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      width: 60%;
+      text-align: center;
+      @include tab {
+        width: 100%;
+        font-size: 17px;
+      }
+      @include mobile {
+        width: 100%;
+        font-size: 15px;
+      }
+    }
+  }
+  .secondRow,
+  .thirdRow {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 100px;
+    @include tab {
+      flex-direction: column;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .left {
+      width: 50%;
+      @include tab {
+        width: 100%;
+      }
+      @include mobile {
+        width: 100%;
+      }
+    }
+    .right {
+      width: 50%;
+      margin-top: 50px;
+      @include tab {
+        width: 100%;
+      }
+      @include mobile {
+        width: 100%;
+      }
+    }
+  }
+}

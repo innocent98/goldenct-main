@@ -1,0 +1,115 @@
+@import "../../global.scss";
+
+.container {
+  background-color: $backgroundCOlor;
+  width: 40%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $generalColor;
+  padding-top: 90px;
+  @include tab{
+    width: 80%;
+    padding: 10px 0;
+  }
+  @include mobile{
+    width: 80%;
+    padding: 10px 0;
+  }
+
+  h4 {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: "Archivo", sans-serif;
+    text-transform: lowercase;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .sent {
+    color: $buttonColor;
+    font-size: 24px;
+    font-family: "Rubik", sans-serif;
+  }
+  p {
+    font-size: 17px;
+    font-weight: 400;
+    font-family: "Inter", sans-serif;
+    color: $grey;
+    margin-bottom: 40px;
+    &.password {
+      margin-bottom: 10px;
+      color: $secondary;
+    }
+    span {
+      font-size: 17px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+      color: $buttonColor;
+      cursor: pointer;
+    }
+  }
+  h6 {
+    color: $secondary;
+  }
+
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .col-md-4 {
+      width: 100%;
+      position: relative;
+      .form-control {
+        background-color: transparent;
+        margin-bottom: 0;
+        color: $generalColor;
+        &.passIn {
+          margin-bottom: 10px;
+        }
+      }
+      .submit-button {
+        width: 100%;
+        padding: 6px 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: $buttonColor;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        text-transform: capitalize;
+        &:disabled {
+          background-color: $secondary;
+          cursor: progress;
+        }
+      }
+      .form-label {
+        font-size: 17px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        color: $grey;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        button {
+          color: $grey;
+          background-color: transparent;
+        }
+      }
+      .resend {
+        color: $buttonColor;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        font-size: 17px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        button {
+          color: $buttonColor;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

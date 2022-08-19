@@ -1,0 +1,130 @@
+@import "../../../global.scss";
+
+.uploadedProof {
+  background-color: $backgroundCOlor;
+  // height: 100vh;
+  padding: 50px;
+  position: relative;
+  // overflow: hidden;
+
+  p {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+  }
+  .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    .img {
+      width: 250px;
+      height: 250px;
+      margin-left: 20px;
+      position: relative;
+      transition: all 1s ease;
+      &:hover {
+        transform: scale(1.1);
+        img {
+          opacity: 0.5;
+        }
+        .button {
+          display: flex;
+        }
+      }
+      img {
+        width: 100%;
+        height: 80%;
+        border-radius: 8px;
+        object-fit: fill;
+      }
+      .button {
+        display: none;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 0;
+        .action {
+          margin-right: 10px;
+          border: none;
+          background-color: #ffc745;
+          color: #0d0d2b;
+          border-radius: 4px;
+          padding: 5px 15px;
+          font-weight: 500;
+          font-size: 14px;
+          font-family: "Inter", sans-serif;
+          text-align: center;
+          &:disabled {
+            background-color: $grey;
+            cursor: not-allowed;
+          }
+          &.red {
+            background-color: red;
+            color: white;
+          }
+          &.green {
+            background-color: green;
+            color: white;
+          }
+        }
+      }
+
+      .doneBy {
+        color: $grey;
+        font-size: 15px;
+        font-weight: 600;
+        font-family: "Inter", sans-serif;
+      }
+    }
+    p {
+      width: 100%;
+      text-align: center;
+      margin-top: 150px;
+      font-size: 25px;
+    }
+  }
+
+  .reason {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    .row {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      .col-md-6 {
+        h4 {
+          text-align: center;
+          color: $grey;
+          font-size: 25px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+        .submit-button {
+          background-color: $buttonColor;
+          width: 100%;
+          font-size: 20px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+        .progress-btn {
+          background-color: $grey;
+          cursor: progress;
+          width: 100%;
+          font-size: 22px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.none {
+  display: none;
+}

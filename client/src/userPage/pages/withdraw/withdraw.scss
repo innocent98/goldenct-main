@@ -1,0 +1,128 @@
+@import "../../../global.scss";
+
+.withdraw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: white;
+  position: relative;
+
+  .tabSelect {
+    width: 28%;
+    display: flex;
+    position: absolute;
+    top: 70px;
+    z-index: 1;
+    @include l {
+      width: 40%;
+    }
+    @include tab {
+      width: 50%;
+    }
+    @include mobile {
+      width: 70%;
+    }
+    .tab {
+      width: 50%;
+      border: 1px solid $buttonColor;
+      height: 20px;
+      cursor: pointer;
+      transition: all 1s ease;
+      text-align: center;
+      font-weight: 400;
+      font-size: 17px;
+      font-family: "Inter", sans-serif;
+      &:hover {
+        background-color: $buttonColor;
+      }
+      &.tabActive {
+        background-color: $buttonColor;
+      }
+    }
+  }
+  .withdrawDims {
+    width: 100%;
+  }
+  .withdrawGolden {
+    width: 100%;
+  }
+  // .row {
+  //   display: flex;
+  //   flex-direction: column;
+  //   width: 30%;
+
+  //   p {
+  //     font-weight: 400;
+  //     font-size: 17px;
+  //     font-family: "Inter", sans-serif;
+  //   }
+  //   h1 {
+  //     font-weight: 600;
+  //     font-size: 30px;
+  //     font-family: "Inter", sans-serif;
+  //     color: $buttonColor;
+  //     margin-top: -20px !important;
+  //   }
+  //   .col {
+  //     margin-top: 35px;
+  //     .col-md-3 {
+  //       width: 100%;
+  //       margin-top: 8px;
+  //       .form-label {
+  //         font-family: "Inter", sans-serif;
+  //         font-weight: 400;
+  //         font-size: 17px;
+  //       }
+  //       .form-control {
+  //         font-family: "Inter", sans-serif;
+  //         font-weight: 400;
+  //         font-size: 14px;
+  //         background-color: transparent;
+  //         color: white;
+  //         &::placeholder {
+  //           color: white;
+  //         }
+  //         &:focus {
+  //           border: 1px solid white;
+  //         }
+  //       }
+  //       .form-select{
+  //         background-color: $grey;
+  //         color: white;
+  //         option{
+  //           &:checked{
+  //             background-color: $buttonColor !important;
+  //           }
+  //         }
+  //       }
+  //       .submit-button {
+  //         width: 100%;
+  //         border: none;
+  //         border-radius: 4px;
+  //         background-color: $buttonColor;
+  //         color: $backgroundCOlor;
+  //         font-weight: 700;
+  //         font-size: 20px;
+  //         font-family: "Inter", sans-serif;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .notValid {
+    font-weight: 600;
+    font-size: 45px;
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.none {
+  display: none;
+}

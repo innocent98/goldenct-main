@@ -1,0 +1,82 @@
+@import "../../../global.scss";
+
+.transactionPin {
+  background-color: $backgroundCOlor;
+  width: 40%;
+  border: 1px solid $grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: -100px;
+  @include tab {
+    width: 80%;
+  }
+  @include mobile {
+    width: 80%;
+  }
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $buttonColor;
+    font-weight: 700;
+    font-size: 25px;
+    font-family: "Archivo", sans-serif;
+    span {
+      cursor: pointer;
+    }
+    h2 {
+      font-size: 20px;
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    .col-md-3 {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .input {
+        width: 100%;
+        display: flex;
+        .form-control {
+          width: 100%;
+          height: 40px;
+          background-color: transparent;
+          color: white;
+          border: 1px solid $grey;
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          margin: 10px;
+          &::placeholder {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .submit-button {
+        width: 100%;
+        background-color: $buttonColor;
+        border-radius: 4px;
+        border: none;
+        padding: 5px;
+        font-family: "Archivo", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+@import "../../../global.scss";
+
+.taskProof {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 100px;
+  overflow: hidden;
+  color: white;
+  @include tab {
+    margin: 0;
+    padding: 20px;
+  }
+  @include mobile {
+    margin: 0;
+    padding: 20px;
+  }
+  section {
+    margin-bottom: 40px;
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: "Inter", sans-serif;
+      @include tab {
+        font-size: 30px;
+      }
+      @include mobile {
+        font-size: 25px;
+      }
+    }
+    h3 {
+      font-size: 25px;
+      font-weight: 700;
+      font-family: "Inter", sans-serif;
+      @include tab {
+        font-size: 20px;
+      }
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+    p {
+      font-size: 17px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+      @include tab {
+        font-size: 15px;
+      }
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+    .row {
+      display: flex;
+      flex-direction: column;
+      .col-md-4 {
+        .progress {
+          width: 100%;
+          height: 20px;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 5px;
+          @include mobile {
+            font-size: 14px;
+          }
+        }
+        .none {
+          display: none;
+        }
+      }
+      .col-md-3 {
+        .button {
+          width: 100%;
+          text-align: center;
+          border: none;
+          padding: 5px 8px;
+          border-radius: 4px;
+          margin-top: 5px;
+          cursor: pointer;
+        }
+        .submit-button {
+          // width: 100%;
+          background-color: $buttonColor;
+          color: $backgroundCOlor;
+          border: none;
+          border-radius: 4px;
+          padding: 8px 15px;
+          font-size: 17px;
+          font-weight: 400;
+          font-family: "Inter", sans-serif;
+          &:disabled {
+            background-color: $grey;
+          }
+          &.progressBtn {
+            cursor: progress;
+            color: $backgroundCOlor;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            font-size: 17px;
+            font-weight: 400;
+            font-family: "Inter", sans-serif;
+          }
+          @include tab {
+            font-size: 15px;
+          }
+          @include mobile {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.success {
+  width: 70%;
+  padding-top: 100px;
+  margin-left: 8%;
+  color: white;
+}
+
+.none {
+  display: none;
+}

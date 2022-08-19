@@ -1,0 +1,144 @@
+@import "../../../global.scss";
+
+.packages {
+  display: block;
+  margin-left: 20px;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  color: white;
+  @include l {
+    padding: 20px;
+  }
+  @include tab {
+    margin-left: 0;
+    padding: 20px;
+  }
+  @include mobile {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .account {
+    width: 100%;
+    display: block;
+  }
+  .none {
+    display: none;
+  }
+
+  .packageLeft {
+    .wallet {
+      margin-bottom: 50px;
+      display: flex;
+      .singleWallet {
+        margin-right: 30px;
+        .title {
+          font-weight: 400;
+          font-size: 14px;
+          font-family: "Inter", sans-serif;
+          color: white;
+        }
+        h2 {
+          font-weight: 600;
+          font-size: 32px;
+          font-family: "Archivo", sans-serif;
+          @include tab {
+            font-size: 28px;
+          }
+          color: $buttonColor;
+          @include mobile {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 32px;
+      font-family: "Archivo", sans-serif;
+      @include tab {
+        font-size: 28px;
+      }
+      @include mobile {
+        font-size: 25px;
+      }
+    }
+    p {
+      font-weight: 400;
+      font-size: 17px;
+      font-family: "Inter", sans-serif;
+      width: 80%;
+      @include tab {
+        width: 100%;
+        font-size: 15px;
+      }
+      @include mobile {
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+
+    .package {
+      @include tab {
+        overflow-x: scroll;
+      }
+      @include mobile {
+        overflow-x: scroll;
+      }
+      .row {
+        margin-bottom: 10px;
+        h1 {
+          font-weight: 900 !important;
+          font-size: 30px;
+          font-family: "Archivo", sans-serif;
+          text-align: center;
+          color: $buttonColor;
+          margin-top: 80px;
+          margin-bottom: 40px;
+          @include mobile {
+            font-size: 25px;
+          }
+        }
+        .col {
+          font-weight: 400;
+          font-size: 17px;
+          font-family: "Inter", sans-serif;
+          button {
+            background-color: transparent;
+            border: 1px solid $buttonColor;
+            border-radius: 4px;
+            color: white;
+            padding: 3px 30px;
+            transition: all 1s ease;
+            &:hover {
+              background-color: $buttonColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .notValid {
+    font-weight: 600;
+    font-size: 45px;
+    font-family: "Archivo", sans-serif;
+    text-align: center;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    @include tab {
+      font-size: 30px;
+    }
+    @include mobile {
+      font-size: 25px;
+    }
+  }
+}
+
+.none {
+  display: none;
+}
