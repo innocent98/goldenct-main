@@ -135,7 +135,7 @@ const UserProfile = ({ profile, setSettings, setProfile }) => {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={`https://goldenct.herokuapp.com/register/?agent=${user.username}`}
+                    value={`https://mygoldenpay.com/register/?agent=${user.username}`}
                     readOnly
                   />
                 </div>

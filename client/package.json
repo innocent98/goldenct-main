@@ -10,9 +10,9 @@
     "@mui/material": "^5.9.0",
     "@mui/styled-engine-sc": "^5.8.0",
     "@reduxjs/toolkit": "^1.8.3",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "axios": "^0.27.2",
     "dateformat": "^5.0.3",
     "dayjs": "^1.11.4",
@@ -61,5 +61,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.10.0"
   }
 }
