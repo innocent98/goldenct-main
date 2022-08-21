@@ -30,7 +30,7 @@ const AgentSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    referralCode: {
+    agentCode: {
       type: String,
     },
     referred: {

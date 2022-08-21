@@ -103,32 +103,35 @@ const MicroTask = ({ task }) => {
                   </tr>
                 </thead>
 
-                <tbody>
-                  <tr>
-                    <td>
-                      <form className="row" key={sponsoredJob._id}>
-                        <div className="col">{sponsoredJob.jobTitle}</div>
-                        <div className="col">All</div>
-                        <div className="col">All/All</div>
-                        <div className="col">#{sponsoredJob.amount}</div>
-                        <div className="col">
-                          {/* <a href={job.picture} download={job.picture}> */}
-                          <Link to={`/proof-upload/${sponsoredJob._id}`}>
-                            <button>Apply</button>
-                          </Link>
-                          {/* </a> */}
-                        </div>
-                      </form>
-                    </td>
-                  </tr>
-                </tbody>
+                {sponsoredJob && (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <form className="row" key={sponsoredJob._id}>
+                          <div className="col">{sponsoredJob.jobTitle}</div>
+                          <div className="col">All</div>
+                          <div className="col">All/All</div>
+                          <div className="col">#{sponsoredJob.amount}</div>
+                          <div className="col">
+                            {/* <a href={job.picture} download={job.picture}> */}
+                            <Link to={`/proof-upload/${sponsoredJob._id}`}>
+                              <button>Apply</button>
+                            </Link>
+                            {/* </a> */}
+                          </div>
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                )}
+
                 {reversed
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((job) => (
                     <tbody>
-                      <tr>
+                      <tr key={job._id}>
                         <td>
-                          <form className="row" key={job._id}>
+                          <form className="row">
                             <div className="col">{job.jobTitle}</div>
                             <div className="col">{job.workers}</div>
                             <div className="col">

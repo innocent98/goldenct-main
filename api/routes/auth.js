@@ -61,7 +61,7 @@ router.post("/register", async (req, res) => {
     if (!findUser && !findUserBackup) {
       // check if req.query
       const checkedReferred = await Agent.findOne({
-        referralCode: req.query.agent,
+        agentCode: req.query.agent,
       });
       if (req.query.agent && checkedReferred) {
         // create a new user if user not exist
@@ -124,7 +124,7 @@ router.post("/register", async (req, res) => {
       res.status(403).json("User exist, kindly try another");
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.status(500).json("Connection Error!");
   }
 });

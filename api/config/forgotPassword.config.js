@@ -3,22 +3,22 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-var transport = nodemailer.createTransport({
+const transport = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASS,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
-module.exports.sendForgotPassword = (email, id) => {
+module.exports.sendForgotPassword = async (email, id) => {
   console.log("Check");
-  transport
-    .sendMail({
-      from: process.env.USER,
-      to: email,
-      subject: "Forgot Password",
-      html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  const message = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Forgot Password",
+    html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
       <head>
       <!--[if gte mso 9]>
@@ -502,6 +502,15 @@ module.exports.sendForgotPassword = (email, id) => {
       
       </html>
       `,
-    })
-    .catch((err) => console.log(err));
+  };
+
+  await new Promise((resolve, reject) => {
+    transport.sendMail(message, (err, info) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(info);
+      }
+    });
+  });
 };

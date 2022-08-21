@@ -3,7 +3,9 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { userRequest } from "../../requestMethod";
 import { getRemainingTimeUntilMsTimestamp } from "../../userPage/utils/utils";
-import { Toaster, toast } from "react-hot-toast";
+// import { Toaster, toast } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./confirmEmail.scss";
 
 const defaultRemainingTime = {
@@ -81,7 +83,7 @@ const ConfirmEmail = () => {
 
   return (
     <div className="container">
-      <Toaster position="top-center" reverseOrder={false} />
+      <ToastContainer position="top-center" reverseOrder={false} />
       <h4>Confirm your Email Address</h4>
       <p>
         To complete your registration, please enter the code that we sent to:

@@ -279,7 +279,7 @@ const CreatePost = () => {
             </div>
             <div className="col-md-3 check">
               {category.map((c) => (
-                <div className="check-items">
+                <div className="check-items" key={c.id}>
                   <input
                     class="form-check-input"
                     type="radio"
@@ -303,7 +303,7 @@ const CreatePost = () => {
             </div>
             <div className="col-md-3 check">
               {data.map((d) => (
-                <div className="check-items">
+                <div className="check-items" key={d.id}>
                   <input
                     class="form-check-input"
                     type="radio"

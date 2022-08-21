@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userRequest } from "../../../requestMethod";
 import { getRemainingTimeUntilMsTimestamp } from "../../utils/utils";
-import { Toaster, toast } from "react-hot-toast";
+// import { Toaster, toast } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./mine.scss";
 
 const defaultRemainingTime = {
@@ -16,12 +18,12 @@ const Mine = ({ mine }) => {
   const user = useSelector((state) => state.user.currentUser);
 
   const handleMine = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       await userRequest.put("/mine");
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
-      return toast.error(error.response.data);
+      // return toast.error(error.response.data);
     }
   };
 
@@ -75,7 +77,7 @@ const Mine = ({ mine }) => {
 
   return (
     <div className={mine ? "mine" : "none"}>
-      <Toaster position="top-center" reverseOrder={false} />
+      <ToastContainer position="top-center" reverseOrder={false} />
       {user.isValidated ? (
         <>
           <button
