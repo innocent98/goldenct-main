@@ -1,10 +1,8 @@
 {
   "name": "golden-ct-admin",
   "version": "0.1.0",
-  "homepage": ".",
-  "engines": {
-    "node": "16.14.2"
-  },
+  "homepage": "/",
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
