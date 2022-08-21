@@ -81,7 +81,7 @@ const BecomeAgent = ({ agent }) => {
                 <form className="row" onSubmit={handleRenew}>
                   <div className="col">Super Star</div>
                   <div className="col">#5,000/ $10</div>
-                  <div className="col">#50,000/$100</div>
+                  <div className="col">#100,000/$200</div>
                   <div className="col">
                     <button
                       onClick={() =>
@@ -109,7 +109,7 @@ const BecomeAgent = ({ agent }) => {
                 <form className="row" onSubmit={handleSubmit}>
                   <div className="col">Super Star</div>
                   <div className="col">#5,000/ $10</div>
-                  <div className="col">#50,000/$100</div>
+                  <div className="col">#100,000/$200</div>
                   <div className="col">
                     <button
                       onClick={() =>

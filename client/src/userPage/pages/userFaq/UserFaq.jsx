@@ -55,7 +55,7 @@ const UserFaq = ({ faqs }) => {
             <p style={goct ? { display: "block" } : { display: "none" }}>
               {" "}
               It means Golden Comfort Token; this is the native currency of
-              GoldenCT and in will be used across all the ecosystem of the
+              GoldenCT and it will be used across all the ecosystem of the
               company.
             </p>
           </div>

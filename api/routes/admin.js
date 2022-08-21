@@ -257,7 +257,7 @@ router.put(
           // if (findAgent) {
             if (findAgent.referred.includes(req.params.uuid)) {
               // if validating user is present inside agent's array, proceed with this
-              if (validUser.userPackage === "basic_001") {
+              if (validUser.userPackage === "basic") {
                 const deduct = 1000;
                 const reward = 500;
                 let agentWallet = findAgent.agentWallet;
@@ -271,7 +271,7 @@ router.put(
                     break;
                   }
                 }
-              } else if (validUser.userPackage === "basic_002") {
+              } else if (validUser.userPackage === "regular") {
                 const deduct = 2000;
                 const reward = 1000;
                 let agentWallet = findAgent.agentWallet;
@@ -434,7 +434,7 @@ router.put(
         if (user) {
           const username = user.username;
           const email = user.email;
-          let agentWallet = 50000;
+          let agentWallet = 100000;
           await user.updateOne({ isAgent: true });
           await agentId.updateOne({ referralCode: username });
           await agentId.updateOne({ agentWallet: agentWallet });
@@ -499,7 +499,7 @@ router.put(
         const findAgent = agentPackage.uuid;
         const agent = await Agent.findOne({ uuid: findAgent });
         const package = agentPackage.agentPackage;
-        let agentWallet = 50000;
+        let agentWallet = 100000;
         if (agent) {
           for (i = agentWallet; i >= agentWallet; i++) {
             await agent.updateOne({ $inc: { agentWallet: +i } });

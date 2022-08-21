@@ -125,7 +125,7 @@ const AccountDetails = ({ validUserId, agentId, jobId, paymentId }) => {
       toast.success("Payment successful, kindly wait for approval.");
       setSubmissionProgress(false);
       setTimeout(() => {
-         window.location.reload();
+        window.location.reload();
       }, 3000);
       navigate("/");
     } catch (error) {
@@ -148,12 +148,16 @@ const AccountDetails = ({ validUserId, agentId, jobId, paymentId }) => {
               <td>Account Details</td>
             </tr>
             <tr>
+              <th>Bank Name</th>
+              <td>WEMA BANK</td>
+            </tr>
+            <tr>
               <th>Account Number</th>
-              <td>Account 0123456789</td>
+              <td>7358345540</td>
             </tr>
             <tr>
               <th>Account Name</th>
-              <td>Tairu Aribigbola</td>
+              <td>GOLDEN COMFORT TECH. LTD</td>
             </tr>
             <tr>
               <th>Total Payable Amount Plus VAT</th>

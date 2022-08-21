@@ -29,13 +29,19 @@ const Footer = () => {
               <a href="/">Privacy Policy</a>
             </li>
             <li>
-              <a href="/">Help Center</a>
+              <a href="mailto:goldencomforttech@gmail.com">Help Center</a>
+            </li>
+            <li>
+              <a href="mailto:goldenjobsreport@gmail.com">Job Related</a>
             </li>
             <li>
               <a href="/">Disclaimer</a>
             </li>
             <li>
               <a href="/">Terms of Service</a>
+            </li>
+            <li>
+              <a href="/">+2349013348385, +2348179947502</a>
             </li>
           </ul>
         </div>
