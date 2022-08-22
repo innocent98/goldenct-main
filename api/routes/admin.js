@@ -255,94 +255,94 @@ router.put(
           const findAgent = await Agent.findOne({ uuid: agent });
           //   console.log(findAgent)
           // if (findAgent) {
-            if (findAgent.referred.includes(req.params.uuid)) {
-              // if validating user is present inside agent's array, proceed with this
-              if (validUser.userPackage === "basic") {
-                const deduct = 1000;
-                const reward = 500;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+          if (findAgent.referred.includes(req.params.uuid)) {
+            // if validating user is present inside agent's array, proceed with this
+            if (validUser.userPackage === "basic") {
+              const deduct = 1000;
+              const reward = 500;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
                 }
-              } else if (validUser.userPackage === "regular") {
-                const deduct = 2000;
-                const reward = 1000;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
                 }
-              } else if (validUser.userPackage === "standard") {
-                const deduct = 5000;
-                const reward = 2500;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+              }
+            } else if (validUser.userPackage === "regular") {
+              const deduct = 2000;
+              const reward = 1000;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
                 }
-              } else if (validUser.userPackage === "professional") {
-                const deduct = 10000;
-                const reward = 5000;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
                 }
-              } else if (validUser.userPackage === "silver") {
-                const deduct = 20000;
-                const reward = 10000;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+              }
+            } else if (validUser.userPackage === "standard") {
+              const deduct = 5000;
+              const reward = 2500;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
                 }
-              } else if (validUser.userPackage === "gold") {
-                const deduct = 50000;
-                const reward = 25000;
-                let agentWallet = findAgent.agentWallet;
-                if (agentWallet >= deduct) {
-                  for (i = deduct; i >= 0; i--) {
-                    await findAgent.updateOne({ $inc: { agentWallet: -i } });
-                    break;
-                  }
-                  for (i = reward; i >= 0; i++) {
-                    await findAgent.updateOne({ $inc: { reward: +i } });
-                    break;
-                  }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
+                }
+              }
+            } else if (validUser.userPackage === "professional") {
+              const deduct = 10000;
+              const reward = 5000;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
+                }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
+                }
+              }
+            } else if (validUser.userPackage === "silver") {
+              const deduct = 20000;
+              const reward = 10000;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
+                }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
+                }
+              }
+            } else if (validUser.userPackage === "gold") {
+              const deduct = 50000;
+              const reward = 25000;
+              let agentWallet = findAgent.agentWallet;
+              if (agentWallet >= deduct) {
+                for (i = deduct; i >= 0; i--) {
+                  await findAgent.updateOne({ $inc: { agentWallet: -i } });
+                  break;
+                }
+                for (i = reward; i >= 0; i++) {
+                  await findAgent.updateOne({ $inc: { reward: +i } });
+                  break;
                 }
               }
             }
+          }
           // }
         } else {
           res.status(404).json("User not found!");
@@ -436,7 +436,7 @@ router.put(
           const email = user.email;
           let agentWallet = 100000;
           await user.updateOne({ isAgent: true });
-          await agentId.updateOne({ referralCode: username });
+          await agentId.updateOne({ agentCode: username });
           await agentId.updateOne({ agentWallet: agentWallet });
           await agentId.updateOne({ email: email });
         }
@@ -675,23 +675,19 @@ router.put(
 );
 
 // pay withdrawal
-router.put(
-  "/pay/:id",
-  verifyTokenAndAuthorization,
-  async (req, res) => {
-    try {
-      const findWithdrawn = await Withdraw.findById(req.params.id);
-      if (findWithdrawn && findWithdrawn.isPaid == false) {
-        await findWithdrawn.updateOne({ isPaid: true });
-        res.status(200).json("You have successfully approved this payment");
-      } else {
-        res.status(404).json("This action has been performed already!");
-      }
-    } catch (err) {
-      console.log(err);
-      res.status(500).json("Connection");
+router.put("/pay/:id", verifyTokenAndAuthorization, async (req, res) => {
+  try {
+    const findWithdrawn = await Withdraw.findById(req.params.id);
+    if (findWithdrawn && findWithdrawn.isPaid == false) {
+      await findWithdrawn.updateOne({ isPaid: true });
+      res.status(200).json("You have successfully approved this payment");
+    } else {
+      res.status(404).json("This action has been performed already!");
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("Connection");
   }
-);
+});
 
 module.exports = router;

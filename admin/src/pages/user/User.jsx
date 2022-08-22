@@ -60,6 +60,7 @@ export default function User() {
       await userRequest.put(`/admin/validate/user/${path}/refer`, { isValid: true });
       setProgress(false);
       window.location.reload();
+      return alert("You successfully validate this user")
     } catch (error) {
       setProgress(false);
       return alert(error.response.data);
@@ -76,6 +77,7 @@ export default function User() {
       });
       setProgress(false);
       window.location.reload();
+      return alert("You successfully validate this user")
     } catch (error) {
       setProgress(false);
       return alert(error.response.data);

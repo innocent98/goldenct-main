@@ -5,14 +5,11 @@ const TaskProof = require("../models/TaskProof");
 const User = require("../models/Users");
 const { sendJobNotification } = require("../config/jobNotification.config");
 const {
-  verifyTokenAndUserBody,
-  reference,
   verifyTokenAndAuthorizationAndUser,
   verifyTokenAndAuthorization,
 } = require("./verifyToken");
 
 const https = require("https");
-const fs = require("fs");
 const download = require("download");
 const path = require("path");
 
@@ -21,6 +18,11 @@ const router = require("express").Router();
 // post a job
 router.post("/job", verifyTokenAndAuthorizationAndUser, async (req, res) => {
   try {
+    // generate reference num
+    const min = Math.ceil(1000);
+    const max = Math.floor(1000000);
+    const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
     const user = await User.findById(req.user.id);
     const wallet = user.taskWallet;
     if (user && wallet >= 500) {
@@ -199,11 +201,6 @@ router.put(
             });
             break;
           }
-          // let applied = 1;
-          // for (i = applied; i >= 1; i++) {
-          //   await jobId.updateOne({ $inc: { applied: +i } });
-          //   break;
-          // }
           res.status(200).json("Proof successfully approved.");
         }
       } else {
@@ -226,7 +223,6 @@ router.put(
       const proofUploaderId = proofId.uuid;
       const proofUploader = await User.findOne({ uuid: proofUploaderId });
       const job = proofId.jobId;
-      const jobId = await Task.findOne({ _id: job });
       // console.log(proofUploader.taskDone);
       if (proofId && !proofId.isApproved) {
         await proofId.updateOne({ isDeclined: true });
@@ -368,6 +364,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+      
       const user = await User.findById(req.user.id);
       const jobId =
         (await Task.findById(req.params.id)) ||
@@ -545,7 +546,7 @@ router.get(
       const findTask = await Task.findById(req.params.id);
       const url = findTask.picture;
       if (url) {
-        https.get(url, (res) => {
+        https.get(url, () => {
           const file = url;
           // Path to store the downloaded file
           const filePath = path.join(__dirname, "/public");
@@ -629,7 +630,6 @@ router.put(
       const proofUploaderId = proofId.uuid;
       const proofUploader = await User.findOne({ uuid: proofUploaderId });
       const job = proofId.jobId;
-      const jobId = await Task.findOne({ _id: job });
       // console.log(proofUploader.taskDone);
       if (user) {
         if (proofId && !proofId.isApproved) {

@@ -8,7 +8,7 @@
     "npm": "8.5.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "InnoTech",
   "license": "ISC",

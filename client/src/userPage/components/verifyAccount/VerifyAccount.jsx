@@ -30,7 +30,7 @@ const VerifyAccount = ({ identity }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         urlType === "front"
           ? setProgress(Math.round(progress))
-          : setProgress(Math.round(progress));
+          : urlType === "back" && setProgress(Math.round(progress));
         switch (snapshot.state) {
           case "paused":
             console.log("Upload is paused");

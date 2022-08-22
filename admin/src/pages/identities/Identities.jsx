@@ -22,6 +22,8 @@ export default function Identities() {
     fetchUser();
   }, [query, setIdentities]);
 
+  const reversed = [...identities].reverse();
+
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
   };
@@ -49,7 +51,7 @@ export default function Identities() {
     },
   ];
 
-  const rows = identities.map((identity) => ({
+  const rows = reversed.map((identity) => ({
     id: identity._id,
     uuid: identity.uuid,
     status: identity.isApproved ? "Approved" : identity.isDeclined ? "Declined" : "Pending",

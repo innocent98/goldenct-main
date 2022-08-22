@@ -36,15 +36,15 @@
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   }
   
-  .productInfoImg {
-    width: 500px;
+  .identityImg {
+    width: 400px;
     height: 300px;
     border-radius: 8px;
     object-fit: fill;
     margin-right: 20px;
   }
   
-  .productInfoTop {
+  .identityTop {
     display: flex;
     align-items: center;
   }

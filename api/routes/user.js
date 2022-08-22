@@ -9,7 +9,6 @@ const { sendPaymentNotification } = require("../config/payment.config");
 const {
   verifyTokenAndUser,
   verifyTokenAndUserBody,
-  reference,
   verifyTokenAndAuthorization,
   verifyTokenAndAuthorizationAndUser,
 } = require("./verifyToken");
@@ -18,32 +17,18 @@ const AgentPackage = require("../models/AgentPackage");
 const PaymentProof = require("../models/PaymentProof");
 const Identity = require("../models/Identity");
 const TopWallet = require("../models/TopWallet");
-
-const https = require("https");
-const fs = require("fs");
-const download = require("download");
 const Withdraw = require("../models/Withdraw");
 const TotalRevenew = require("../models/TotalRevenew");
 const Feedback = require("../models/Feedback");
 const { sendWithdrawalNotification } = require("../config/withdraw.config");
-const { json } = require("body-parser");
+const crypto = require("crypto");
 
 router.get("/download", async (req, res) => {
-  try {
-    const url = "https://www.tutorialspoint.com/cg/images/cgbanner.jpg";
-
-    https.get(url, (res) => {
-      const file = url;
-      // Path to store the downloaded file
-      const filePath = `${__dirname}/files`;
-
-      download(file, filePath).then(() => {
-        console.log("File downloaded successfully!");
-      });
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  // generate subscription reference num
+  const min = Math.ceil(1000);
+  const max = Math.floor(1000000);
+  const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+  res.status(200).json(reference);
 });
 
 // get users stat
@@ -343,6 +328,11 @@ router.put("/forgot-password/:id", verifyTokenAndUser, async (req, res) => {
 // become an agent
 router.post("/agent", verifyTokenAndUserBody, async (req, res) => {
   try {
+    // generate reference num
+    const min = Math.ceil(1000);
+    const max = Math.floor(1000000);
+    const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
     const user = await User.findById(req.body.userId);
     // uuid of the logged in user
     const agent = await Agent.findOne({ uuid: req.user.uuid });
@@ -442,6 +432,11 @@ router.get(
 // agent subsequent subscription to a package/upgrade package
 router.post("/agent-upgrade", verifyTokenAndUserBody, async (req, res) => {
   try {
+    // generate reference num
+    const min = Math.ceil(1000);
+    const max = Math.floor(1000000);
+    const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
     const user = await User.findById(req.body.userId);
     if (user && user.isAgent) {
       const savePackage = new AgentPackage({
@@ -534,6 +529,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
       const user = await User.findById(req.user.id);
       // uuid of logged in user
       const validUser = await ValidUser.findOne({ uuid: req.user.uuid });
@@ -627,6 +627,11 @@ router.get(
 // user subsequent subscription to a package/upgrade package
 router.post("/upgrade", verifyTokenAndUserBody, async (req, res) => {
   try {
+    // generate reference num
+    const min = Math.ceil(1000);
+    const max = Math.floor(1000000);
+    const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
     const user = await User.findById(req.body.userId);
     if (user && user.isValidated) {
       const savePackage = new UserPackage({
@@ -717,6 +722,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
       const user = await User.findById(req.user.id);
       if (user) {
         const savePayment = new PaymentProof({
@@ -804,6 +814,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
       const user = await User.findById(req.user.id);
       if (user && user.isValidated) {
         if (user.identity.length < 1) {
@@ -880,6 +895,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
       const user = await User.findById(req.user.id);
       const totalRevenew = await TotalRevenew.findById(
         "62f681f91ea7e22a28c93ee1"
@@ -954,6 +974,11 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
+      // generate reference num
+      const min = Math.ceil(1000);
+      const max = Math.floor(1000000);
+      const reference = Math.floor(Math.random() * (max - min + 1)) + min;
+
       const user = await User.findById(req.user.id);
       const agent = await Agent.findOne({ uuid: req.user.uuid });
       const totalRevenew = await TotalRevenew.findById(
@@ -1098,14 +1123,18 @@ router.get("/get-withdrawn", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // get withdraw history
-router.get("/withdrawn-history", verifyTokenAndAuthorizationAndUser, async (req, res)=>{
-  try {
-    const withdrawnHistory = await Withdraw.find({ uuid: req.user.uuid })
-    res.status(200).json(withdrawnHistory)
-  } catch (err) {
-    res.status(500).json("Connection error!");
+router.get(
+  "/withdrawn-history",
+  verifyTokenAndAuthorizationAndUser,
+  async (req, res) => {
+    try {
+      const withdrawnHistory = await Withdraw.find({ uuid: req.user.uuid });
+      res.status(200).json(withdrawnHistory);
+    } catch (err) {
+      res.status(500).json("Connection error!");
+    }
   }
-})
+);
 
 // get total revenew
 router.get(
@@ -1134,7 +1163,6 @@ router.post(
   verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
-      const user = await User.findById(req.user.id);
       const newFeed = new Feedback({
         email: req.user.email,
         feed: req.body.feed,

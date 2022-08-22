@@ -55,14 +55,14 @@ export default function Identity() {
       <div className="productTop">
         <div className="productTopLeft">
           <div className="productTopRight">
-            <div className="productInfoTop">
-              <img src={identity.front} alt="" className="productInfoImg" />
+            <div className="identityTop">
+              <img src={identity.front} alt="" className="identityImg" />
             </div>
           </div>
         </div>
         <div className="productTopRight">
-          <div className="productInfoTop">
-            <img src={identity.back} alt="" className="productInfoImg" />
+          <div className="identityTop">
+            <img src={identity.back} alt="" className="identityImg" />
           </div>
         </div>
       </div>

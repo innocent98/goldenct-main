@@ -5,14 +5,18 @@ const UserBackup = require("../models/UsersBackup");
 const Agent = require("../models/Agent");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { uuid, confirm, verifyTokenAndAdmin } = require("./verifyToken");
-const nodemailer = require("nodemailer");
+const { verifyTokenAndAdmin } = require("./verifyToken");
 const { sendConfirmationEmail } = require("../config/nodemailer.config");
 const { sendForgotPassword } = require("../config/forgotPassword.config");
 
 // register an administrative
 router.post("/register/admin", verifyTokenAndAdmin, async (req, res) => {
   try {
+    // generate uuid
+    const min = Math.ceil(1000000);
+    const max = Math.floor(1000000000000);
+    const uuid = Math.floor(Math.random() * (max - min + 1)) + min;
+
     // encrypt password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -47,6 +51,17 @@ router.post("/register/admin", verifyTokenAndAdmin, async (req, res) => {
 // register a user
 router.post("/register", async (req, res) => {
   try {
+    // generate uuid
+    const min = Math.ceil(1000000);
+    const max = Math.floor(1000000000000);
+    const uuid = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    // generate confirmation code
+    const confirmMin = Math.ceil(1000);
+    const confirmMax = Math.floor(9000);
+    const confirm =
+      Math.floor(Math.random() * (confirmMax - confirmMin + 1)) + confirmMin;
+
     // encrypt password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -169,10 +184,10 @@ router.put("/email-confirmation/:username", async (req, res) => {
       await confirmUser.updateOne({ resendConfirmationCodeIn: null });
       res.status(200).json("Email successfully confirmed! Proceed to login.");
     } else {
-      res.status(400).json("Code is incorrect, generate another one.");
+      res.status(400).json("Code is incorrect or expired, kindly generate another one.");
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.status(500).json("Connection Error!");
   }
 });
@@ -180,10 +195,16 @@ router.put("/email-confirmation/:username", async (req, res) => {
 // resend confirmation code
 router.put("/resend-code/:username", async (req, res) => {
   try {
+    // generate subscription reference num
+    const confirmMin = Math.ceil(1000);
+    const confirmMax = Math.floor(9000);
+    const confirm =
+      Math.floor(Math.random() * (confirmMax - confirmMin + 1)) + confirmMin;
+
     const confirmUser = await User.findOne({
       username: req.params.username,
     });
-    if (!confirmUser.isConfirmed && confirmUser) {
+    if (confirmUser && !confirmUser.isConfirmed) {
       await confirmUser.updateOne({ confirmationCode: confirm });
       await confirmUser.updateOne({ resendConfirmationCodeIn: new Date() });
       sendConfirmationEmail(
@@ -198,6 +219,7 @@ router.put("/resend-code/:username", async (req, res) => {
       res.status(400).json("User does not exist! Please register.");
     }
   } catch (err) {
+    console.log(err)
     res.status(500).json("Connection Error!");
   }
 });
