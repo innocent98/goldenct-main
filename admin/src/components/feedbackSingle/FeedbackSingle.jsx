@@ -3,10 +3,12 @@ import "./feedbackSingle.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { userRequest } from "../../requestMethod";
+import { DataGrid } from "@mui/x-data-grid";
+import { Delete } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 export default function FeedbackSingle() {
   const [job, setJob] = useState([]);
-  const [progress, setProgress] = useState(false);
 
   const location = useLocation();
   const path = location.pathname.split("/")[2];
@@ -23,72 +25,76 @@ export default function FeedbackSingle() {
 
   const reversed = [...job].reverse();
 
-  // accept job
-  const handleApprove = async (e) => {
-    e.preventDefault();
-    setProgress(true);
-    try {
-      const res = await userRequest.put(`/task/approve-task-proof/${reversed.map((j) => j._id)}`);
-      setProgress(false);
-      return alert(res.data);
-    } catch (error) {
-      setProgress(false);
-      return alert(error.response.data);
-    }
-  };
+  const columns = [
+    {
+      field: "picture",
+      headerName: "Proof",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <>
+            <a href={params.row.picture} className="link">
+              View proof
+            </a>
+          </>
+        );
+      },
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 200,
+      renderCell: (params) => {
+        const handleApprove = async () => {
+          try {
+            await userRequest.put(`/task/approve-task-proof/${params.row.id}`, {
+              isApproved: true,
+            });
+            return alert("You have successfully approved this proof");
+          } catch (error) {
+            return alert(error.response.data);
+          }
+        };
 
-  // decline job
-  const handleDecline = async (e) => {
-    e.preventDefault();
-    setProgress(true);
-    try {
-      const res = await userRequest.put(
-        `/task/reject-task-proof/${reversed.map((j) => j._id)}`
-      );
-      setProgress(false);
-      return alert(res.data);
-    } catch (error) {
-      setProgress(false);
-      return alert(error.response.data);
-    }
-  };
+        const handleDecline = async () => {
+          try {
+            await userRequest.put(`/task/reject-task-proof/${params.row.id}`, {
+              isApproved: true,
+            });
+            return alert("You have declined this proof");
+          } catch (error) {
+            return alert(error.response.data);
+          }
+        };
+        return (
+          <>
+            <Link to={"/sponsored-job/" + params.row.id}>
+              <button className="productListEdit" onClick={handleApprove}>
+                {params.row.status === "Approved" ? "Approved" : "Approve"}
+              </button>
+            </Link>
+            <Delete className="productListDelete" onClick={handleDecline} />
+          </>
+        );
+      },
+    },
+  ];
+
+  const rows = reversed.map((job) => ({
+    id: job._id,
+    picture: job.screenshot,
+    status: job.isApproved ? "Approved" : "approve",
+  }));
 
   return (
-    <div className="product">
-      <div className="productTitleContainer">
-        <h1 className="productTitle">Sponsored Job</h1>
-      </div>
-
-      <div className="productBottom">
-        {reversed.map((j) => (
-          <>
-            {job.length >= 1 ? (
-              <div className="productFormLeft" key={j._id}>
-                <label>{j.jobTitle}</label>
-                <img src={j.screenshot} alt="" className="productUploadImg" />
-                <div className="button">
-                  <button
-                    className="btn btn-success"
-                    disabled={progress || j.isApproved || j.isDeclined}
-                    onClick={handleApprove}
-                  >
-                    {j.isApproved ? "Approved" : "Approve"}
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    disabled={progress || j.isApproved || j.isDeclined}
-                    onClick={handleDecline}
-                  >
-                    {j.isDeclined ? "Declined" : "Decline"}
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <p>No proof uploaded at the moment...</p>
-            )}
-          </>
-        ))}
-      </div>
+    <div className="productList">
+      <DataGrid
+        rows={rows}
+        disableSelectionOnClick
+        columns={columns}
+        pageSize={8}
+        checkboxSelection
+      />
     </div>
   );
 }

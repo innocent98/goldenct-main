@@ -5,7 +5,7 @@ import { userRequest } from "../../../requestMethod";
 import { format } from "timeago.js";
 import "./dashboard.scss";
 
-const Dashboard = ({ dashboard, setDashboard, setPackages, setTopUp }) => {
+const Dashboard = ({ setDashboard, setPackages }) => {
   const user = useSelector((state) => state.user.currentUser);
 
   // get logged in user
@@ -28,10 +28,6 @@ const Dashboard = ({ dashboard, setDashboard, setPackages, setTopUp }) => {
     setPackages(true);
   };
 
-  const handleTopUp = () => {
-    setTopUp(true);
-    setDashboard(false);
-  };
 
   // get task done
   useEffect(() => {
@@ -59,11 +55,11 @@ const Dashboard = ({ dashboard, setDashboard, setPackages, setTopUp }) => {
   }, [setLatestTaskDone]);
 
   return (
-    <div className={dashboard ? "dashboard container-fluid" : "none"}>
+    <div className="dashboard container-fluid">
       <div className="left">
         <div className="wallet">
           <div className="title">
-            Wallet Balance <span onClick={handleTopUp}>Fund wallet</span>
+            Wallet Balance
           </div>
           <h2>#{loggedUser.taskWallet}</h2>
         </div>

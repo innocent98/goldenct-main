@@ -3,27 +3,51 @@ import ResetPassword from "../../components/resetPassword/ResetPassword";
 import TransactionPin from "../../components/transactionPin/TransactionPin";
 import "./security.scss";
 
-const Security = ({ security, setSecurity, setSettings }) => {
-  const [resetPassword, setResetPassword] = useState(false)
-  const [transactionPin, setTransactionPin] = useState(false)
+const Security = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setProfile,
+  setSecurity,
+}) => {
+  setSecurity(true);
+  setProfile(false);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
+  const [resetPassword, setResetPassword] = useState(false);
+  const [transactionPin, setTransactionPin] = useState(false);
 
   const handlePasswordReset = () => {
-    setResetPassword(true)
-  }
+    setResetPassword(true);
+  };
 
   const handleTransactionPin = () => {
-    setTransactionPin(true)
-  }
+    setTransactionPin(true);
+  };
 
   const handleSettings = () => {
     setSecurity(false);
     setSettings(true);
   };
   return (
-    <div className={security ? "security" : "none"}>
-      <span className="material-icons back" onClick={handleSettings}>
-        arrow_back
-      </span>
+    <div className="security">
+      <a href="/settings" className="link">
+        <span className="material-icons back" onClick={handleSettings}>
+          arrow_back
+        </span>
+      </a>
 
       <div className="container-fluid top">
         <div className="left">
@@ -45,9 +69,9 @@ const Security = ({ security, setSecurity, setSettings }) => {
       </div>
 
       <div className={resetPassword ? "passwordReset" : "none"}>
-       <ResetPassword setResetPassword={setResetPassword} /> 
+        <ResetPassword setResetPassword={setResetPassword} />
       </div>
-      <div className={transactionPin? "transactionPinChange" : "none"}>
+      <div className={transactionPin ? "transactionPinChange" : "none"}>
         <TransactionPin setResetTransactionPin={setTransactionPin} />
       </div>
     </div>

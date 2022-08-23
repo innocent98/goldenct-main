@@ -10,7 +10,25 @@ import { REACT_APP_PAY_STACK } from "./config";
 
 const KEY = REACT_APP_PAY_STACK;
 
-const TopUp = ({ topUp }) => {
+const TopUp = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+}) => {
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
   const [success, setSuccess] = useState(false);
 
@@ -20,8 +38,7 @@ const TopUp = ({ topUp }) => {
   // conversion
   const exactAmount = amount * 100;
   // charges on customers
-  const charges = ((exactAmount * 1.5) / 100) + 10000
-
+  const charges = (exactAmount * 1.5) / 100 + 10000;
 
   const navigate = useNavigate();
 
@@ -39,7 +56,7 @@ const TopUp = ({ topUp }) => {
   };
 
   return (
-    <div className={topUp ? "topUp" : "none"}>
+    <div className="topUp">
       <h3>Fund Account</h3>
       <div className={success ? "account" : "none"}>
         <PaymentSuccess amount={amount} />

@@ -7,7 +7,23 @@ import TablePagination from "@mui/material/TablePagination";
 // import { saveAs } from "file-saver";
 import "./microTask.scss";
 
-const MicroTask = ({ task }) => {
+const MicroTask = ({ setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings, }) => {
+    setTask(true);
+    setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
   const [createPost, setCreatePost] = useState(false);
   const [jobPosted, setJobPosted] = useState([]);
@@ -78,7 +94,7 @@ const MicroTask = ({ task }) => {
   }, [setLoggedUser]);
 
   return (
-    <div className={task ? "microTask" : "none"}>
+    <div className="microTask">
       {user.isValidated ? (
         <>
           <div className={createPost ? "account" : "none"}>

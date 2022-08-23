@@ -14,7 +14,25 @@ const defaultRemainingTime = {
   days: "00",
 };
 
-const Mine = ({ mine }) => {
+const Mine = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+}) => {
+  setMine(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
 
   const handleMine = async (e) => {
@@ -76,7 +94,7 @@ const Mine = ({ mine }) => {
   }
 
   return (
-    <div className={mine ? "mine" : "none"}>
+    <div className="mine">
       <ToastContainer position="top-center" reverseOrder={false} />
       {user.isValidated ? (
         <>

@@ -7,7 +7,25 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./packages.scss";
 
-const Packages = ({ packages }) => {
+const Packages = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+}) => {
+  setDashboard(false);
+  setPackages(true);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
   const [validUserId, setValidUserId] = useState("");
   const [userPackage, setUserPackage] = useState("");
@@ -46,7 +64,7 @@ const Packages = ({ packages }) => {
   };
 
   return (
-    <div className={packages ? "userPackages" : "none"}>
+    <div className="userPackages">
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className={success ? "account" : "none"}>
         <AccountDetails validUserId={validUserId} />

@@ -21,22 +21,16 @@ import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { useEffect, useState } from "react";
 import storage from "../../../firebase";
 import { userRequest } from "../../../requestMethod";
-// import { Toaster, toast } from "react-hot-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-// import AccountDetails from "../accountDetails/AccountDetails";
 
 const CreatePost = () => {
-  // const user = useSelector((state) => state.user.currentUser);
-
   const [selected, setSelected] = useState("");
   let [data, setData] = useState([]);
-  // const [jobId, setJobId] = useState("");
   const [amount, setAmount] = useState("");
   const [picture, setPicture] = useState(undefined);
   const [inputs, setInputs] = useState({});
-  // const [success, setSuccess] = useState(false);
   const [progress, setProgress] = useState(false);
   const [processing, setProcessing] = useState(false);
 
@@ -227,11 +221,14 @@ const CreatePost = () => {
   return (
     <div className="createPost">
       <ToastContainer position="top-center" reverseOrder={false} />
-      {/* <div className={success ? "account" : "none"}>
-        <AccountDetails jobId={jobId} />
-      </div> */}
+
       <form className="row g-3" onSubmit={handleSubmit}>
-        <h1>Create Jobs</h1>
+        <h1>
+          Create Jobs{" "}
+          <span>
+            <a href="/fund-account">Fund Account</a>
+          </span>
+        </h1>
         <div className="wrapper">
           <section>
             {" "}
@@ -281,7 +278,7 @@ const CreatePost = () => {
               {category.map((c) => (
                 <div className="check-items" key={c.id}>
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="jobCat"
                     id=""
@@ -305,7 +302,7 @@ const CreatePost = () => {
               {data.map((d) => (
                 <div className="check-items" key={d.id}>
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="jobSubCat"
                     id=""

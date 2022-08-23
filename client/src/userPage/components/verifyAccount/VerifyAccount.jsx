@@ -9,7 +9,27 @@ import "react-toastify/dist/ReactToastify.css";
 import "./verifyAccount.scss";
 import { useSelector } from "react-redux";
 
-const VerifyAccount = ({ identity }) => {
+const VerifyAccount = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setIdentity,
+}) => {
+  setIdentity(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
 
   const [front, setFront] = useState(undefined);
@@ -79,7 +99,7 @@ const VerifyAccount = ({ identity }) => {
   };
 
   return (
-    <div className={identity ? "verifyAccount" : "none"}>
+    <div className="verifyAccount">
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className={processing ? "circular" : "none"}>
         <Box sx={{ display: "flex" }}>

@@ -5,7 +5,25 @@ import AccountDetails from "../../components/accountDetails/AccountDetails";
 import { Toaster, toast } from "react-hot-toast";
 import "./becomeAgent.scss";
 
-const BecomeAgent = ({ agent }) => {
+const BecomeAgent = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+}) => {
+  setAgent(true);
+  setDashboard(false);
+  setPackages(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
   const [agentId, setAgentId] = useState("");
   const [agentPackage, setAgentPackage] = useState("");
@@ -41,9 +59,9 @@ const BecomeAgent = ({ agent }) => {
       return toast.error(error.response.data);
     }
   };
-  
+
   return (
-    <div className={agent ? "packages" : "none"}>
+    <div className="packages">
       <Toaster position="top-center" reverseOrder={false} />
       {user.isValidated ? (
         <>
@@ -64,7 +82,8 @@ const BecomeAgent = ({ agent }) => {
             <h2>Agent’s Package</h2>
             <p>
               Note that only validated users can become an agent. Becoming an
-              agent gives you the right to validate users and earn 50% commission on each user.
+              agent gives you the right to validate users and earn 50%
+              commission on each user.
             </p>
             {user.isAgent ? (
               <div className="package">

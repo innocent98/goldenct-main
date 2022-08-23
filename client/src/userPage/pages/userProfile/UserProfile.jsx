@@ -11,7 +11,27 @@ import "./userProfile.scss";
 import { update } from "../../../redux/apiCalls";
 import { userRequest } from "../../../requestMethod";
 
-const UserProfile = ({ profile, setSettings, setProfile }) => {
+const UserProfile = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setProfile,
+}) => {
+  setProfile(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const { isFetching } = useSelector((state) => state.user);
@@ -77,20 +97,22 @@ const UserProfile = ({ profile, setSettings, setProfile }) => {
 
   // get number of referred
   useEffect(() => {
-    const fetchReffered = async ()=>{
-      const res = await userRequest.get("/user/agents/referred")
-      setReferred(res.data)
-    }
-    fetchReffered()
-  }, [])
+    const fetchReffered = async () => {
+      const res = await userRequest.get("/user/agents/referred");
+      setReferred(res.data);
+    };
+    fetchReffered();
+  }, []);
 
   return (
-    <div className={profile ? "userProfile" : "none"}>
+    <div className="userProfile">
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className="wrapper">
-        <span class="material-icons back" onClick={handleSettings}>
-          arrow_back
-        </span>
+        <a href="/settings" className="link">
+          <span class="material-icons back" onClick={handleSettings}>
+            arrow_back
+          </span>
+        </a>
         <h2>Profile Information</h2>
         <div className="profilePic">
           <div className="img">

@@ -3,7 +3,27 @@ import { Link } from "react-router-dom";
 import { userRequest } from "../../../requestMethod";
 import "./postedJob.scss";
 
-const PostedJob = ({ viewJob }) => {
+const PostedJob = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setViewJob,
+}) => {
+  setViewJob(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const [loggedUser, setLoggedUser] = useState("");
   const [jobs, setJobs] = useState([]);
 
@@ -28,7 +48,7 @@ const PostedJob = ({ viewJob }) => {
   const reversed = [...jobs].reverse();
 
   return (
-    <div className={viewJob ? "postedJob" : "none"}>
+    <div className="postedJob">
       <div className="wrapper">
         <div className="left">
           <section>

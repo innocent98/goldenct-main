@@ -2,7 +2,27 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../../../requestMethod";
 import "./rejectedJob.scss";
 
-const RejectedJob = ({ rejectedJob }) => {
+const RejectedJob = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setRejectedJob,
+}) => {
+  setRejectedJob(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
+  setSettings(false);
+
   const [loggedUser, setLoggedUser] = useState("");
   const [rejectedJobs, setRejectedJobs] = useState([]);
 
@@ -27,7 +47,7 @@ const RejectedJob = ({ rejectedJob }) => {
   const reversed = [...rejectedJobs].reverse();
 
   return (
-    <div className={rejectedJob ? "rejectedJob" : "none"}>
+    <div className="rejectedJob">
       <div className="wrapper">
         <div className="left">
           <section>

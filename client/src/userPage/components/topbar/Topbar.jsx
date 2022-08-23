@@ -141,7 +141,7 @@ const Topbar = ({
   };
 
   return (
-    <div className="topbar">
+    <div className={user ? "topbar" : "none"}>
       <div className="wrapper">
         <div className="left">
           <img src="assets/img/Logo.png" alt="" />
@@ -166,19 +166,20 @@ const Topbar = ({
         >
           <div className="col help">
             <a href="mailto:goldencomforttech@gmail.com" className="link">
-            <span className="material-icons quiz">quiz</span>
-            Need Help?</a>
+              <span className="material-icons quiz">quiz</span>
+              Need Help?
+            </a>
             {/* <span className="material-icons">notifications</span> */}
           </div>
           <div className="col" onClick={handleDropdown}>
             <div className="img">
               <img
                 className="img-fluid"
-                src={user.picture ? user.picture : "assets/img/avatar.png"}
+                src={user && user.picture ? user.picture : "assets/img/avatar.png"}
                 alt=""
               />
             </div>
-            {user.fullName}
+            {user && user.fullName}
             <span className="material-icons">
               {dropdown ? "keyboard_arrow_up" : "expand_more"}
             </span>
@@ -188,25 +189,39 @@ const Topbar = ({
 
       <div className={dropdown ? "dropdown" : "none"}>
         <ul>
-          <li onClick={handleProfile}>Profile</li>
-          <li onClick={handleSettings}>Settings</li>
-          <li onClick={handleIdentity}>
-            {loggedUser.isVerified ? "Verified" : "Verify account"}
-          </li>
+          <a href="/profile" className="link">
+            <li onClick={handleProfile}>Profile</li>
+          </a>
+          <a href="/settings" className="link">
+            <li onClick={handleSettings}>Settings</li>
+          </a>
+          <a href="/verify" className="link">
+            <li onClick={handleIdentity}>
+              {loggedUser.isVerified ? "Verified" : "Verify account"}
+            </li>
+          </a>
           {/* <li onClick={handlePostJob}>Post Job</li> */}
-          <li
-            onClick={handleViewJob}
-            className={user.successfulJob >= 1 ? "" : "none"}
-          >
-            View Posted Jobs
+          <a href="/posted-jobs" className="link">
+            <li
+              onClick={handleViewJob}
+              className={user && user.successfulJob >= 1 ? "" : "none"}
+            >
+              View Posted Jobs
+            </li>
+          </a>
+          <a href="/rejected-jobs" className="link">
+            <li
+              onClick={handleRejectedJob}
+              className={user && user.rejectedJob >= 1 ? "" : "none"}
+            >
+              View Rejected Jobs
+            </li>
+          </a>
+          <li>
+            <a href="/history" className="link">
+              Withdrawal history
+            </a>
           </li>
-          <li
-            onClick={handleRejectedJob}
-            className={user.rejectedJob >= 1 ? "" : "none"}
-          >
-            View Rejected Jobs
-          </li>
-          <li><a href="/history" className="link">Withdrawal history</a></li>
           <li onClick={handleLogout}>Logout</li>
         </ul>
       </div>

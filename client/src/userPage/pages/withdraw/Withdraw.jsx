@@ -4,7 +4,25 @@ import WithdrawDims from "../../components/withdrawDims/WithdrawDims";
 import WithdrawGolden from "../../components/withdrawGolden/WithdrawGolden";
 import "./withdraw.scss";
 
-const Withdraw = ({ withdraw }) => {
+const Withdraw = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+}) => {
+  setWithdraw(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setFaqs(false);
+  setSettings(false);
+
   const user = useSelector((state) => state.user.currentUser);
 
   const [tab1, setTab1] = useState(true);
@@ -21,7 +39,7 @@ const Withdraw = ({ withdraw }) => {
   };
 
   return (
-    <div className={withdraw ? "withdraw" : "none"}>
+    <div className="withdraw">
       {user.isValidated ? (
         <>
           <div className="tabSelect">

@@ -337,24 +337,16 @@ router.post("/agent", verifyTokenAndUserBody, async (req, res) => {
     // uuid of the logged in user
     const agent = await Agent.findOne({ uuid: req.user.uuid });
     if (user && user.isValidated) {
-      if (!agent) {
-        const saveAgent = new Agent({
-          uuid: req.user.uuid,
-          agentPackage: req.body.agentPackage,
-          amount: req.body.amount,
-          reference: "REF: " + reference,
-        });
-        await saveAgent.save();
-        res.status(200).json(saveAgent);
-      } else if (agent.isValid) {
-        res.status(403).json("You are already an Agent!");
-      } else {
-        res
-          .status(403)
-          .json(
-            "Your subscription is pending and waiting for approval by the admin!"
-          );
-      }
+      const saveAgent = new Agent({
+        uuid: req.user.uuid,
+        agentPackage: req.body.agentPackage,
+        amount: req.body.amount,
+        reference: "REF: " + reference,
+      });
+      await saveAgent.save();
+      res.status(200).json(saveAgent);
+    } else if (agent.isValid) {
+      res.status(403).json("You are already an Agent!");
     } else {
       res
         .status(400)
@@ -538,24 +530,16 @@ router.post(
       // uuid of logged in user
       const validUser = await ValidUser.findOne({ uuid: req.user.uuid });
       if (user) {
-        if (!validUser) {
-          const saveValidUser = new ValidUser({
-            uuid: req.user.uuid,
-            userPackage: req.body.userPackage,
-            amount: req.body.amount,
-            reference: "REF: " + reference,
-          });
-          await saveValidUser.save();
-          res.status(200).json(saveValidUser);
-        } else if (validUser.isValid) {
-          res.status(403).json("You are already subscriber!");
-        } else {
-          res
-            .status(403)
-            .json(
-              "Your subscription is pending and waiting for approval by the admin!"
-            );
-        }
+        const saveValidUser = new ValidUser({
+          uuid: req.user.uuid,
+          userPackage: req.body.userPackage,
+          amount: req.body.amount,
+          reference: "REF: " + reference,
+        });
+        await saveValidUser.save();
+        res.status(200).json(saveValidUser);
+      } else if (validUser.isValid) {
+        res.status(403).json("You are already subscriber!");
       } else {
         res.status(404).json("Account does not exist");
       }

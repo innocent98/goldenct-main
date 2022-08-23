@@ -1,7 +1,28 @@
 import UpdateAccount from "../updateAccount/UpdateAccount";
 import "./userSettings.scss";
 
-const UserSettings = ({ settings, setSettings, setProfile, setSecurity, bankD, setBankD }) => {
+const UserSettings = ({
+  setPackages,
+  setDashboard,
+  setAgent,
+  setMine,
+  setTask,
+  setWithdraw,
+  setFaqs,
+  setSettings,
+  setProfile,
+  setSecurity,
+  bankD,
+  setBankD,
+}) => {
+  setSettings(true);
+  setDashboard(false);
+  setPackages(false);
+  setAgent(false);
+  setMine(false);
+  setTask(false);
+  setWithdraw(false);
+  setFaqs(false);
 
   const handleProfile = () => {
     setProfile(true);
@@ -20,7 +41,7 @@ const UserSettings = ({ settings, setSettings, setProfile, setSecurity, bankD, s
   };
 
   return (
-    <div className={settings ? "userSettings" : "none"}>
+    <div className="userSettings">
       <h2>Settings</h2>
       <div className="container-fluid top">
         <div className="left">
@@ -28,9 +49,11 @@ const UserSettings = ({ settings, setSettings, setProfile, setSecurity, bankD, s
           <p>Provide personal details and how we can reach you</p>
         </div>
         <div className="right">
-          <span className="material-icons" onClick={handleProfile}>
-            arrow_forward_ios
-          </span>
+          <a href="/profile" className="link">
+            <span className="material-icons" onClick={handleProfile}>
+              arrow_forward_ios
+            </span>
+          </a>
         </div>
       </div>
       <div className="container-fluid">
@@ -39,9 +62,11 @@ const UserSettings = ({ settings, setSettings, setProfile, setSecurity, bankD, s
           <p>Change password and transaction PIN</p>
         </div>
         <div className="right">
-          <span className="material-icons" onClick={handleSecurity}>
-            arrow_forward_ios
-          </span>
+          <a href="/security" className="link">
+            <span className="material-icons" onClick={handleSecurity}>
+              arrow_forward_ios
+            </span>
+          </a>
         </div>
       </div>
       <div className="container-fluid">
@@ -50,7 +75,9 @@ const UserSettings = ({ settings, setSettings, setProfile, setSecurity, bankD, s
           <p>Add and Delete Bank Accounts</p>
         </div>
         <div className="right">
-            <span className="material-icons" onClick={handleBD}>arrow_forward_ios</span>
+          <span className="material-icons" onClick={handleBD}>
+            arrow_forward_ios
+          </span>
         </div>
       </div>
 

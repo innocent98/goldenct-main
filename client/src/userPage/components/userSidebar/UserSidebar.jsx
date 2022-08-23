@@ -173,51 +173,72 @@ const UserSidebar = ({
     setTopUp(false);
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    userLogout(dispatch)
-  }
+    userLogout(dispatch);
+  };
 
   return (
-    <div className="userSidebar">
+    <div className={user ? "userSidebar" : "none"}>
       <ul>
-        <li
-          className={"inactive " + (dashboard && "active")}
-          onClick={handleDashboard}
-        >
-          <span className="material-icons">home</span>Dashboard
-        </li>
-        <li
-          className={"inactive " + (packages && "active")}
-          onClick={handlePackages}
-        >
-          <span className="material-icons">backpack</span>{user.isValidated ? "Upgrade Package" : "Packages"}
-        </li>
-        <li className={"inactive " + (agent && "active")} onClick={handleAgent}>
-          <span className="material-icons">real_estate_agent</span>Become an Agent
-        </li>
-        <li className={"inactive " + (mine && "active")} onClick={handleMine}>
-          <span className="material-icons">hourglass_full</span>Mine
-        </li>
-        <li className={"inactive " + (task && "active")} onClick={handleTask}>
-          <span className="material-icons">task</span>Daily Income MicroTask
-        </li>
-        <li
-          className={"inactive " + (withdraw && "active")}
-          onClick={handleWithdraw}
-        >
-          <span className="material-icons">wallet</span>Withdraw
-        </li>
-        <li className={"inactive " + (faqs && "active")} onClick={handleFaqs}>
-          <span className="material-icons">question_answer</span>FAQs
-        </li>
-        <li
-          className={"inactive " + (settings && "active")}
-          onClick={handleSettings}
-        >
-          <span className="material-icons">settings</span>Settings
-        </li>
+        <a href="/dashboard" className="link">
+          <li
+            className={"inactive " + (dashboard && "active")}
+            onClick={handleDashboard}
+          >
+            <span className="material-icons">home</span>Dashboard
+          </li>
+        </a>
+        <a href="/packages" className="link">
+          <li
+            className={"inactive " + (packages && "active")}
+            onClick={handlePackages}
+          >
+            <span className="material-icons">backpack</span>
+            {user && user.isValidated ? "Upgrade Package" : "Packages"}
+          </li>
+        </a>
+        <a href="/become-agent" className="link">
+          <li
+            className={"inactive " + (agent && "active")}
+            onClick={handleAgent}
+          >
+            <span className="material-icons">real_estate_agent</span>Become an
+            Agent
+          </li>
+        </a>
+        <a href="/mine" className="link">
+          <li className={"inactive " + (mine && "active")} onClick={handleMine}>
+            <span className="material-icons">hourglass_full</span>Mine
+          </li>
+        </a>
+        <a href="/micro-task" className="link">
+          <li className={"inactive " + (task && "active")} onClick={handleTask}>
+            <span className="material-icons">task</span>Daily Income MicroTask
+          </li>
+        </a>
+        <a href="/withdraw" className="link">
+          <li
+            className={"inactive " + (withdraw && "active")}
+            onClick={handleWithdraw}
+          >
+            <span className="material-icons">wallet</span>Withdraw
+          </li>
+        </a>
+        <a href="/faq" className="link">
+          <li className={"inactive " + (faqs && "active")} onClick={handleFaqs}>
+            <span className="material-icons">question_answer</span>FAQs
+          </li>
+        </a>
+        <a href="/settings" className="link">
+          <li
+            className={"inactive " + (settings && "active")}
+            onClick={handleSettings}
+          >
+            <span className="material-icons">settings</span>Settings
+          </li>
+        </a>
       </ul>
 
       <ul className="logout">
