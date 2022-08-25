@@ -58,8 +58,8 @@ const UploadedProof = () => {
         {proofs.length >= 1 ? (
           <>
             {reversed.map((proof) => (
-              <Link to={`/proof-single/${proof._id}`} className="action">
-                <div className="img" key={proof._id}>
+              <Link to={`/proof-single/${proof._id}`} key={proof._id} className="action">
+                <div className="img">
                   <img src={proof.screenshot} alt="" className="img-fluid" />
                   <span className="doneBy">
                     Job done by: <span>{proof.uuid}</span>

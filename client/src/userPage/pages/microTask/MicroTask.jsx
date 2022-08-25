@@ -7,16 +7,18 @@ import TablePagination from "@mui/material/TablePagination";
 // import { saveAs } from "file-saver";
 import "./microTask.scss";
 
-const MicroTask = ({ setPackages,
+const MicroTask = ({
+  setPackages,
   setDashboard,
   setAgent,
   setMine,
   setTask,
   setWithdraw,
   setFaqs,
-  setSettings, }) => {
-    setTask(true);
-    setDashboard(false);
+  setSettings,
+}) => {
+  setTask(true);
+  setDashboard(false);
   setPackages(false);
   setAgent(false);
   setMine(false);
@@ -67,21 +69,6 @@ const MicroTask = ({ setPackages,
     };
     fetchJobPosted();
   }, [setSponsoredJob]);
-  // console.log(sponsoredJob._id);
-
-  // perform sponsoredJob
-  // const handleSponsored = async (e) => {
-  //   e.preventDefault();
-  //   saveAs(sponsoredJob.picture, "image.jpg"); // Put your image url here.
-  //   try {
-  //     const res = await userRequest.post(
-  //       "/task/perform/sponsored-job/" + sponsoredJob._id
-  //     );
-  //     return alert(res.data);
-  //   } catch (error) {
-  //     return alert(error.response.data);
-  //   }
-  // };
 
   // get logged in user
   const [loggedUser, setLoggedUser] = useState("");

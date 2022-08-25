@@ -429,7 +429,7 @@ function App() {
                 }
               ></Route>
               <Route
-                path="/verify"
+                path="/posted-jobs"
                 element={
                   user ? (
                     <PostedJob

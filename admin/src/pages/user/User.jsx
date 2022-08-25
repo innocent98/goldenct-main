@@ -57,10 +57,12 @@ export default function User() {
     e.preventDefault();
     setProgress(true);
     try {
-      await userRequest.put(`/admin/validate/user/${path}/refer`, { isValid: true });
+      await userRequest.put(`/admin/validate/user/${path}/refer`, {
+        isValid: true,
+      });
       setProgress(false);
       window.location.reload();
-      return alert("You successfully validate this user")
+      return alert("You successfully validate this user");
     } catch (error) {
       setProgress(false);
       return alert(error.response.data);
@@ -77,7 +79,7 @@ export default function User() {
       });
       setProgress(false);
       window.location.reload();
-      return alert("You successfully validate this user")
+      return alert("You successfully validate this user");
     } catch (error) {
       setProgress(false);
       return alert(error.response.data);
@@ -154,7 +156,7 @@ export default function User() {
         ...inputs,
       });
       setProcessing(false);
-      window.location.reload()
+      window.location.reload();
       return alert("Data updated successfully.");
     } catch (error) {
       setProcessing(false);
@@ -353,6 +355,17 @@ export default function User() {
                 />
               </div>
               <div className="userUpdateItem">
+                <label>User Wallet</label>
+                <input
+                  type="password"
+                  name="taskWallet"
+                  placeholder={user.taskWallet}
+                  className="userUpdateInput"
+                  onChange={handleChange}
+                  maxLength={4}
+                />
+              </div>
+              <div className="userUpdateItem">
                 <label>Password</label>
                 <input
                   type="password"
@@ -413,6 +426,18 @@ export default function User() {
                   onChange={handleChange}
                   maxLength={4}
                 />
+              </div>
+              <div className="userUpdateItem">
+                <label>User Package</label>
+                <select name="package" id="">
+                  <option defaultValue={user.package}>{user.package}</option>
+                  <option value="basic">Basic</option>
+                  <option value="regular">Regular</option>
+                  <option value="standard">Standard</option>
+                  <option value="professional">Professional</option>
+                  <option value="silver">Silver</option>
+                  <option value="gold">Gold</option>
+                </select>
               </div>
               <br />
               <button

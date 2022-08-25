@@ -25,49 +25,55 @@ router.post("/job", verifyTokenAndAuthorizationAndUser, async (req, res) => {
 
     const user = await User.findById(req.user.id);
     const wallet = user.taskWallet;
-    if (user && wallet >= 500) {
-      const workers = req.body.workers;
-      const amount = req.body.amount;
-      const total = workers * amount;
-      const percentageTotal = (total * 10) / 100;
-      const totalPayable = total + percentageTotal;
-      const postJob = new PostJob({
-        uuid: req.user.uuid,
-        reference: "REF: " + reference,
-        totalPayable: totalPayable,
-        jobTitle: req.body.jobTitle,
-        jobDesc: req.body.jobDesc,
-        jobCat: req.body.jobCat,
-        jobSubCat: req.body.jobSubCat,
-        workers: req.body.workers,
-        jobLink: req.body.jobLink,
-        amount: req.body.amount,
-        picture: req.body.picture,
-      });
-      if (totalPayable <= wallet) {
-        for (i = totalPayable; i >= 1; i--) {
-          await user.updateOne({ $inc: { taskWallet: -i } });
-          await user.updateOne({ $push: { task: postJob.id } });
-          break;
+    if (user && user.isValidated) {
+      if (wallet >= 500) {
+        const workers = req.body.workers;
+        const amount = req.body.amount;
+        const total = workers * amount;
+        const percentageTotal = (total * 10) / 100;
+        const totalPayable = total + percentageTotal;
+        const postJob = new PostJob({
+          uuid: req.user.uuid,
+          reference: "REF: " + reference,
+          totalPayable: totalPayable,
+          jobTitle: req.body.jobTitle,
+          jobDesc: req.body.jobDesc,
+          jobCat: req.body.jobCat,
+          jobSubCat: req.body.jobSubCat,
+          workers: req.body.workers,
+          jobLink: req.body.jobLink,
+          amount: req.body.amount,
+          picture: req.body.picture,
+        });
+        if (totalPayable <= wallet) {
+          for (i = totalPayable; i >= 1; i--) {
+            await user.updateOne({ $inc: { taskWallet: -i } });
+            await user.updateOne({ $push: { task: postJob.id } });
+            break;
+          }
+          let add = 1;
+          for (i = add; i >= 1; i++) {
+            await user.updateOne({ $inc: { pendingJob: +i } });
+            break;
+          }
+          await postJob.save();
+          res.status(200).json(postJob);
+          sendJobNotification((id = postJob._id), (uuid = postJob.uuid));
+        } else {
+          res
+            .status(400)
+            .json(
+              "Available balance not sufficient for the said payment of " +
+                totalPayable
+            );
         }
-        let add = 1;
-        for (i = add; i >= 1; i++) {
-          await user.updateOne({ $inc: { pendingJob: +i } });
-          break;
-        }
-        await postJob.save();
-        res.status(200).json(postJob);
-        sendJobNotification((id = postJob._id), (uuid = postJob.uuid));
       } else {
-        res
-          .status(400)
-          .json(
-            "Available balance not sufficient for the said payment of " +
-              totalPayable
-          );
+        res.status(403).json("Available balance must equal 500 or more");
       }
     } else {
-      res.status(403).json("Available balance must equal 500 or more");
+      res
+        .status(403)
+        .json("You must be a valid user to perform this operation.");
     }
   } catch (err) {
     console.log(err);
@@ -368,7 +374,7 @@ router.post(
       const min = Math.ceil(1000);
       const max = Math.floor(1000000);
       const reference = Math.floor(Math.random() * (max - min + 1)) + min;
-      
+
       const user = await User.findById(req.user.id);
       const jobId =
         (await Task.findById(req.params.id)) ||
@@ -409,7 +415,7 @@ router.post(
       } else {
         res
           .status(400)
-          .json("User need to be validate to perform this operation.");
+          .json("User need to be validated to perform this operation.");
       }
     } catch (err) {
       console.log(err);
@@ -579,7 +585,7 @@ router.put(
       const job = proofId.jobId;
       const jobId = await Task.findOne({ _id: job });
       // console.log(proofUploader)
-      if (user) {
+      if (user && user.isValidated) {
         if (proofId && !proofId.isApproved) {
           if (req.user.uuid === proofId.poster) {
             await proofId.updateOne({ isApproved: true });
@@ -611,6 +617,8 @@ router.put(
         } else {
           res.status(403).json("Proof approved already!");
         }
+      }else{
+        res.status(403).json("You need to be a valid user to perform this operation.")
       }
     } catch (err) {
       // console.log(err)
@@ -631,7 +639,7 @@ router.put(
       const proofUploader = await User.findOne({ uuid: proofUploaderId });
       const job = proofId.jobId;
       // console.log(proofUploader.taskDone);
-      if (user) {
+      if (user && user.isValidated) {
         if (proofId && !proofId.isApproved) {
           if (req.user.uuid === proofId.poster) {
             await proofId.updateOne({ isDeclined: true });
@@ -661,6 +669,8 @@ router.put(
         } else {
           res.status(403).json("Action cannot be undone!");
         }
+      }else{
+        res.status(403).json("You need to be a valid user to perform this operation.")
       }
     } catch (err) {
       console.log(err);

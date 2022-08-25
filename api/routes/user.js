@@ -792,6 +792,27 @@ router.get(
   }
 );
 
+// delete payment proof
+router.delete(
+  "/payment/delete-proof/:id",
+  verifyTokenAndAuthorization,
+  async (req, res) => {
+    try {
+      const payment = await PaymentProof.findByIdAndDelete(req.params.id);
+      if (payment) {
+        res.status(200).json("Deleted!");
+      } else {
+        res
+          .status(404)
+          .json("You must be a valid user to perform this operation.");
+      }
+    } catch (err) {
+      // console.log(err);
+      res.status(500).json("Connection error!");
+    }
+  }
+);
+
 // upload identity
 router.post(
   "/identity",

@@ -24,10 +24,6 @@ export default function Payment() {
     fetchUser();
   }, [query, setPayments]);
 
-  const handleDelete = (id) => {
-    // setData(data.filter((item) => item.id !== id));
-  };
-
   const columns = [
     { field: "uuid", headerName: "ID", width: 200 },
     { field: "reference", headerName: "Reference", width: 200 },
@@ -46,15 +42,23 @@ export default function Payment() {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
+        const handleDelete = async () => {
+          try {
+            const res = await userRequest.delete(
+              `/user/payment/delete-proof/${params.row.id}`
+            );
+            window.location.reload();
+            return alert(res.data);
+          } catch (error) {
+            return alert(error.response.data);
+          }
+        };
         return (
           <>
             <Link to={"/payment-proof/" + params.row.id}>
               <button className="productListEdit">View</button>
             </Link>
-            <Delete
-              className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
+            <Delete className="productListDelete" onClick={handleDelete} />
           </>
         );
       },

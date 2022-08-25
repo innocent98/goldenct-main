@@ -64,7 +64,7 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
     confirmationCode: {
-      type: String,
+      type: Number,
     },
     resendConfirmationCodeIn: {
       type: Number,
