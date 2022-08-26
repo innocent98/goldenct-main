@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { userRequest } from "../../requestMethod";
-import dateFormat from "dateformat"
+import dateFormat from "dateformat";
 
 export default function Feedback() {
   const [jobs, setJobs] = useState([]);
@@ -40,6 +40,12 @@ export default function Feedback() {
       width: 160,
     },
     {
+      field: "applied",
+      headerName: "Total Applied",
+      width: 160,
+      type: "number",
+    },
+    {
       field: "amount",
       headerName: "Amount",
       width: 160,
@@ -70,8 +76,9 @@ export default function Feedback() {
   const rows = reversed.map((job) => ({
     id: job._id,
     jobTitle: job.jobTitle,
+    applied: job.applied,
     amount: `#${job.amount}`,
-    date: (dateFormat(job.createdAt, "mmmm dd yyyy")),
+    date: dateFormat(job.createdAt, "mmmm dd yyyy"),
   }));
 
   return (

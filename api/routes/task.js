@@ -408,6 +408,11 @@ router.post(
             await user.updateOne({ $inc: { pendingSubmission: +i } });
             break;
           }
+          let applied = 1;
+          for (i = applied; i >= 1; i++) {
+            await jobId.updateOne({ $inc: { applied: +i } });
+            break;
+          }
           res.status(200).json("Proof uploaded successfully");
         } else {
           res.status(403).json("This job has already been done by you.");
@@ -606,19 +611,21 @@ router.put(
                 });
                 break;
               }
-              let applied = 1;
-              for (i = applied; i >= 1; i++) {
-                await jobId.updateOne({ $inc: { applied: +i } });
-                break;
-              }
+              // let applied = 1;
+              // for (i = applied; i >= 1; i++) {
+              //   await jobId.updateOne({ $inc: { applied: +i } });
+              //   break;
+              // }
               res.status(200).json("Proof successfully approved.");
             }
           }
         } else {
           res.status(403).json("Proof approved already!");
         }
-      }else{
-        res.status(403).json("You need to be a valid user to perform this operation.")
+      } else {
+        res
+          .status(403)
+          .json("You need to be a valid user to perform this operation.");
       }
     } catch (err) {
       // console.log(err)
@@ -638,6 +645,7 @@ router.put(
       const proofUploaderId = proofId.uuid;
       const proofUploader = await User.findOne({ uuid: proofUploaderId });
       const job = proofId.jobId;
+      const jobId = await Task.findOne({ _id: job });
       // console.log(proofUploader.taskDone);
       if (user && user.isValidated) {
         if (proofId && !proofId.isApproved) {
@@ -656,6 +664,11 @@ router.put(
                 });
                 break;
               }
+              let applied = 1;
+              for (i = applied; i >= 1; i++) {
+                await jobId.updateOne({ $inc: { applied: -i } });
+                break;
+              }
               await TaskProof.findByIdAndUpdate(
                 req.params.id,
                 { $set: req.body }
@@ -669,8 +682,10 @@ router.put(
         } else {
           res.status(403).json("Action cannot be undone!");
         }
-      }else{
-        res.status(403).json("You need to be a valid user to perform this operation.")
+      } else {
+        res
+          .status(403)
+          .json("You need to be a valid user to perform this operation.");
       }
     } catch (err) {
       console.log(err);

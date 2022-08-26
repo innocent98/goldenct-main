@@ -10,7 +10,7 @@ const SponsoredJobSchema = new mongoose.Schema(
     },
     jobDesc: {
       type: String,
-      default: "Download picture image and post on all your social handles"
+      default: "Download picture image and post on all your social handles",
     },
     picture: {
       type: String,
@@ -22,11 +22,15 @@ const SponsoredJobSchema = new mongoose.Schema(
       type: String,
     },
     sponsored: {
-      type:  Boolean,
+      type: Boolean,
       default: true,
     },
+    applied: {
+      type: Number,
+      default: 0,
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("SponsoredJob", SponsoredJobSchema);

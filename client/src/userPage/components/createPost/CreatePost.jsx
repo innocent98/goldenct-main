@@ -362,7 +362,7 @@ const CreatePost = () => {
                 className="form-control form-control-sm shadow-none"
                 name="jobDesc"
                 required
-                maxLength={100}
+                minLength={10}
                 onChange={handleChange}
               />
               <label htmlFor="descAlert" style={{ color: "#FFC745" }}>

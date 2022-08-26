@@ -146,7 +146,7 @@ const MicroTask = ({
                                 <button disabled={job.workers === job.applied}>
                                   {job.workers === job.applied
                                     ? "Completed"
-                                    : "Appy"}
+                                    : "Apply"}
                                 </button>
                               </Link>
                             </div>
