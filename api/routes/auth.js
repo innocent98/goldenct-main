@@ -180,7 +180,7 @@ router.put("/email-confirmation/:username", async (req, res) => {
       confirmUser.confirmationCode == req.body.confirmationCode
     ) {
       await confirmUser.updateOne({ isConfirmed: true });
-      await confirmUser.updateOne({ confirmationCode: null });
+      // await confirmUser.updateOne({ confirmationCode: null });
       await confirmUser.updateOne({ resendConfirmationCodeIn: null });
       res.status(200).json("Email successfully confirmed! Proceed to login.");
     } else {

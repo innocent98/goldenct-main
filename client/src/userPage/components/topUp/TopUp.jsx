@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import "./topUp.scss";
-
-import { PaystackButton } from "react-paystack";
+// import { PaystackButton } from "react-paystack";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PaymentSuccess from "../paymentSuccess/PaymentSuccess";
-import { REACT_APP_PAY_STACK } from "./config";
+import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
+import { REACT_APP_FLUTTERWAVE } from "./config";
+import Logo from "./img/Logo.png"
 
-const KEY = REACT_APP_PAY_STACK;
+const KEY = REACT_APP_FLUTTERWAVE;
 
 const TopUp = ({
   setPackages,
@@ -35,24 +36,54 @@ const TopUp = ({
   // const publicKey = KEY;
   const [amount, setAmount] = useState(0);
 
-  // conversion
-  const exactAmount = amount * 100;
-  // charges on customers
-  const charges = (exactAmount * 1.5) / 100 + 10000;
+  // // conversion
+  // const exactAmount = amount * 100;
+  // // charges on customers
+  // const charges = (exactAmount * 1.5) / 100 + 10000;
 
   const navigate = useNavigate();
 
-  const componentProps = {
-    email: user.email,
-    amount: exactAmount + charges,
-    metadata: {
+  // const componentProps = {
+  //   email: user.email,
+  //   amount: exactAmount + charges,
+  //   metadata: {
+  //     name: user.name,
+  //     phone: user.phoneNumber,
+  //   },
+  //   publicKey: KEY,
+  //   text: "Proceed",
+  //   onSuccess: () => setSuccess(true),
+  //   onClose: () => navigate("/dashboard"),
+  // };
+
+  const config = {
+    public_key: KEY,
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: user.email,
+      phonenumber: user.phoneNumber,
       name: user.name,
-      phone: user.phoneNumber,
     },
-    publicKey: KEY,
+    customizations: {
+      title: "Golden Comfort Tech",
+      description: "Fund Wallet",
+      logo: Logo,
+    },
+  };
+
+  const fwConfig = {
+    ...config,
     text: "Proceed",
+    callback: (response) => {
+      setSuccess(true);
+      console.log(response);
+      closePaymentModal(); // this will close the modal programmatically
+    },
     onSuccess: () => setSuccess(true),
-    onClose: () => navigate("/dashboard"),
+    onClose: () => navigate("/micro-task"),
   };
 
   return (
@@ -78,7 +109,7 @@ const TopUp = ({
         </div>
         <div className="col-md-3">
           {amount >= 100 && (
-            <PaystackButton className="paystack-button" {...componentProps} />
+            <FlutterWaveButton className="paystack-button" {...fwConfig} />
           )}
         </div>
       </div>

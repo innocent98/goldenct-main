@@ -224,10 +224,7 @@ const CreatePost = () => {
 
       <form className="row g-3" onSubmit={handleSubmit}>
         <h1>
-          Create Jobs{" "}
-          <span>
-            <a href="/fund-account">Fund Account</a>
-          </span>
+          Create Jobs
         </h1>
         <div className="wrapper">
           <section>
@@ -366,7 +363,7 @@ const CreatePost = () => {
                 onChange={handleChange}
               />
               <label htmlFor="descAlert" style={{ color: "#FFC745" }}>
-                Characters should not be more than 100
+                Characters should not be less than 10
               </label>
             </div>
           </section>

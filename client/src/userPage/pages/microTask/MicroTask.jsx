@@ -88,7 +88,12 @@ const MicroTask = ({
             <CreatePost />
           </div>
           <div className={createPost ? "none" : "agentLeft"}>
-            <p>Total Balance</p>
+            <p>
+              Total Balance{" "}
+              <span>
+                <a href="/fund-account">Fund Account</a>
+              </span>
+            </p>
             <h2>#{loggedUser.taskWallet}</h2>
             <div className="task">
               <table className="table">

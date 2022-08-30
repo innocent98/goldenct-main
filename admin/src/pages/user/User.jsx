@@ -357,7 +357,7 @@ export default function User() {
               <div className="userUpdateItem">
                 <label>User Wallet</label>
                 <input
-                  type="password"
+                  type="text"
                   name="taskWallet"
                   placeholder={user.taskWallet}
                   className="userUpdateInput"

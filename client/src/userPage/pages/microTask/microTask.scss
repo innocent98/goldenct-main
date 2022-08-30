@@ -39,6 +39,14 @@
       font-weight: 400;
       font-size: 14px;
       font-family: "Inter", sans-serif;
+      span {
+        a {
+          color: $buttonColor;
+          cursor: pointer;
+          margin-left: 5px;
+          font-size: 18px;
+        }
+      }
     }
 
     .task {
@@ -121,7 +129,7 @@
       border-radius: 6px;
       padding: 10px;
       width: 100%;
-      
+
       @include tab {
         margin-top: 20px;
       }
