@@ -28,6 +28,17 @@ const UploadedProof = () => {
 
   const reversed = [...proofs].reverse();
 
+  // stop job
+  const stopJob = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await userRequest.post(`/task/stop-job/${path}`);
+      return alert(res.data)
+    } catch (error) {
+      return alert(error.response.data);
+    }
+  };
+
   // automatically logout a user when tokan expires
   const user = useSelector((state) => state.user.currentUser);
 
@@ -52,13 +63,22 @@ const UploadedProof = () => {
     <div className="uploadedProof">
       <ToastContainer position="top-center" reverseOrder={false} />
       <p className={proofs.length >= 1 ? "" : "none"}>
-        Kindly hover on image to take action
+        Kindly hover on image to take action{" "}
+        <span>
+          {" "}
+          <button onClick={stopJob}>Stop job</button>
+        </span>
       </p>
+
       <div className="container-fluid">
         {proofs.length >= 1 ? (
           <>
             {reversed.map((proof) => (
-              <Link to={`/proof-single/${proof._id}`} key={proof._id} className="action">
+              <Link
+                to={`/proof-single/${proof._id}`}
+                key={proof._id}
+                className="action"
+              >
                 <div className="img">
                   <img src={proof.screenshot} alt="" className="img-fluid" />
                   <span className="doneBy">

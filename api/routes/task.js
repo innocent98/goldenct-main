@@ -483,6 +483,47 @@ router.get(
   }
 );
 
+// stop ongoing job by job owner
+router.put("/stop-job/:id", verifyTokenAndAuthorization, async (req, res) => {
+  try {
+    const findJob = await Task.findById(req.params.id);
+    if (findJob) {
+      const stopJob = new StoppedJob({
+        uuid: findJob.uuid,
+        jobTitle: findJob.jobTitle,
+        totalPayable: findJob.totalPayable,
+      });
+      await Task.findByIdAndDelete(req.params.id);
+      await stopJob.save();
+      res.status(200).json("Job stopped!");
+    }
+  } catch (err) {
+    res.status(500).json("Connection error!");
+  }
+});
+
+// get all stopped jobs by job poster
+router.get(
+  "/user-stopped/jobs",
+  verifyTokenAndAuthorizationAndUser,
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id);
+      const userUuid = user.uuid;
+      const findJob = await StoppedJob.find({ uuid: userUuid });
+      // console.log(user)
+      if (findJob) {
+        res.status(200).json(findJob);
+      } else {
+        res.status(404).json("No task uploaded yet");
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json("Connection error!");
+    }
+  }
+);
+
 // get taskdone by user
 router.get(
   "/task-done",

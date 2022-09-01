@@ -26,6 +26,7 @@ const PostedJob = ({
 
   const [loggedUser, setLoggedUser] = useState("");
   const [jobs, setJobs] = useState([]);
+  const [stoppedJobs, setstoppedJobs] = useState([]);
 
   // get logged in user
   useEffect(() => {
@@ -47,6 +48,15 @@ const PostedJob = ({
 
   const reversed = [...jobs].reverse();
 
+  //   get stopped jobs
+  useEffect(() => {
+    const fetchStoppedJobs = async () => {
+      const res = await userRequest.get("/task/user-stopped/jobs");
+      setJobs(res.data);
+    };
+    fetchStoppedJobs();
+  }, [setstoppedJobs]);
+
   return (
     <div className="postedJob">
       <div className="wrapper">
@@ -67,13 +77,26 @@ const PostedJob = ({
                 </tr>
               </thead>
               <tbody>
+                {stoppedJobs && (
+                  <>
+                    {stoppedJobs.map((job) => (
+                      <tr key={job._id}>
+                        <td>{job.jobTitle}</td>
+                        <td>#{job.totalPayable}</td>
+                        <td>
+                          {job.applied}/{job.workers}
+                        </td>
+                        <td>
+                          <button disabled className="action">
+                            Stopped
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </>
+                )}
                 {reversed.map((job) => (
                   <tr key={job._id}>
-                    {/* <th scope="row">
-                    <ol>
-                      <li></li>
-                    </ol>
-                  </th> */}
                     <td>{job.jobTitle}</td>
                     <td>#{job.totalPayable}</td>
                     <td>
