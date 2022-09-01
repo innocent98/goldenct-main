@@ -32,7 +32,7 @@ const UploadedProof = () => {
   const stopJob = async (e) => {
     e.preventDefault();
     try {
-      const res = await userRequest.post(`/task/stop-job/${path}`);
+      const res = await userRequest.put(`/task/stop-job/${path}`);
       return alert(res.data)
     } catch (error) {
       return alert(error.response.data);
