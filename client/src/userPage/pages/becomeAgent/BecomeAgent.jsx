@@ -99,13 +99,13 @@ const BecomeAgent = ({
                 <hr />
                 <form className="row" onSubmit={handleRenew}>
                   <div className="col">Super Star</div>
-                  <div className="col">#5,000/ $10</div>
+                  <div className="col">#1,000/ $10</div>
                   <div className="col">#100,000/$200</div>
                   <div className="col">
                     <button
                       onClick={() =>
                         setAgentPackage("super_star") ||
-                        setAmount("#5,000/ $10")
+                        setAmount("#1,000/ $10")
                       }
                     >
                       Renew
@@ -127,13 +127,13 @@ const BecomeAgent = ({
                 <hr />
                 <form className="row" onSubmit={handleSubmit}>
                   <div className="col">Super Star</div>
-                  <div className="col">#5,000/ $10</div>
+                  <div className="col">#1,000/ $10</div>
                   <div className="col">#100,000/$200</div>
                   <div className="col">
                     <button
                       onClick={() =>
                         setAgentPackage("super_star") ||
-                        setAmount("#5,000/ $10")
+                        setAmount("#1,000/ $10")
                       }
                     >
                       Apply

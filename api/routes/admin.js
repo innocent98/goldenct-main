@@ -140,28 +140,26 @@ router.put(
   "/edit/user/:uuid",
   verifyTokenAndAuthorization,
   async (req, res) => {
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      req.body.password = await bcrypt.hash(req.body.password, salt);
+      req.body.currentPassword = req.body.password;
+    }
+    if (req.body.transactionPin) {
+      const salt = await bcrypt.genSalt(10);
+      req.body.transactionPin = await bcrypt.hash(
+        req.body.transactionPin,
+        salt
+      );
+      req.body.currentTransactionPin = req.body.transactionPin;
+    }
     try {
-      if (req.body.password) {
-        const salt = await bcrypt.genSalt(10);
-        req.body.password = await bcrypt.hash(req.body.password, salt);
-        req.body.currentPassword = req.body.password;
-      }
-      if (req.body.transactionPin) {
-        const salt = await bcrypt.genSalt(10);
-        req.body.transactionPin = await bcrypt.hash(
-          req.body.transactionPin,
-          salt
-        );
-        req.body.currentTransactionPin = req.body.transactionPin;
-      }
       const user = await User.findOneAndUpdate(
         { uuid: req.params.uuid },
         { $set: req.body },
         { new: true }
       );
-      if (user) {
-        res.status(200).json(user);
-      }
+      res.status(200).json(user);
     } catch (err) {
       res.status(500).json("Connection Error!");
     }

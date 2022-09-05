@@ -3,6 +3,7 @@ const SponsoredJob = require("../models/SponsoredJob");
 const Task = require("../models/Task");
 const TaskProof = require("../models/TaskProof");
 const User = require("../models/Users");
+const StoppedJob = require("../models/StoppedJob");
 const { sendJobNotification } = require("../config/jobNotification.config");
 const {
   verifyTokenAndAuthorizationAndUser,
@@ -484,7 +485,7 @@ router.get(
 );
 
 // stop ongoing job by job owner
-router.put("/stop-job/:id", verifyTokenAndAuthorization, async (req, res) => {
+router.put("/stop-job/:id", verifyTokenAndAuthorizationAndUser, async (req, res) => {
   try {
     const findJob = await Task.findById(req.params.id);
     if (findJob) {
