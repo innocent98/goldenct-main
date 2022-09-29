@@ -1,7 +1,7 @@
 @import "../../../global.scss";
 
 .taskProof {
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -114,6 +114,11 @@
         }
       }
     }
+  }
+
+  .dec{
+    height: auto;
+    margin-bottom: 20px;
   }
 }
 

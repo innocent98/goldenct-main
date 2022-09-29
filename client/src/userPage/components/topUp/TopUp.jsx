@@ -94,7 +94,7 @@ const TopUp = ({
       </div>
       <div className={success ? "none" : "row"}>
         <div className="col-md-3">
-          <label htmlFor="idFront" className="form-label">
+          <label htmlFor="amount" className="form-label">
             Amount
           </label>
           <input

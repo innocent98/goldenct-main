@@ -24,9 +24,10 @@ export default function Jobs() {
     fetchJobs();
   }, [query, setJobs]);
 
-  const handleDelete = (id) => {
-    // setData(data.filter((item) => item.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   // setData(data.filter((item) => item.id !== id));
+  // //the handle will be like onClick={()=>handleDelete(params.id)}
+  // };
 
   const columns = [
     { field: "uuid", headerName: "ID", width: 200 },
@@ -52,15 +53,17 @@ export default function Jobs() {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
+        const handleDelete = async () => {
+          await userRequest.delete(`/admin/delete-job/${params.row.uuid}`);
+          window.location.reload();
+          // setData(data.filter((item) => item.id !== id));
+        };
         return (
           <>
             <Link to={"/job/" + params.row.id}>
               <button className="productListEdit">View</button>
             </Link>
-            <Delete
-              className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
+            <Delete className="productListDelete" onClick={handleDelete} />
           </>
         );
       },

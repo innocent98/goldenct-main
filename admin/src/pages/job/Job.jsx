@@ -3,6 +3,7 @@ import "./job.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { userRequest } from "../../requestMethod";
+import DOMPurify from "dompurify";
 
 export default function Job() {
   const [job, setJob] = useState({});
@@ -47,6 +48,11 @@ export default function Job() {
     }
   };
 
+  // const getText = (html) => {
+  //   const doc = new DOMParser().parseFromString(html, "text/html");
+  //   return doc.body.textContent;
+  // };
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -70,7 +76,12 @@ export default function Job() {
               </div>
               <div className="productInfoItem">
                 <span className="productInfoKey">desc:</span>
-                <span className="productInfoValue">{job.jobDesc}</span>
+                <p className="productInfoValue"
+                  dangerouslySetInnerHTML=
+                  {{
+                    __html: DOMPurify.sanitize(job.jobDesc)
+                  }}>
+                </p>
               </div>
               <div className="productInfoItem">
                 <span className="productInfoKey">workers:</span>

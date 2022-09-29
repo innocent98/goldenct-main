@@ -24,8 +24,13 @@ import { userRequest } from "../../../requestMethod";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
+  const user = useSelector((state) => state.user.currentUser);
+
   const [selected, setSelected] = useState("");
   let [data, setData] = useState([]);
   const [amount, setAmount] = useState("");
@@ -34,11 +39,16 @@ const CreatePost = () => {
   const [progress, setProgress] = useState(false);
   const [processing, setProcessing] = useState(false);
 
+
+
+  const [value, setValue] = useState("");
+
   const navigate = useNavigate();
 
   const newJob = {
     ...inputs,
     amount,
+    jobDesc: value,
   };
 
   const handleChange = (e) => {
@@ -223,12 +233,9 @@ const CreatePost = () => {
       <ToastContainer position="top-center" reverseOrder={false} />
 
       <form className="row g-3" onSubmit={handleSubmit}>
-        <h1>
-          Create Jobs
-        </h1>
+        <h1>Create Jobs</h1>
         <div className="wrapper">
           <section>
-            {" "}
             <div className="col-md-3">
               <label htmlFor="title" className="form-label form-label-sm">
                 Job Title
@@ -348,20 +355,20 @@ const CreatePost = () => {
                 name="picture"
                 onChange={(e) => setPicture(e.target.files[0])}
               />
-              {progress && `${progress}%`}
+              <div style={{display: "none"}}>{progress && `${progress}%`}</div>
             </div>
             <div className="col-md-3">
               <label htmlFor="desc" className="form-label form-label-sm">
                 Job Description
               </label>
-              <textarea
-                type="text"
-                className="form-control form-control-sm shadow-none"
-                name="jobDesc"
-                required
-                minLength={10}
-                onChange={handleChange}
-              />
+              <div className="editorContainer">
+                <ReactQuill
+                  className="editor"
+                  theme="snow"
+                  value={value}
+                  onChange={setValue}
+                />
+              </div>
               <label htmlFor="descAlert" style={{ color: "#FFC745" }}>
                 Characters should not be less than 10
               </label>
@@ -369,8 +376,8 @@ const CreatePost = () => {
           </section>
         </div>
         <div className="col-md-9">
-          <button className="submit-button" type="submit" disabled={processing}>
-            {processing ? "Please wait..." : "SUBMIT"}
+          <button className="submit-button" type="submit" disabled={processing || !user.isValidated}>
+            {!user.isValidated ? "Validate account" : processing ? "Please wait..." : "SUBMIT"}
           </button>
         </div>
       </form>

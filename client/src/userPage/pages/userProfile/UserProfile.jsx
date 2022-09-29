@@ -41,6 +41,7 @@ const UserProfile = ({
   const [progress, setProgress] = useState(0);
   const [referred, setReferred] = useState("");
   // const [setProcessing] = useState(false);
+  const [copy, setCopy] = useState(false);
 
   const handleSettings = () => {
     setSettings(true);
@@ -109,7 +110,7 @@ const UserProfile = ({
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className="wrapper">
         <a href="/settings" className="link">
-          <span class="material-icons back" onClick={handleSettings}>
+          <span className="material-icons back" onClick={handleSettings}>
             arrow_back
           </span>
         </a>
@@ -160,6 +161,15 @@ const UserProfile = ({
                     value={`mygoldenpay.com/register/?agent=${user.username}`}
                     readOnly
                   />
+                  <div
+                    className="copytxt"
+                    onClick={() =>
+                      navigator.clipboard.writeText(user.username) &&
+                      setCopy(true)
+                    }
+                  >
+                    {copy ? "Copied" : "Copy"}
+                  </div>
                 </div>
                 <span style={{ marginLeft: "0", color: "#FFC745" }}>
                   Total no of users you registered:

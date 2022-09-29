@@ -337,15 +337,19 @@ router.post("/agent", verifyTokenAndUserBody, async (req, res) => {
     // uuid of the logged in user
     const agent = await Agent.findOne({ uuid: req.user.uuid });
     if (user && user.isValidated) {
-      const saveAgent = new Agent({
-        uuid: req.user.uuid,
-        agentPackage: req.body.agentPackage,
-        amount: req.body.amount,
-        reference: "REF: " + reference,
-      });
-      await saveAgent.save();
-      res.status(200).json(saveAgent);
-    } else if (agent.isValid) {
+      if (user.isVerified) {
+        const saveAgent = new Agent({
+          uuid: req.user.uuid,
+          agentPackage: req.body.agentPackage,
+          amount: req.body.amount,
+          reference: "REF: " + reference,
+        });
+        await saveAgent.save();
+        res.status(200).json(saveAgent);
+      }else{
+        res.status(400).json("You need to be verified to become an agent. Kindly provide a valid means of identification to continue")
+      }
+    } else if (agent && agent.isValid) {
       res.status(403).json("You are already an Agent!");
     } else {
       res

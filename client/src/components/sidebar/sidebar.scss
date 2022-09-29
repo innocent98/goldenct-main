@@ -11,7 +11,7 @@
   display: none;
   flex-direction: column;
   z-index: 999;
-  transition: all 1s ease-in;
+  transition: all 0.5s ease-in;
   @include tab {
     display: flex;
     width: 40%;
@@ -118,7 +118,7 @@
     }
   }
 
-  &.active{
+  &.active {
     right: 0;
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { userRequest } from "../../../requestMethod";
 // import dateFormat from "dateformat"
-import { format } from "timeago.js";
+import moment from "moment";
 import "./dashboard.scss";
 
 const Dashboard = ({ setDashboard, setPackages }) => {
@@ -21,13 +21,6 @@ const Dashboard = ({ setDashboard, setPackages }) => {
   const [taskDone, setTaskDone] = useState([]);
   const [latestTaskDone, setLatestTaskDone] = useState([]);
   const [viewAll, setViewAll] = useState(false);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setDashboard(false);
-    setPackages(true);
-  };
-
 
   // get task done
   useEffect(() => {
@@ -58,9 +51,7 @@ const Dashboard = ({ setDashboard, setPackages }) => {
     <div className="dashboard container-fluid">
       <div className="left">
         <div className="wallet">
-          <div className="title">
-            Wallet Balance
-          </div>
+          <div className="title">Wallet Balance</div>
           <h2>#{loggedUser.taskWallet}</h2>
         </div>
         <div className="transaction">
@@ -70,7 +61,7 @@ const Dashboard = ({ setDashboard, setPackages }) => {
               <>
                 {reversed.map((td) => (
                   <div className="transactionHistory" key={td._id}>
-                    <div className="date">{format(td.createdAt)}</div>
+                    <div className="date">{moment(td.createdAt).fromNow()}</div>
                     <div className="content">
                       <img src="assets/img/Logow.png" alt="" />
                       <div className="cont">
@@ -98,7 +89,9 @@ const Dashboard = ({ setDashboard, setPackages }) => {
                   <>
                     {latestTaskDone.map((td) => (
                       <div className="transactionHistory" key={td._id}>
-                        <div className="date">{format(td.createdAt)}</div>
+                        <div className="date">
+                          {moment(td.createdAt).fromNow()}
+                        </div>
                         <div className="content">
                           <img src="assets/img/Logow.png" alt="" />
                           <div className="cont">
@@ -120,7 +113,7 @@ const Dashboard = ({ setDashboard, setPackages }) => {
                           </div>
                         </div>
                       </div>
-                    ))}{" "}
+                    ))}
                   </>
                 ) : (
                   <p>No transaction yet</p>
@@ -170,10 +163,8 @@ const Dashboard = ({ setDashboard, setPackages }) => {
           <div className="upgrade">
             <div className="upgradeLeft">Upgrade your account to PREMIUM</div>
             <div className="upgradeRight">
-              <a href="/">
-                <span className="material-icons" onClick={handleClick}>
-                  arrow_circle_right
-                </span>
+              <a href="/packages">
+                <span className="material-icons">arrow_circle_right</span>
               </a>
             </div>
           </div>

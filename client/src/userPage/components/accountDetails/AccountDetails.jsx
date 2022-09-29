@@ -143,35 +143,37 @@ const AccountDetails = ({ validUserId, agentId, jobId, paymentId }) => {
         <div className="accountLeft">
           <h1>Account Details</h1>
           <table className="table-bordered">
-            <tr>
-              <th>Description</th>
-              <td>Account Details</td>
-            </tr>
-            <tr>
-              <th>Bank Name</th>
-              <td>WEMA BANK</td>
-            </tr>
-            <tr>
-              <th>Account Number</th>
-              <td>7358345540</td>
-            </tr>
-            <tr>
-              <th>Account Name</th>
-              <td>GOLDEN COMFORT TECH. LTD</td>
-            </tr>
-            <tr>
-              <th>Total Payable Amount Plus VAT</th>
-              <td>{details.totalPayable || details.amount}</td>
-            </tr>
-            <tr>
-              <th>Payment For </th>
-              <td>
-                {details.agentPackage ||
-                  details.userPackage ||
-                  details.jobCat ||
-                  "Wallet Top-up"}
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>Description</th>
+                <td>Account Details</td>
+              </tr>
+              <tr>
+                <th>Bank Name</th>
+                <td>WEMA BANK</td>
+              </tr>
+              <tr>
+                <th>Account Number</th>
+                <td>7358345540</td>
+              </tr>
+              <tr>
+                <th>Account Name</th>
+                <td>GOLDEN COMFORT TECH. LTD</td>
+              </tr>
+              <tr>
+                <th>Total Payable Amount Plus VAT</th>
+                <td>{details.totalPayable || details.amount}</td>
+              </tr>
+              <tr>
+                <th>Payment For </th>
+                <td>
+                  {details.agentPackage ||
+                    details.userPackage ||
+                    details.jobCat ||
+                    "Wallet Top-up"}
+                </td>
+              </tr>
+            </tbody>
           </table>
           <h1>Payment Transaction</h1>
           <p>Upload proof of payment (pdf or img allowed, 1mb max) </p>
@@ -220,35 +222,37 @@ const AccountDetails = ({ validUserId, agentId, jobId, paymentId }) => {
           <p>Note: Kindly use transfer remark as your transfer description</p>
           <h1>Transaction Created</h1>
           <table className="table-bordered">
-            <tr>
-              <th>Description</th>
-              <td>Account Details</td>
-            </tr>
-            <tr>
-              <th>Currency</th>
-              <td>Naira / USD</td>
-            </tr>
-            <tr>
-              <th>Method</th>
-              <td>Bank Transfer</td>
-            </tr>
-            <tr>
-              <th>Transfer Remarks </th>
-              <td>{details.reference}</td>
-            </tr>
-            <tr>
-              <th>Total Payable Amount Plus VAT</th>
-              <td>{details.totalPayable || details.amount}</td>
-            </tr>
-            <tr>
-              <th>Payment for </th>
-              <td>
-                {details.agentPackage ||
-                  details.userPackage ||
-                  details.jobCat ||
-                  "Wallet Top-up"}
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>Description</th>
+                <td>Account Details</td>
+              </tr>
+              <tr>
+                <th>Currency</th>
+                <td>Naira / USD</td>
+              </tr>
+              <tr>
+                <th>Method</th>
+                <td>Bank Transfer</td>
+              </tr>
+              <tr>
+                <th>Transfer Remarks </th>
+                <td>{details.reference}</td>
+              </tr>
+              <tr>
+                <th>Total Payable Amount Plus VAT</th>
+                <td>{details.totalPayable || details.amount}</td>
+              </tr>
+              <tr>
+                <th>Payment for </th>
+                <td>
+                  {details.agentPackage ||
+                    details.userPackage ||
+                    details.jobCat ||
+                    "Wallet Top-up"}
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

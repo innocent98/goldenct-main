@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import WithdrawDims from "../../components/withdrawDims/WithdrawDims";
 import WithdrawGolden from "../../components/withdrawGolden/WithdrawGolden";
 import "./withdraw.scss";
@@ -23,7 +23,7 @@ const Withdraw = ({
   setFaqs(false);
   setSettings(false);
 
-  const user = useSelector((state) => state.user.currentUser);
+  // const user = useSelector((state) => state.user.currentUser);
 
   const [tab1, setTab1] = useState(true);
   const [tab2, setTab2] = useState(false);
@@ -40,35 +40,26 @@ const Withdraw = ({
 
   return (
     <div className="withdraw">
-      {user.isValidated ? (
-        <>
-          <div className="tabSelect">
-            <div
-              className={"tab form-control-sm " + (tab1 && "tabActive")}
-              onClick={handleTab1}
-            >
-              DIMs
-            </div>
-            <div
-              className={"tab form-control-sm " + (tab2 && "tabActive")}
-              onClick={handleTab2}
-            >
-              GCT
-            </div>
-          </div>
-          <div className={tab1 ? "withdrawDims" : "none"}>
-            <WithdrawDims />
-          </div>
-          <div className={tab2 ? "withdrawGolden" : "none"}>
-            <WithdrawGolden />
-          </div>
-        </>
-      ) : (
-        <div className="notValid">
-          Dear {user.username}, kindly subscribe to a package to validate your
-          account and enjoy our exclusive offer.
+      <div className="tabSelect">
+        <div
+          className={"tab form-control-sm " + (tab1 && "tabActive")}
+          onClick={handleTab1}
+        >
+          DIMs
         </div>
-      )}
+        <div
+          className={"tab form-control-sm " + (tab2 && "tabActive")}
+          onClick={handleTab2}
+        >
+          GCT
+        </div>
+      </div>
+      <div className={tab1 ? "withdrawDims" : "none"}>
+        <WithdrawDims />
+      </div>
+      <div className={tab2 ? "withdrawGolden" : "none"}>
+        <WithdrawGolden />
+      </div>
     </div>
   );
 };

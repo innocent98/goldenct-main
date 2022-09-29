@@ -96,58 +96,49 @@ const Mine = ({
   return (
     <div className="mine">
       <ToastContainer position="top-center" reverseOrder={false} />
-      {user.isValidated ? (
-        <>
-          <button
-            className="button"
-            onClick={handleMine}
-            disabled={totalSeconds < 0}
-          >
-            {totalSeconds >= 0
-              ? "Mine"
-              : `Mining till ${remainingTime.hours}h: ${remainingTime.minutes}m : ${remainingTime.seconds}s`}
-          </button>
-          <div className="countdown">
-            <h2>Countdown to wallet unlocking</h2>
-            <div className="row">
-              <div className="col">
-                <h3>{remainingTimeToUnlock.days}</h3>
-                <p>Days</p>
-              </div>
-              <div className="col">
-                <h3>{remainingTimeToUnlock.hours}</h3>
-                <p>Hours</p>
-              </div>
-              <div className="col">
-                <h3>{remainingTimeToUnlock.minutes}</h3>
-                <p>Mins</p>
-              </div>
-              <div className="col">
-                <h3>{remainingTimeToUnlock.seconds}</h3>
-                <p>Secs</p>
-              </div>
-            </div>
+      <button
+        className="button"
+        onClick={handleMine}
+        disabled={totalSeconds < 0 || !user.isValidated}
+      >
+        {!user.isValidated ? "Please validate your account to continue" : totalSeconds >= 0
+          ? "Mine"
+          : `Mining till ${remainingTime.hours}h: ${remainingTime.minutes}m : ${remainingTime.seconds}s`}
+      </button>
+      <div className="countdown">
+        <h2>Countdown to wallet unlocking</h2>
+        <div className="row">
+          <div className="col">
+            <h3>{remainingTimeToUnlock.days}</h3>
+            <p>Days</p>
           </div>
-
-          <div className="mineDetails">
-            <div className="left">
-              <h3>
-                Currently mining at: <span>{user.package}</span>
-              </h3>
-            </div>
-            <div className="right">
-              <h3>
-                Total mined: <span>{user.mineWallet}GCT</span>
-              </h3>
-            </div>
+          <div className="col">
+            <h3>{remainingTimeToUnlock.hours}</h3>
+            <p>Hours</p>
           </div>
-        </>
-      ) : (
-        <div className="notValid">
-          Dear {user.username}, kindly subscribe to a package to validate your
-          account and enjoy our exclusive offer.
+          <div className="col">
+            <h3>{remainingTimeToUnlock.minutes}</h3>
+            <p>Mins</p>
+          </div>
+          <div className="col">
+            <h3>{remainingTimeToUnlock.seconds}</h3>
+            <p>Secs</p>
+          </div>
         </div>
-      )}
+      </div>
+
+      <div className="mineDetails">
+        <div className="left">
+          <h3>
+            Currently mining at: <span>{user.package}</span>
+          </h3>
+        </div>
+        <div className="right">
+          <h3>
+            Total mined: <span>{user.mineWallet}GCT</span>
+          </h3>
+        </div>
+      </div>
     </div>
   );
 };

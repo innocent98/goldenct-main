@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { saveAs } from "file-saver";
 // import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import DOMPurify from "dompurify";
 
 const TaskProof = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -75,7 +76,7 @@ const TaskProof = () => {
     e.preventDefault();
     setSubmissionProgress(true);
     try {
-      await userRequest.post(`/task/upload-proof/${path}`, {...inputs});
+      await userRequest.post(`/task/upload-proof/${path}`, { ...inputs });
       toast.success(
         "Proof successfully uploaded, wait for approval upon confirmation."
       );
@@ -128,15 +129,33 @@ const TaskProof = () => {
     }
   });
 
+  // const getText = (html) => {
+  //   const doc = new DOMParser().parseFromString(html, "text/html");
+  //   return doc.body.textContent;
+  // };
+
   return (
     <>
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className="taskProof container-fluid">
         <section>
           <h1>Job description</h1>
-          <p>{job.jobDesc}</p>
-          <h3>Job link</h3>
-          <p><a href={job.jobLink} className="link">{job.jobLink}</a></p>
+          <p
+            className="dec"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(job.jobDesc),
+            }}
+          ></p>
+          {job.jobLink && (
+            <>
+              <h3>Job link</h3>
+              <p>
+                <a href={job.jobLink} className="">
+                  {job.jobLink}
+                </a>
+              </p>{" "}
+            </>
+          )}
           {job.picture && (
             <button onClick={downloadImage}>Download File</button>
           )}
@@ -192,9 +211,9 @@ const TaskProof = () => {
                     : "submit-button"
                 }
                 type="submit"
-                disabled={progress < 100 || submissionProgress}
+                disabled={progress < 100 || !user.isValidated}
               >
-                Submit
+                {user.isValidated ? "Submit" : "Validate account"}
               </button>
             </div>
           </form>

@@ -68,7 +68,7 @@ router.put("/", verifyTokenAndAuthorizationAndUser, async (req, res) => {
       res.status(400).json("Mining is currently on");
     }
   } else {
-    res.status(403).json("Account is not yet validated! Validate your account to continue");
+    res.status(403).json("Please validate your account to continue");
   }
 });
 

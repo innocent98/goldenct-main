@@ -566,6 +566,25 @@ router.put(
   }
 );
 
+// delete posted job
+router.delete(
+  "/delete-job/:uuid",
+  verifyTokenAndAuthorization,
+  async (req, res) => {
+    try {
+      const job = await PostJob.find({ uuid: req.params.uuid });
+      if (job) {
+        await PostJob.findOneAndDelete({ uuid: req.params.uuid });
+        await Task.findOneAndDelete({ uuid: req.params.uuid });
+        res.status(200).json("Job deleted successfully");
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json("Connection error!");
+    }
+  }
+);
+
 // accept identity
 router.put(
   "/approve-identity/:id",

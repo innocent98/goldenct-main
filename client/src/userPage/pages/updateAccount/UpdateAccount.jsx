@@ -6,7 +6,7 @@ import { update } from "../../../redux/apiCalls";
 import "./updateAccount.scss";
 
 const UpdateAccount = ({ setBankD }) => {
-  // const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   const dispatch = useDispatch();
   const { isFetching } = useSelector((state) => state.user);
@@ -79,8 +79,8 @@ const UpdateAccount = ({ setBankD }) => {
         </div>
 
         <div className="col-md-3">
-          <button className="submit-button" type="submit" disabled={isFetching}>
-            {isFetching ? "Please wait..." : "Update"}
+          <button className="submit-button" type="submit" disabled={isFetching || !user.isValidated}>
+            {!user.isValidated ? "Validate account" :isFetching ? "Please wait..." : "Update"}
           </button>
         </div>
       </form>
