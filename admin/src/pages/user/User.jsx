@@ -429,7 +429,7 @@ export default function User() {
               </div>
               <div className="userUpdateItem">
                 <label>User Package</label>
-                <select name="package" id="">
+                <select name="package" id="" onChange={handleChange}>
                   <option defaultValue={user.package}>{user.package}</option>
                   <option value="basic">Basic</option>
                   <option value="regular">Regular</option>

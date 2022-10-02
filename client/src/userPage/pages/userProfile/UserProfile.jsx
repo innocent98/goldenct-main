@@ -39,7 +39,7 @@ const UserProfile = ({
   const [picture, setPicture] = useState(undefined);
   const [inputs, setInputs] = useState({});
   const [progress, setProgress] = useState(0);
-  const [referred, setReferred] = useState("");
+  const [referred, setReferred] = useState([]);
   // const [setProcessing] = useState(false);
   const [copy, setCopy] = useState(false);
 
@@ -158,13 +158,13 @@ const UserProfile = ({
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={`mygoldenpay.com/register/?agent=${user.username}`}
+                    value={`https://mygoldenpay.com/register/?agent=${user.username}`}
                     readOnly
                   />
                   <div
                     className="copytxt"
                     onClick={() =>
-                      navigator.clipboard.writeText(user.username) &&
+                      navigator.clipboard.writeText(`https://mygoldenpay.com/register/?agent=${user.username}`) &&
                       setCopy(true)
                     }
                   >
@@ -180,7 +180,7 @@ const UserProfile = ({
                       color: "#FFC745",
                     }}
                   >
-                    {referred}
+                    {referred.length} | <a href="/my-referred-list" className="link"style={{color: "#FFC745"}}>View referred</a>
                   </span>
                 </span>
               </>
@@ -237,6 +237,7 @@ const UserProfile = ({
               className="form-select form-select-sm shadow-none"
               onChange={handleChange}
             >
+              <option defaultValue={user.gender}>{user.gender}</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>

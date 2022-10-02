@@ -32,6 +32,7 @@ import RejectedJob from "./userPage/components/rejectedJob/RejectedJob";
 import UserSideMenu from "./userPage/components/userSideMenu/UserSideMenu";
 import { userLogout } from "./redux/apiCalls";
 import TopUp from "./userPage/components/topUp/TopUp";
+import ReferredList from "./userPage/components/referredList/ReferredList";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -536,6 +537,10 @@ function App() {
               <Route
                 path="/user/reset/password/:id"
                 element={<UpdatePassword />}
+              ></Route>
+              <Route
+                path="/my-referred-list"
+                element={<ReferredList />}
               ></Route>
             </Routes>
           </div>

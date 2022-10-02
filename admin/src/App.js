@@ -30,6 +30,7 @@ import TopUpList from "./pages/topUp/TopupList";
 import WithdrawnList from "./pages/withdrawnList/WithdrawnList";
 import Feedback from "./components/feedback/Feedback";
 import FeedbackSingle from "./components/feedbackSingle/FeedbackSingle";
+import ReferredList from "./components/referredList/ReferredList";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -104,6 +105,9 @@ function App() {
             </Route>
             <Route path="/account-settings/update-auth/:id">
               {user ? <Auth /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/agent-referred-list/:uuid">
+              {user ? <ReferredList /> : <Redirect to="/login" />}
             </Route>
           </div>
         </div>

@@ -48,6 +48,20 @@ export default function ProductList() {
       editable: true,
     },
     {
+      field: "view",
+      headerName: "View Referred",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={"/agent-referred-list/" + params.row.uuid}>
+              <button className="userListEdit">View</button>
+            </Link>
+          </>
+        );
+      },
+    },
+    {
       field: "action",
       headerName: "Action",
       width: 150,

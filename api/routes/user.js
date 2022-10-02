@@ -346,8 +346,12 @@ router.post("/agent", verifyTokenAndUserBody, async (req, res) => {
         });
         await saveAgent.save();
         res.status(200).json(saveAgent);
-      }else{
-        res.status(400).json("You need to be verified to become an agent. Kindly provide a valid means of identification to continue")
+      } else {
+        res
+          .status(400)
+          .json(
+            "You need to be verified to become an agent. Kindly provide a valid means of identification to continue"
+          );
       }
     } else if (agent && agent.isValid) {
       res.status(403).json("You are already an Agent!");
@@ -403,9 +407,41 @@ router.get("/agents-agent", verifyTokenAndAuthorization, async (req, res) => {
       res.status(404).json("No registered agent yet.");
     }
   } catch (err) {
+    // console.log(err)
     res.status(500).json("Connection error!");
   }
 });
+
+// get single agent referred list by admin
+router.get(
+  "/agents-referred/:uuid",
+  verifyTokenAndAuthorization,
+  async (req, res) => {
+    try {
+      // filter users with query method
+      const { user } = req.query;
+      const keys = ["email", "uuid"];
+
+      const search = (data) => {
+        return data.filter((item) =>
+          keys.some((key) => item[key].toLowerCase().includes(user))
+        );
+      };
+
+      const agent = await Agent.findOne({ uuid: req.params.uuid });
+      const findUser = await User.find({ uuid: agent.referred });
+      if (user) {
+        res.status(200).json(search(findUser));
+      } else if (findUser) {
+        res.status(200).json(findUser);
+      } else {
+        res.status(404).json("No registered agent yet.");
+      }
+    } catch (err) {
+      res.status(500).json("Connection error!");
+    }
+  }
+);
 
 // get single agent by admin for validation
 router.get(
@@ -1202,8 +1238,9 @@ router.get(
   async (req, res) => {
     try {
       const findAgent = await Agent.findOne({ uuid: req.user.uuid });
+      const findUser = await User.find({ uuid: findAgent.referred });
       if (findAgent) {
-        res.status(200).json(findAgent.referred.length);
+        res.status(200).json(findUser);
       }
     } catch (err) {
       res.status(500).json("Connection error!");
