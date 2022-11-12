@@ -1,18 +1,28 @@
 @import "../../global.scss";
 
 .intro {
+  height: 90vh;
   width: 100%;
   display: flex;
   padding-top: 100px;
+  padding-left: 40px;
+  @include l{
+    padding: 20px;
+    height: 60vh;
+  }
   @include tab {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    height: 90vh;
+    // padding-left: 0;
   }
   @include mobile {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    height: 86vh;
+    // padding-left: 0;
   }
 
   .left {
-    flex: 1.5;
+    flex: 1;
     color: white;
     @include tab {
       flex: none;
@@ -22,9 +32,12 @@
     }
     h2 {
       width: 100%;
-      font-size: 64px;
+      font-size: 45px;
       font-weight: 700;
       font-family: "Archivo", sans-serif;
+      @include l{
+        font-size: 34px;
+      }
       @include tab {
         font-size: 40px;
         width: 100%;
@@ -32,6 +45,14 @@
       @include mobile {
         font-size: 30px;
         width: 100%;
+      }
+    }
+    .rightImg{
+      display: none;
+      margin: 30px;
+      @include tab {
+        display: flex;
+        height: 250px;
       }
     }
     p {
@@ -65,17 +86,33 @@
     }
   }
   .right {
-    flex: 2;
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
     overflow: hidden;
     @include tab {
       display: none;
     }
-    @include mobile {
-      display: none;
+    .rightImg {
+      margin-right: 40px;
+      height: 300px;
+      @include l{
+        height: 250px;
+      }
     }
-    img {
-      height: 450px;
-      margin-left: -40%;
+    .polygon{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100px;
+      @include tab {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
     }
   }
 }

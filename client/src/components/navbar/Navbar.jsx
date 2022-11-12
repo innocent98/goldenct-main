@@ -7,7 +7,7 @@ const Navbar = ({
   setAbout,
   work,
   setWork,
-  packages,
+  // packages,
   setPackages,
   faq,
   setFaq,
@@ -15,7 +15,7 @@ const Navbar = ({
   setRegister,
   login,
   setLogin,
-  side,
+  // side,
   setSide,
 }) => {
   const handleHome = (e) => {
@@ -39,16 +39,16 @@ const Navbar = ({
     setRegister(false);
     setLogin(false);
   };
-  const handlePackages = (e) => {
-    e.preventDefault();
-    setPackages(true);
-    setWork(false);
-    setFaq(false);
-    setAbout(false);
-    setHome(false);
-    setRegister(false);
-    setLogin(false);
-  };
+  // const handlePackages = (e) => {
+  //   e.preventDefault();
+  //   setPackages(true);
+  //   setWork(false);
+  //   setFaq(false);
+  //   setAbout(false);
+  //   setHome(false);
+  //   setRegister(false);
+  //   setLogin(false);
+  // };
 
   const handleWork = (e) => {
     e.preventDefault();
@@ -116,11 +116,11 @@ const Navbar = ({
               About
             </a>
           </li>
-          <li onClick={handlePackages}>
+          {/* <li onClick={handlePackages}>
             <a href="/" className={packages ? "active" : "notActive"}>
               Packages
             </a>
-          </li>
+          </li> */}
           <li onClick={handleWork}>
             <a href="/" className={work ? "active" : "notActive"}>
               How it works

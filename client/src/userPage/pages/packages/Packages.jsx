@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { userRequest } from "../../../requestMethod";
-import AccountDetails from "../../components/accountDetails/AccountDetails";
 // import { Toaster, toast } from "react-hot-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./packages.scss";
+import SubscriptionTopUp from "../../components/subscriptionPayment/TopUp";
 
 const Packages = ({
   setPackages,
@@ -67,7 +67,7 @@ const Packages = ({
     <div className="userPackages">
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className={success ? "account" : "none"}>
-        <AccountDetails validUserId={validUserId} />
+        <SubscriptionTopUp validUserId={validUserId} />
       </div>
       <div className={success ? "none" : "packageLeft"}>
         <h2>Packages</h2>
@@ -276,7 +276,7 @@ const Packages = ({
                       setUserPackage("basic") || setAmount("#1,000/ $2")
                     }
                   >
-                    Buy
+                    Validate
                   </button>
                 </div>
               </form>
@@ -292,7 +292,7 @@ const Packages = ({
               </form>
             </div>
             <hr />
-            <div className="form">
+            {/* <div className="form">
               <form className="row" onSubmit={handleSubmit}>
                 <input type="text" value="Regular" readOnly className="col" />
                 <div className="col">#2,000/$4</div>
@@ -430,7 +430,7 @@ const Packages = ({
                 <div className="col">375000GCT (ML)</div>
                 <div className="col"></div>
               </form>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

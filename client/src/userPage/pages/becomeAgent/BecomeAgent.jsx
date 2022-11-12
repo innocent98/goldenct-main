@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { userRequest } from "../../../requestMethod";
-import AccountDetails from "../../components/accountDetails/AccountDetails";
 // import { Toaster, toast } from "react-hot-toast";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./becomeAgent.scss";
+import AgentTopUp from "./agentPayment/TopUp";
 
 const BecomeAgent = ({
   setPackages,
@@ -60,7 +60,8 @@ const BecomeAgent = ({
     <div className="packages">
       <ToastContainer position="top-center" reverseOrder={false} />
       <div className={success ? "account" : "none"}>
-        <AccountDetails agentId={agentId} />
+        <AgentTopUp agentId={agentId} />
+        {/* <AccountDetails agentId={agentId} /> */}
       </div>
       <div className={success ? "none" : "packageLeft"}>
         <div className={user.isAgent ? "wallet" : "none"}>

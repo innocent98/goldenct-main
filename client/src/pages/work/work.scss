@@ -8,6 +8,10 @@
     align-items: center;
     justify-content: center;
     color: white;
+    padding: 40px;
+    @include l {
+      padding: 20px;
+    }
 
     .first {
       width: 50%;

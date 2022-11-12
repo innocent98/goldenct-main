@@ -33,6 +33,9 @@ import UserSideMenu from "./userPage/components/userSideMenu/UserSideMenu";
 import { userLogout } from "./redux/apiCalls";
 import TopUp from "./userPage/components/topUp/TopUp";
 import ReferredList from "./userPage/components/referredList/ReferredList";
+import SubscriptionTopUp from "./userPage/components/subscriptionPayment/TopUp";
+import AgentTopUp from "./userPage/pages/becomeAgent/agentPayment/TopUp";
+import Login from "./pages/login/Login";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -218,6 +221,10 @@ function App() {
             <Route
               path="/register"
               element={user ? <Navigate to="/dashboard" /> : <Register />}
+            ></Route>
+            <Route
+              path="/login"
+              element={user ? <Navigate to="/dashboard" /> : <Login />}
             ></Route>
             <Route
               path="/confirm-email/:email"
@@ -504,6 +511,46 @@ function App() {
                       setWithdraw={setWithdraw}
                       setFaqs={setFaqs}
                       setSettings={setSettings}
+                    />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                }
+              ></Route>
+              <Route
+                path="/subscribe-account"
+                element={
+                  user ? (
+                    <SubscriptionTopUp
+                      setDashboard={setDashboard}
+                      setPackages={setPackages}
+                      setAgent={setAgent}
+                      setMine={setMine}
+                      setTask={setTask}
+                      setWithdraw={setWithdraw}
+                      setFaqs={setFaqs}
+                      setSettings={setSettings}
+                      topUp={topUp}
+                    />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                }
+              ></Route>
+              <Route
+                path="/agent-account"
+                element={
+                  user ? (
+                    <AgentTopUp
+                      setDashboard={setDashboard}
+                      setPackages={setPackages}
+                      setAgent={setAgent}
+                      setMine={setMine}
+                      setTask={setTask}
+                      setWithdraw={setWithdraw}
+                      setFaqs={setFaqs}
+                      setSettings={setSettings}
+                      topUp={topUp}
                     />
                   ) : (
                     <Navigate to="/" />

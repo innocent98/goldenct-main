@@ -1,16 +1,133 @@
 @import "../../global.scss";
 
 .footer {
-  padding-top: 150px;
+  // padding: 40px;
+  padding-top: 10px;
   width: 100%;
+  @include l{
+    padding: 20px;
+  }
+  @include tab {
+    margin-top: 40px;
+  }
+
+  .team {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    padding-top: 100px;
+    padding-left: 40px;
+    margin-bottom: 80px;
+    @include tab {
+      flex-direction: column-reverse;
+      padding-left: 0;
+    }
+    @include mobile {
+      flex-direction: column-reverse;
+      padding-left: 0;
+    }
+
+    .left {
+      flex: 1;
+      color: white;
+      @include tab {
+        flex: none;
+      }
+      @include mobile {
+        flex: none;
+      }
+      h2 {
+        width: 100%;
+        font-size: 54px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        @include tab {
+          font-size: 40px;
+          width: 100%;
+        }
+        @include mobile {
+          font-size: 30px;
+          width: 100%;
+        }
+      }
+      .rightImg {
+        display: none;
+        margin: 30px;
+        @include tab {
+          display: flex;
+          height: 250px;
+        }
+      }
+      p {
+        font-size: 17px;
+        font-weight: 400;
+        color: #e0e0e0;
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        @include tab {
+          width: 100%;
+        }
+        @include mobile {
+          font-size: 15px;
+          width: 100%;
+        }
+      }
+      a {
+        text-decoration: none;
+        background-color: $buttonColor;
+        color: $backgroundCOlor;
+        padding: 10px 20px;
+        border-radius: 20px;
+        span {
+          margin-left: 5px;
+          img {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+    }
+    .right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      overflow: hidden;
+      @include tab {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
+      .rightImg {
+        margin-right: 40px;
+        height: 350px;
+      }
+      .polygon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100px;
+        @include tab {
+          display: none;
+        }
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
 
   .top {
+    padding: 40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     color: $generalColor;
     padding-bottom: 100px;
-    @include tab{
+    @include tab {
       flex-direction: column;
       padding-bottom: 50px;
     }
@@ -20,18 +137,29 @@
     }
 
     .first {
-      span {
-        margin-left: 10px;
-        font-size: 18px;
-        font-weight: 600;
-        font-family: "Inter", sans-serif;
+      .logo {
+        span {
+          margin-left: 10px;
+          font-size: 18px;
+          font-weight: 600;
+          font-family: "Inter", sans-serif;
+        }
+      }
+
+      .social {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        img {
+          cursor: pointer;
+          width: 20px;
+        }
       }
     }
-    .second,
-    .third {
+    .extra-links {
       display: flex;
       flex-direction: column;
-      @include tab{
+      @include tab {
         margin-top: 30px;
       }
       @include mobile {
@@ -42,7 +170,7 @@
         font-weight: 700;
         font-family: "Archivo", sans-serif;
         text-transform: uppercase;
-        @include tab{
+        @include tab {
           font-size: 18px;
         }
         @include mobile {
@@ -54,7 +182,7 @@
         margin-left: -35px;
         li {
           margin-top: 20px;
-          @include tab{
+          @include tab {
             margin-top: 10px;
           }
           @include mobile {
@@ -64,7 +192,7 @@
             font-size: 17px;
             font-weight: 400;
             color: $secondary;
-            @include tab{
+            @include tab {
               font-size: 15px;
             }
             @include mobile {
@@ -74,19 +202,13 @@
         }
       }
     }
-    .fourth {
-      img {
-        margin-left: 25px;
-        cursor: pointer;
-        width: 20px;
-      }
-    }
   }
 
   .down {
+    padding: 40px;
     padding-top: 20px;
     display: flex;
-    @include tab{
+    @include tab {
       flex-direction: column;
     }
     @include mobile {
@@ -101,7 +223,7 @@
     }
     .right {
       flex: 1;
-      @include tab{
+      @include tab {
         margin-top: 20px;
       }
       @include mobile {
@@ -111,7 +233,7 @@
         display: flex;
         list-style: none;
         float: right;
-        @include tab{
+        @include tab {
           float: left;
         }
         @include mobile {

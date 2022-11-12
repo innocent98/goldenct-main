@@ -1,6 +1,7 @@
 @import "../../../global.scss";
 
 .userSidebar {
+  padding-left: 20px;
   @include tab {
     display: none;
   }

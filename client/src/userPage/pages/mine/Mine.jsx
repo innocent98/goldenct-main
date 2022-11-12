@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { userRequest } from "../../../requestMethod";
 import { getRemainingTimeUntilMsTimestamp } from "../../utils/utils";
 // import { Toaster, toast } from "react-hot-toast";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./mine.scss";
 
@@ -36,12 +36,12 @@ const Mine = ({
   const user = useSelector((state) => state.user.currentUser);
 
   const handleMine = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     try {
       await userRequest.put("/mine");
       window.location.reload();
     } catch (error) {
-      // return toast.error(error.response.data);
+      return toast.error(error.response.data);
     }
   };
 
@@ -52,15 +52,15 @@ const Mine = ({
   // const hour = (totalSeconds / 3600) % 24;
   // console.log(totalSeconds)
 
-  // automate mining
-  useEffect(() => {
-    const handleMining = async (e) => {
-      if (totalSeconds >= 0) {
-        await handleMine();
-      }
-    };
-    handleMining();
-  }, [totalSeconds]);
+  // // automate mining
+  // useEffect(() => {
+  //   const handleMining = async (e) => {
+  //     if (totalSeconds >= 0) {
+  //       await handleMine();
+  //     }
+  //   };
+  //   handleMining();
+  // }, [totalSeconds]);
 
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 

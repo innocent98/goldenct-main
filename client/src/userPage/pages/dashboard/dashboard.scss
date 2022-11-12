@@ -2,6 +2,7 @@
 
 .dashboard {
   display: flex;
+  padding-bottom: 30px;
   @include l {
   }
   @include tab {
@@ -137,6 +138,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    height: 80vh;
     @include tab {
       display: none;
     }

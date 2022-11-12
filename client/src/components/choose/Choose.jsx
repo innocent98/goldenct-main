@@ -1,10 +1,49 @@
+import { useEffect, useState } from "react";
 import "./choose.scss";
 
+const slideImg = [
+  {
+    id: 1,
+    img: "assets/img/slide1.png",
+  },
+  {
+    id: 2,
+    img: "assets/img/slide2.png",
+  },
+  {
+    id: 3,
+    img: "assets/img/slide3.png",
+  },
+  {
+    id: 4,
+    img: "assets/img/slide4.png",
+  },
+];
+
 const Choose = () => {
+  const [slider, setSlider] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlider(slider < slideImg.length - 1 ? slider + 1 : 0);
+    }, 3000);
+    return () => clearInterval(interval);
+  });
   return (
     <div className="choose">
       <div className="top">
-        <div className="first">
+        {slideImg.map((slide) => (
+          <img
+            src={slide.img}
+            alt=""
+            style={{
+              transform: `translateX(${slider * -100}%)`,
+            }}
+            slider={slider}
+            className="img-fluid"
+          />
+        ))}
+        {/* <div className="first">
           <div className="icon">
             <span className="material-icons">signal_cellular_alt</span>
           </div>
@@ -30,18 +69,36 @@ const Choose = () => {
             <h3>195</h3>
             <p>Countries Supported</p>
           </div>
+        </div> */}
+      </div>
+
+      <div className="who">
+        <div className="left">
+          <img src="assets/img/second.png" alt="" className="secondImg" />
+          <img src="assets/img/polygon.png" alt="" className="polygon" />
+        </div>
+        <div className="right">
+          <h3>WHO WE ARE?</h3>
+          <p>
+            Golden Comfort Technologies Ltd is a fast growing Africa number one
+            community based pojects that embaces a comfot living system for
+            humanity.
+          </p>
+          <a href="/">Learn more</a>
         </div>
       </div>
 
       <div className="choose">
-        <div className="left">
+        {/* <div className="left">
           <img src="assets/img/illustration.png" alt="" />
-        </div>
+        </div> */}
         <div className="right">
-          <h3>Why you should choose GOLDENCT</h3>
+          <h3>WHY CHOOSE US?</h3>
           <p>
-            Experience the next generation cryptocurrency platform. No financial
-            borders, extra fees, and fake reviews.
+            Here is a home of digital jobs where people across the globe comes
+            together to complete jobs, hire workers and promote ideals. Your
+            membership grants you access to earn passive income daily as a
+            Micro-worker/influencer and also to mine Golden Comfort Token.
           </p>
           <a href="/">Learn more</a>
         </div>
@@ -49,10 +106,10 @@ const Choose = () => {
 
       <div className="earn">
         <div className="left">
-          <h3>Earn Daily on GOLDENCT Today!</h3>
+          <h3>START EARNING ON MYGOLDENPAY TODAY!</h3>
           <p>
-            Earn up to 10% more when you do your daily task. Follow the steps to
-            participate
+            Become a member and start earning daily by performing micro jobs and
+            professional jobs. Follow the steps to participate
           </p>
           <a href="/">Get Started</a>
         </div>
@@ -80,8 +137,8 @@ const Choose = () => {
               <span className="material-icons">repartition</span>
             </div>
             <div className="right">
-                <h5>Start Build Portfolio</h5>
-                <p>Buy and sell your currencies and keep track of them.</p>
+              <h5>Start Build Portfolio</h5>
+              <p>Buy and sell your currencies and keep track of them.</p>
             </div>
           </div>
         </div>

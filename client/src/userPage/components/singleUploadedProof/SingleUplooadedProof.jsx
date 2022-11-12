@@ -30,7 +30,6 @@ const SingleUplooadedProof = () => {
     fetchProof();
   }, [path, setProof]);
 
-
   const handleApprove = async (e) => {
     e.preventDefault();
     setProgress(true);
@@ -65,7 +64,7 @@ const SingleUplooadedProof = () => {
 
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
-  // countdown funtion for mining
+  // countdown funtion for auto approval
   useEffect(() => {
     const intervalId = setInterval(() => {
       updateRemainingTime(countdownTimestampMs);
@@ -79,14 +78,15 @@ const SingleUplooadedProof = () => {
 
   // auto approve job
   useEffect(() => {
-    const autoApprove = async () => {
-      if (!proof.isApproved && totalSeconds >= 0) {
-        await handleApprove();
-      } else if (!proof.isDeclined && totalSeconds >= 0) {
-        await handleApprove();
-      }
-    };
-    autoApprove();
+    const interval = setInterval(() => {
+      const autoApprove = async () => {
+        if (!proof.isApproved && !proof.isDeclined && totalSeconds >= 0) {
+          await handleApprove();
+        }
+      };
+      autoApprove();
+    }, 5000);
+    return () => clearInterval(interval);
   });
 
   return (

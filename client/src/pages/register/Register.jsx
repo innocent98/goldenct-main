@@ -5,7 +5,7 @@ import { userRequest } from "../../requestMethod";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./register.scss";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Register = ({ setLogin, setRegister }) => {
   const [username, setUsername] = useState("");
@@ -81,7 +81,7 @@ const Register = ({ setLogin, setRegister }) => {
           <h4>Register</h4>
           <p>
             Already have a GoldTech account?{" "}
-            <span onClick={handleLogin}>Login instead</span>
+            <Link to="/login" className="link" onClick={handleLogin}>Login instead</Link>
           </p>
           <h6>Email Address</h6>
           <div className="col-md-4">

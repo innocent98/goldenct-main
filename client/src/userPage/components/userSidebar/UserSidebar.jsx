@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/apiCalls";
+import { userRequest } from "../../../requestMethod";
 import "./userSidebar.scss";
 
 const UserSidebar = ({
@@ -173,6 +175,16 @@ const UserSidebar = ({
     setTopUp(false);
   };
 
+  // get logged in user
+  const [loggedUser, setLoggedUser] = useState("");
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await userRequest.get("/user/user");
+      setLoggedUser(res.data);
+    };
+    fetchUser();
+  }, [setLoggedUser]);
+
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -190,15 +202,15 @@ const UserSidebar = ({
             <span className="material-icons">home</span>Dashboard
           </li>
         </a>
-        <a href="/packages" className="link">
+        {user && !user.isValidated && !loggedUser.isValidated && <a href="/packages" className="link">
           <li
             className={"inactive " + (packages && "active")}
             onClick={handlePackages}
           >
             <span className="material-icons">backpack</span>
-            {user && user.isValidated ? "Upgrade Package" : "Packages"}
+            {user && user.isValidated ? "Upgrade Package" : "Validate"}
           </li>
-        </a>
+        </a>}
         <a href="/become-agent" className="link">
           <li
             className={"inactive " + (agent && "active")}

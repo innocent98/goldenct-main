@@ -8,6 +8,7 @@ const ValidUser = require("../models/ValidUser");
 const {
   verifyTokenAndAdmin,
   verifyTokenAndAuthorization,
+  verifyTokenAndAuthorizationAndUser,
 } = require("./verifyToken");
 const UserPackage = require("../models/UserPackage");
 const AgentPackage = require("../models/AgentPackage");
@@ -206,7 +207,7 @@ router.put(
 // validate a user with referral by an admin
 router.put(
   "/validate/user/:uuid/refer",
-  verifyTokenAndAuthorization,
+  verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
       // check for user in valid user model
@@ -223,12 +224,13 @@ router.put(
         if (user) {
           await user.updateOne({ package: package });
           await user.updateOne({ isValidated: true });
+          await validUser.updateOne({ isValid: true });
           const agent = user.referee;
           //   find agent with user referee in agent model
           const findAgent = await Agent.findOne({ uuid: agent });
           //   console.log(findAgent)
           // if (findAgent) {
-          if (findAgent.referred.includes(req.params.uuid)) {
+          if (findAgent && findAgent.referred.includes(req.params.uuid)) {
             // if validating user is present inside agent's array, proceed with this
             if (validUser.userPackage === "basic") {
               const deduct = 1000;
@@ -359,7 +361,7 @@ router.put(
 // approve a user package by an admin
 router.put(
   "/approve/user/:id",
-  verifyTokenAndAuthorization,
+  verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
       const userPackage = await UserPackage.findById(req.params.id);
@@ -393,7 +395,7 @@ router.put(
 // validate an agent
 router.put(
   "/validate-agent/:uuid",
-  verifyTokenAndAuthorization,
+  verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
       const agentId = await Agent.findOne({ uuid: req.params.uuid });
@@ -412,6 +414,7 @@ router.put(
           await agentId.updateOne({ agentCode: username });
           await agentId.updateOne({ agentWallet: agentWallet });
           await agentId.updateOne({ email: email });
+          await agentId.updateOne({ isValid: true });
         }
         if (updateAgent) {
           res.status(200).json(updateAgent);
@@ -457,7 +460,7 @@ router.put(
 // approve an agent package by an admin
 router.put(
   "/approve-agent/user/:id",
-  verifyTokenAndAuthorization,
+  verifyTokenAndAuthorizationAndUser,
   async (req, res) => {
     try {
       // check valid user model
@@ -477,6 +480,7 @@ router.put(
           for (i = agentWallet; i >= agentWallet; i++) {
             await agent.updateOne({ $inc: { agentWallet: +i } });
             await agent.updateOne({ agentPackage: package });
+            await agentPackage.updateOne({ isApproved: true });
             break;
           }
         } else {

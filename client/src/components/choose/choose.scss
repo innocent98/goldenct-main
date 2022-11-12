@@ -14,90 +14,98 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    @include tab {
-      flex-direction: column;
+    // overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
     }
-    @include mobile {
-      flex-direction: column;
+    // @include tab {
+    //   flex-direction: column;
+    // }
+    // @include mobile {
+    //   flex-direction: column;
+    // }
+
+    img {
+      transition: all 1s ease;
     }
 
-    .first,
-    .second,
-    .third {
-      display: flex;
-      @include tab {
-        align-items: center;
-      }
-      @include mobile {
-        align-items: center;
-      }
+    // .first,
+    // .second,
+    // .third {
+    //   display: flex;
+    //   @include tab {
+    //     align-items: center;
+    //   }
+    //   @include mobile {
+    //     align-items: center;
+    //   }
 
-      .icon {
-        width: 60px;
-        height: 60px;
-        background-color: $general;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $buttonColor;
-        @include l{
-          width: 50px;
-          height: 44px;
-        }
-        @include tab {
-          width: 45px;
-          height: 45px;
-        }
-        @include mobile {
-          width: 30px;
-          height: 30px;
-        }
-        .material-icons {
-          font-size: 40px;
-          @include l{
-            font-size: 28px;
-          }
-          @include tab {
-            font-size: 25px;
-          }
-          @include mobile {
-            font-size: 15px;
-          }
-        }
-      }
+    //   .icon {
+    //     width: 60px;
+    //     height: 60px;
+    //     background-color: $general;
+    //     border-radius: 50%;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     color: $buttonColor;
+    //     @include l{
+    //       width: 50px;
+    //       height: 44px;
+    //     }
+    //     @include tab {
+    //       width: 45px;
+    //       height: 45px;
+    //     }
+    //     @include mobile {
+    //       width: 30px;
+    //       height: 30px;
+    //     }
+    //     .material-icons {
+    //       font-size: 40px;
+    //       @include l{
+    //         font-size: 28px;
+    //       }
+    //       @include tab {
+    //         font-size: 25px;
+    //       }
+    //       @include mobile {
+    //         font-size: 15px;
+    //       }
+    //     }
+    //   }
 
-      .content {
-        color: $generalColor;
-        margin-left: 30px;
-        h3 {
-          font-size: 40px;
-          font-weight: 500;
-          font-family: "Archivo", sans-serif;
-          @include tab {
-            font-size: 30px;
-          }
-          @include mobile {
-            font-size: 20px;
-          }
-        }
-        p {
-          font-size: 17px;
-          font-weight: 400;
-          color: $secondary;
-          font-family: "Inter", sans-serif;
-          @include tab {
-            font-size: 14px;
-          }
-          @include mobile {
-            font-size: 12px;
-          }
-        }
-      }
-    }
+    //   .content {
+    //     color: $generalColor;
+    //     margin-left: 30px;
+    //     h3 {
+    //       font-size: 40px;
+    //       font-weight: 500;
+    //       font-family: "Archivo", sans-serif;
+    //       @include tab {
+    //         font-size: 30px;
+    //       }
+    //       @include mobile {
+    //         font-size: 20px;
+    //       }
+    //     }
+    //     p {
+    //       font-size: 17px;
+    //       font-weight: 400;
+    //       color: $secondary;
+    //       font-family: "Inter", sans-serif;
+    //       @include tab {
+    //         font-size: 14px;
+    //       }
+    //       @include mobile {
+    //         font-size: 12px;
+    //       }
+    //     }
+    //   }
+    // }
   }
 
-  .choose {
+  .who {
     display: flex;
     @include tab {
       flex-direction: column;
@@ -108,18 +116,39 @@
     .left {
       flex: 1;
       @include tab {
-        display: none;
+        // display: none;
       }
       @include mobile {
-        display: none;
+        // display: none;
       }
-      img {
-        width: 90%;
+      .secondImg {
+        height: 70%;
+        display: flex;
+        margin-left: 50px;
+        @include tab {
+          height: 220px;
+        }
+        @include mobile {
+          height: 200px;
+        }
+      }
+      .polygon {
+        height: 100px;
+        transform: rotate(180deg);
+        @include tab {
+          display: none;
+        }
+        @include mobile {
+          display: none;
+        }
       }
     }
     .right {
       flex: 1;
       padding: 50px 100px;
+      @include l{
+        padding: 50px;
+      }
       @include tab {
         padding: 10px;
       }
@@ -133,7 +162,7 @@
         font-family: "Archivo", sans-serif;
         color: $generalColor;
         text-transform: uppercase;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         @include tab {
           font-size: 30px;
           text-align: center;
@@ -148,6 +177,7 @@
         font-weight: 400;
         color: $secondary;
         font-family: "Inter", sans-serif;
+        margin-bottom: 50px;
         @include tab {
           font-size: 16px;
           text-align: center;
@@ -179,8 +209,104 @@
     }
   }
 
+  .choose {
+    display: flex;
+    @include l{
+      padding: 10px;
+    }
+    @include tab {
+      flex-direction: column;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .left {
+      flex: 1;
+      @include tab {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
+      img {
+        width: 90%;
+      }
+    }
+    .right {
+      flex: 1;
+      padding: 50px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include tab {
+        padding: 10px;
+      }
+      @include mobile {
+        flex: none;
+        padding: 10px;
+      }
+      h3 {
+        font-size: 40px;
+        font-weight: 700;
+        font-family: "Archivo", sans-serif;
+        color: $generalColor;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        @include tab {
+          font-size: 30px;
+          text-align: center;
+        }
+        @include mobile {
+          font-size: 25px;
+          text-align: center;
+        }
+      }
+      p {
+        font-size: 17px;
+        font-weight: 400;
+        color: $secondary;
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        width: 60%;
+        @include tab {
+          width: 100%;
+          font-size: 16px;
+          text-align: center;
+        }
+        @include mobile {
+          width: 100%;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+      a {
+        background-color: $buttonColor;
+        width: 120px;
+        height: 40px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $backgroundCOlor;
+        @include tab {
+          margin-top: 30px;
+          // margin-left: 35%;
+        }
+        @include mobile {
+          height: 30px;
+          margin-top: 30px;
+          // margin-left: 30%;
+        }
+      }
+    }
+  }
+
   .earn {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-top: 80px;
     @include tab {
       flex-direction: column;
@@ -191,6 +317,11 @@
 
     .left {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       padding-right: 50px;
       @include tab {
         padding: 10px;
@@ -224,7 +355,7 @@
         color: $secondary;
         font-family: "Inter", sans-serif;
         margin-bottom: 30px;
-        @include tab{
+        @include tab {
           width: 100%;
           text-align: center;
           font-size: 16px;
@@ -244,13 +375,14 @@
         align-items: center;
         justify-content: center;
         color: $backgroundCOlor;
-        @include tab{
-          margin-left: 35%;
+        margin-bottom: 40px;
+        @include tab {
+          // margin-left: 35%;
           margin-bottom: 30px;
         }
         @include mobile {
           height: 30px;
-          margin-left: 30%;
+          // margin-left: 30%;
           margin-bottom: 30px;
         }
       }
@@ -258,15 +390,24 @@
 
     .right {
       flex: 1;
+      display: flex;
+      gap: 20px;
+      padding: 40px;
+      @include tab{
+        flex-direction: column;
+        padding: 0;
+        gap: 10px;
+      }
       .container {
         background-color: $general;
         color: white;
         margin-bottom: 20px;
         width: 80%;
-        display: flex !important;
-        padding: 8px 20px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
         border-radius: 8px;
-        @include tab{
+        @include tab {
           align-items: center;
           justify-content: center;
         }
@@ -286,7 +427,7 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            @include tab{
+            @include tab {
               height: 60px;
               width: 60px;
               font-size: 35px;
@@ -300,6 +441,11 @@
         }
         .right {
           flex: 4;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
       }
     }

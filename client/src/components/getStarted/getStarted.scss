@@ -3,11 +3,8 @@
 .getStarted {
   color: white;
   padding-top: 100px;
-  @include tab {
-    padding-top: 10px;
-  }
-  @include mobile {
-    padding-top: 10px;
+  @include l {
+    padding: 15px;
   }
   .first {
     width: 40%;

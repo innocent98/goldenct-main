@@ -11,11 +11,13 @@ const TOKEN = currentUser?.accessToken;
 const FORGOTTOKEN = forgetPassword?.forgotToken;
 
 export const userRequest = axios.create({
+  // proxy: "http://localhost:6000/api/",
   baseURL: process.env.REACT_APP_API_URL,
   headers: { token: `Bearer ${TOKEN}` },
 });
 
 export const forgotRequest = axios.create({
+  // proxy: "http://localhost:6000/api/",
   baseURL: process.env.REACT_APP_API_URL,
   headers: { token: `Bearer ${FORGOTTOKEN}` },
 });
