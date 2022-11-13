@@ -22,13 +22,13 @@
       justify-content: center;
       color: $generalColor;
       padding-bottom: 90px;
-      @include l{
+      @include l {
         width: 50%;
       }
-      @include tab{
+      @include tab {
         width: 80%;
       }
-      @include mobile{
+      @include mobile {
         width: 100%;
       }
 
@@ -39,6 +39,16 @@
         text-transform: capitalize;
         margin-bottom: 40px;
         width: 100%;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        span {
+          font-weight: 500;
+          font-size: 20px;
+          a{
+            color: $buttonColor;
+          }
+        }
       }
       .sent {
         color: $buttonColor;

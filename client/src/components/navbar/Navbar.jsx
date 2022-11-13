@@ -102,7 +102,7 @@ const Navbar = ({
     <div className="navbar">
       <div className="left">
         <img src="assets/img/Logo.png" alt="" />
-        <h4>GOLDENCT</h4>
+        <h4>GOLDENPAY</h4>
       </div>
       <div className="right">
         <ul>

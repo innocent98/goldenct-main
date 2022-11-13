@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-between;
     width: 70%;
+    height: 100px;
     border: 1px solid $grey;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -65,6 +66,7 @@
         right: 0;
         margin-left: 150px;
         cursor: pointer;
+        z-index: 1;
         @include mobile {
           margin-left: 100px;
         }

@@ -41,17 +41,17 @@ const Sidebar = ({
     setLogin(false);
     setSide(false);
   };
-  const handlePackages = (e) => {
-    e.preventDefault();
-    setPackages(true);
-    setWork(false);
-    setFaq(false);
-    setAbout(false);
-    setHome(false);
-    setRegister(false);
-    setLogin(false);
-    setSide(false);
-  };
+  // const handlePackages = (e) => {
+  //   e.preventDefault();
+  //   setPackages(true);
+  //   setWork(false);
+  //   setFaq(false);
+  //   setAbout(false);
+  //   setHome(false);
+  //   setRegister(false);
+  //   setLogin(false);
+  //   setSide(false);
+  // };
 
   const handleWork = (e) => {
     e.preventDefault();
@@ -113,7 +113,7 @@ const Sidebar = ({
       </div>
       <div className="left">
         <img src="assets/img/Logo.png" alt="" />
-        <h4>GOLDENCT</h4>
+        <h4>GOLDENPAY</h4>
       </div>
       <div className="right">
         <ul>
@@ -127,11 +127,11 @@ const Sidebar = ({
               About
             </a>
           </li>
-          <li onClick={handlePackages}>
+          {/* <li onClick={handlePackages}>
             <a href="/" className={packages ? "active" : "notActive"}>
               Packages
             </a>
-          </li>
+          </li> */}
           <li onClick={handleWork}>
             <a href="/" className={work ? "active" : "notActive"}>
               How it works

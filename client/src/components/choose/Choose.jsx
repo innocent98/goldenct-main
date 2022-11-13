@@ -138,7 +138,7 @@ const Choose = () => {
             </div>
             <div className="right">
               <h5>Start Build Portfolio</h5>
-              <p>Buy and sell your currencies and keep track of them.</p>
+              <p>Build your portfolio and keep track on them</p>
             </div>
           </div>
         </div>

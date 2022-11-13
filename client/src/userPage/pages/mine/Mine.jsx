@@ -35,6 +35,17 @@ const Mine = ({
 
   const user = useSelector((state) => state.user.currentUser);
 
+  // get logged in user
+  const [loggedUser, setLoggedUser] = useState("");
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await userRequest.get("/user/user");
+      setLoggedUser(res.data);
+    };
+    fetchUser();
+  }, [setLoggedUser]);
+
+  // handle mine
   const handleMine = async (e) => {
     e.preventDefault();
     try {
@@ -45,7 +56,7 @@ const Mine = ({
     }
   };
 
-  const countdownTimestampMs = user.time;
+  const countdownTimestampMs = loggedUser.time;
 
   const currentTime = new Date();
   const totalSeconds = (currentTime - countdownTimestampMs) / 1000;
@@ -94,52 +105,60 @@ const Mine = ({
   }
 
   return (
-    <div className="mine">
-      <ToastContainer position="top-center" reverseOrder={false} />
-      <button
-        className="button"
-        onClick={handleMine}
-        disabled={totalSeconds < 0 || !user.isValidated}
-      >
-        {!user.isValidated ? "Please validate your account to continue" : totalSeconds >= 0
-          ? "Mine"
-          : `Mining till ${remainingTime.hours}h: ${remainingTime.minutes}m : ${remainingTime.seconds}s`}
-      </button>
-      <div className="countdown">
-        <h2>Countdown to wallet unlocking</h2>
-        <div className="row">
-          <div className="col">
-            <h3>{remainingTimeToUnlock.days}</h3>
-            <p>Days</p>
+    <>
+      {user.isValidated || loggedUser.isValidated ? (
+        <div className="mine">
+          <ToastContainer position="top-center" reverseOrder={false} />
+          <button
+            className="button"
+            onClick={handleMine}
+            disabled={totalSeconds < 0 || !loggedUser.isValidated}
+          >
+            {!user.isValidated && !loggedUser.isValidated
+              ? "Please validate your account to continue"
+              : totalSeconds >= 0
+              ? "Mine"
+              : `Mining till ${remainingTime.hours}h: ${remainingTime.minutes}m : ${remainingTime.seconds}s`}
+          </button>
+          <div className="countdown">
+            <h2>Countdown to wallet unlocking</h2>
+            <div className="row">
+              <div className="col">
+                <h3>{remainingTimeToUnlock.days}</h3>
+                <p>Days</p>
+              </div>
+              <div className="col">
+                <h3>{remainingTimeToUnlock.hours}</h3>
+                <p>Hours</p>
+              </div>
+              <div className="col">
+                <h3>{remainingTimeToUnlock.minutes}</h3>
+                <p>Mins</p>
+              </div>
+              <div className="col">
+                <h3>{remainingTimeToUnlock.seconds}</h3>
+                <p>Secs</p>
+              </div>
+            </div>
           </div>
-          <div className="col">
-            <h3>{remainingTimeToUnlock.hours}</h3>
-            <p>Hours</p>
-          </div>
-          <div className="col">
-            <h3>{remainingTimeToUnlock.minutes}</h3>
-            <p>Mins</p>
-          </div>
-          <div className="col">
-            <h3>{remainingTimeToUnlock.seconds}</h3>
-            <p>Secs</p>
-          </div>
-        </div>
-      </div>
 
-      <div className="mineDetails">
-        <div className="left">
-          <h3>
-            Currently mining at: <span>{user.package}</span>
-          </h3>
+          <div className="mineDetails">
+            <div className="left">
+              <h3>
+                Currently mining at: <span>{user.package}</span>
+              </h3>
+            </div>
+            <div className="right">
+              <h3>
+                Total mined: <span>{user.mineWallet}GCT</span>
+              </h3>
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <h3>
-            Total mined: <span>{user.mineWallet}GCT</span>
-          </h3>
-        </div>
-      </div>
-    </div>
+      ) : (
+        <div className="validate">Please validate your accont to continue</div>
+      )}
+    </>
   );
 };
 

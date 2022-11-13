@@ -1,5 +1,6 @@
-import { useState } from "react";
-// import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../../requestMethod";
+import { useSelector } from "react-redux";
 import WithdrawDims from "../../components/withdrawDims/WithdrawDims";
 import WithdrawGolden from "../../components/withdrawGolden/WithdrawGolden";
 import "./withdraw.scss";
@@ -23,7 +24,7 @@ const Withdraw = ({
   setFaqs(false);
   setSettings(false);
 
-  // const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   const [tab1, setTab1] = useState(true);
   const [tab2, setTab2] = useState(false);
@@ -38,29 +39,45 @@ const Withdraw = ({
     setTab1(false);
   };
 
+  // get logged in user
+  const [loggedUser, setLoggedUser] = useState("");
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await userRequest.get("/user/user");
+      setLoggedUser(res.data);
+    };
+    fetchUser();
+  }, [setLoggedUser]);
+
   return (
-    <div className="withdraw">
-      <div className="tabSelect">
-        <div
-          className={"tab form-control-sm " + (tab1 && "tabActive")}
-          onClick={handleTab1}
-        >
-          DIMs
+    <>
+      {user.isValidated || loggedUser.isValidated ? (
+        <div className="withdraw">
+          <div className="tabSelect">
+            <div
+              className={"tab form-control-sm " + (tab1 && "tabActive")}
+              onClick={handleTab1}
+            >
+              DIMs
+            </div>
+            <div
+              className={"tab form-control-sm " + (tab2 && "tabActive")}
+              onClick={handleTab2}
+            >
+              GCT
+            </div>
+          </div>
+          <div className={tab1 ? "withdrawDims" : "none"}>
+            <WithdrawDims />
+          </div>
+          <div className={tab2 ? "withdrawGolden" : "none"}>
+            <WithdrawGolden />
+          </div>
         </div>
-        <div
-          className={"tab form-control-sm " + (tab2 && "tabActive")}
-          onClick={handleTab2}
-        >
-          GCT
-        </div>
-      </div>
-      <div className={tab1 ? "withdrawDims" : "none"}>
-        <WithdrawDims />
-      </div>
-      <div className={tab2 ? "withdrawGolden" : "none"}>
-        <WithdrawGolden />
-      </div>
-    </div>
+      ) : (
+        <div className="validate">Please validate your accont to continue</div>
+      )}
+    </>
   );
 };
 

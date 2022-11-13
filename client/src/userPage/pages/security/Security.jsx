@@ -49,21 +49,21 @@ const Security = ({
         </span>
       </a>
 
-      <div className="container-fluid top">
-        <div className="left">
+      <div className="securityCon top">
+        <div className="leftC">
           <h3>Reset Password</h3>
           <p>Change your old password to a new one</p>
         </div>
-        <div className="right">
+        <div className="rightC">
           <span onClick={handlePasswordReset}>Reset Password</span>
         </div>
       </div>
-      <div className="container-fluid">
-        <div className="left">
+      <div className="securityCon">
+        <div className="leftC">
           <h3>Change Transaction PIN</h3>
           <p>Change your old password to a new one</p>
         </div>
-        <div className="right">
+        <div className="rightC">
           <span onClick={handleTransactionPin}>Change Pin</span>
         </div>
       </div>

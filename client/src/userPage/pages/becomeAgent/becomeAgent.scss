@@ -142,3 +142,14 @@
 .none {
   display: none;
 }
+
+.validate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+}

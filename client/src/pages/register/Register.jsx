@@ -2,8 +2,8 @@ import { useState } from "react";
 import Error from "../../components/error/Error";
 import { userRequest } from "../../requestMethod";
 // import {Toaster, toast} from "react-hot-toast";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./register.scss";
 import { Link, useLocation } from "react-router-dom";
 
@@ -45,8 +45,8 @@ const Register = ({ setLogin, setRegister }) => {
     password,
   };
 
-  const location = useLocation()
-  const path = location.search
+  const location = useLocation();
+  const path = location.search;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,10 +78,18 @@ const Register = ({ setLogin, setRegister }) => {
           className="container"
           style={valueUsername ? { display: "block" } : { display: "none" }}
         >
-          <h4>Register</h4>
+          <h4>
+            Register{"  "}
+            <span>
+              {" -> "}
+              <a href="/">Home</a>
+            </span>
+          </h4>
           <p>
-            Already have a GoldTech account?{" "}
-            <Link to="/login" className="link" onClick={handleLogin}>Login instead</Link>
+            Already have a GoldenPay account?{" "}
+            <Link to="/login" className="link" onClick={handleLogin}>
+              Login instead
+            </Link>
           </p>
           <h6>Email Address</h6>
           <div className="col-md-4">

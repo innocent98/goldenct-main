@@ -55,8 +55,8 @@ const WithdrawDims = () => {
           <h1>
             #
             {user.agent
-              ? loggedUser.taskWallet + user.agent.reward
-              : loggedUser.taskWallet}
+              ? user.taskWallet || loggedUser.taskWallet + user.agent.reward
+              : user.taskWallet || loggedUser.taskWallet}
           </h1>
           <div className="col">
             <span>Note: You will be charged 10% of this transaction</span>
