@@ -7,17 +7,18 @@
   padding-top: 100px;
   padding-left: 40px;
   @include l{
-    padding: 20px;
-    height: 60vh;
+    // padding: 20px;
+    // height: 60vh;
   }
   @include tab {
     flex-direction: column-reverse;
-    height: 90vh;
+    // height: 90vh;
     // padding-left: 0;
   }
   @include mobile {
     flex-direction: column-reverse;
-    height: 84vh;
+    margin-top: -40px;
+    // height: 84vh;
     // padding-left: 0;
   }
 
