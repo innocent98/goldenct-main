@@ -78,9 +78,9 @@ const SubscriptionTopUp = () => {
             className="form-control"
             name="amount"
             required
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(amount)}
             value={amount}
-            min={100}
+            min={1000}
             max={1000000}
           />
         </div>
